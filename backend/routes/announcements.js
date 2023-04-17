@@ -13,6 +13,14 @@ catch(error)
     })
 }
 })
+routes.patch('/:id',async(req,res)=>{
+    const {id}=req.params;
+    const announcement=await Announcements.findOneAndUpdate({_id:id},{
+        ...req.body
+
+    })
+    res.status(200).json(announcement)
+})
 routes.post('/',async (req,res)=>{
 const {heading,description}=req.body;
 try{

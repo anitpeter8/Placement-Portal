@@ -7,8 +7,8 @@ const { response } = require('express');
 
 mongoose.connect('mongodb+srv://121miniproject:8I6QiQo3efbSgFsq@cluster0.eumy0d8.mongodb.net/test').then(
     ()=>{
-        app.listen(3000,()=>{
-            console.log("listening to 3000")
+        app.listen(5000,()=>{
+            console.log("listening to 5000")
     }
 )
 

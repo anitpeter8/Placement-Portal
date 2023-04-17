@@ -1,0 +1,33 @@
+/* *{
+   
+    color: #EBDCDC;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;400&family=Roboto:wght@100;300;400;500&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');*/
+*{
+    font-family: 'Public Sans', sans-serif;
+    color: #EBDCDC;
+box-sizing: border-box;
+}
+
+.brown{
+    background-color:#2B1C1F !important;
+
+}
+.white{
+    background-color: #fff;
+}
+.nopadding{
+    --bs-gutter-x:0;
+    padding: 0;
+    margin: 0;
+}
+.inp{
+    background-color: #FFA8A2 !important;
+}
+.btn{
+    background-color: #d8726b !important
+}
+.rounded{
+    border-radius: 50px !important;
+}
