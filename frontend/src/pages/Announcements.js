@@ -1,61 +1,59 @@
-// import axios from 'axios';
-// import Announcement from '../components/Announcement';
-// import { useEffect, useState } from 'react';
-// import NewAnnouncement from '../modals/NewAnnouncement';
-// const Announcements = () => {
-//     const [announcements, setancment] = useState(null)
-//     useEffect(() => {
-//         axios.get('http://localhost:5000/api/announcements').then((response) => {
-//             setancment(response.data);
-//         });
-//     }, [])
-//     return (
-//         <>
-//         <h3>Announcements</h3>
-//         <NewAnnouncement/>
-//         {
-//         announcements && announcements.map((announcement) => (
-//          <Announcement announcement={announcement} key={announcement._id}/>
-//         ))
-//     }
-//         </>
-//     )
-// }
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
-// export default Announcements;
-import React, { useState } from 'react'
-import MultiSelect from  'react-multiple-select-dropdown-lite'
-import  'react-multiple-select-dropdown-lite/dist/index.css'
+function NewAnnouncement() {
+  const [show, setShow] = useState(false);
+  const [heading, setHeading] = useState('');
+  const [description, setDescription] = useState('');
 
-const Announcements = () => {
-  const a=[]
-  //
-  const [value, setvalue] = useState('')
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handlesubmit = (e) => {
+    e.preventDefault();
 
-  const  handleOnchange  =  val  => {
-    setvalue(val)
-    a.push(val);
-    console.log(a);
+    console.log(heading, description);
+    const announcement = { heading, description };
+    axios.post("http://localhost:5000/api/announcements", announcement).then((response) => {
+      console.log(response.data);
+      console.log('vishayam')
+      setHeading('');
+      setDescription('');
+    }).catch()
   }
 
-  const  options  = [
-    { label:  'Option 1', value:  'option_1'  },
-    { label:  'Option 2', value:  'option_2'  },
-    { label:  'Option 3', value:  'option_3'  },
-    { label:  'Option 4', value:  'option_4'  },
-  ]
+  return (
+    <>
+      <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
+        + New Announcement
+      </Button>
 
-  return(
-    <div className="app">
-      <div  className="preview-values">
-        <h4>Values</h4>
-        {value}
-      </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>New Announcement</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handlesubmit}>
+            <label>heading:</label>
+            <input type='text' value={heading} onChange={(e) =>
+              setHeading(e.target.value)
+            } />
+            <label>description:</label>
+            <input type='text' value={description} onChange={(e) =>
+              setDescription(e.target.value)
+            } />
+            <button type='submit'>Submit</button>
+          </form>
+        </Modal.Body>
 
-      <MultiSelect
-        onChange={handleOnchange}
-        options={options}
-      />
-    </div>
-)}
-export  default Announcements
+      </Modal>
+    </>
+  );
+}
+export default NewAnnouncement;
