@@ -1,59 +1,41 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
-
-function NewAnnouncement() {
-  const [show, setShow] = useState(false);
-  const [heading, setHeading] = useState('');
-  const [description, setDescription] = useState('');
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handlesubmit = (e) => {
-    e.preventDefault();
-
-    console.log(heading, description);
-    const announcement = { heading, description };
-    axios.post("http://localhost:5000/api/announcements", announcement).then((response) => {
-      console.log(response.data);
-      console.log('vishayam')
-      setHeading('');
-      setDescription('');
-    }).catch()
-  }
-
+import Announcement from '../components/Announcement';
+import { useEffect, useState } from 'react';
+import NewAnnouncement from '../modals/NewAnnouncement';
+import '../css/Announcements.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+  crossorigin="anonymous"
+/>
+const Announcements = () => {
+  const [announcements, setancment] = useState(null)
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/announcements').then((response) => {
+      setancment(response.data);
+    });
+  }, [])
   return (
     <>
-      <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
-        + New Announcement
-      </Button>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>New Announcement</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handlesubmit}>
-            <label>heading:</label>
-            <input type='text' value={heading} onChange={(e) =>
-              setHeading(e.target.value)
-            } />
-            <label>description:</label>
-            <input type='text' value={description} onChange={(e) =>
-              setDescription(e.target.value)
-            } />
-            <button type='submit'>Submit</button>
-          </form>
-        </Modal.Body>
-
-      </Modal>
+      <div id="head-container" className="d-flex justify-content-between">
+        <h1 id="heading">ANNOUNCEMENTS</h1>
+        <NewAnnouncement />
+      </div>
+      <div className="content">
+        {announcements && (
+          <div className="row row-cols-2">
+            {announcements.map((announcement) => (
+              <div className="col" key={announcement._id}>
+                <Announcement announcement={announcement} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
-  );
+  )
 }
-export default NewAnnouncement;
+
+export default Announcements;

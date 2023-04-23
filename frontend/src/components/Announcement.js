@@ -2,13 +2,14 @@ import EditAnnouncement from "../modals/EditAnnouncement";
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Announcement.css';
+import moment from "moment";
 const Announcement = ({ announcement }) => {
   return (
     <div className="single-card">
       <Card style={{ borderRadius: '25px' }} className="card-content">
         <Card.Header className="header" style={{ borderRadius: '25px' }}>
           <div className="d-flex justify-content-between">
-            <Card.Title><h4>{announcement.createdAt}</h4></Card.Title>
+            <Card.Title><h5>{moment(announcement.createdAt).format('LL')}</h5></Card.Title>
             <EditAnnouncement announcement={announcement} />
           </div>
           <Card.Title><h4>{announcement.heading}</h4></Card.Title>
