@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    height: 100vh;
+    background-color: #2B1C1F;
+    text-align: left;
+    flex-direction: column;
+}
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    color: #EBDCDC;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 60px;
+    padding-left:55px;
+}
+
+.portal {
+    color: #EBDCDC;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 60px;
+    word-spacing: 0.25em;
+}
+
+.first {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 35px;
+    line-height: 0px;
+    font-weight: 400;
+    margin-bottom: auto;
+}
+
+.mainhead {
+    font-size: 100px;
+
+    margin-bottom: 20px;
+    line-height: 0.85;
+    font-weight: 400;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.sub {
+    margin-top: 20px;
+    color: #EBDCDC;
+    display: flex;
+    align-items: flex-start;
+}
+
+.login,
+.register,
+.otp {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(196, 186, 188, 0.6);
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 70px;
+    margin-top: 130px;
+}
+
+.login1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 35px;
+}
+
+.details {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+input {
+    background-color: #904e4b;
+    color: white;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: start;
+    padding-left: 15px;
+    border: none;
+    outline: none;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.button,
+.signin {
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    opacity: 0.9;
+    color: #EBDCDC;
+    border: 2px solid #d2756e;
+    background-color: #904e4b;
+}
+
+.button:hover {
+    background-color: #d2756e;
+    color: #EBDCDC;
+}
+
+.first {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 35px;
+    line-height: 0px;
+    font-weight: 400;
+    margin-bottom: auto;
+}
+
+.mainhead {
+    font-size: 100px;
+    font-family: 'Public Sans', sans-serif;
+    line-height: 0.95;
+    margin-top: 0.33em;
+    margin-bottom: 0;
+    font-weight: 400;
+    padding-bottom:40px;
+}
+
+.details1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.email,
+.password,
+.name,
+.otp1 {
+    margin: 10px auto 10px auto;
+}
+
+.account {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.forgot {
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+}

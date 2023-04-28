@@ -1,9 +1,9 @@
 .header{
-    background: linear-gradient(to left,#FB9292,#F8F8F8);
+    background: linear-gradient(to left,#FFA8A2,#F8F8F8);
     display:inline-block;
 }
 .card-content{
-    background:#FB9292;
+    background:#FFA8A2;
 }
 .single-card{
     margin:auto;

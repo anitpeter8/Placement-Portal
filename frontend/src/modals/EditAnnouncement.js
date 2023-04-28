@@ -38,16 +38,16 @@ function EditAnnouncement({ announcement }) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>New Announcement</Modal.Title>
+          <Modal.Title className='announcement-label text-center pt-6 text-dark'>Edit Announcement</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handlesubmit}>
-            <label>heading:</label>
-            <input type='text' value={heading} onChange={(e) =>
+            <label className='form-label m-2 text-dark'>Heading :</label>
+            <input type='text' className='heading form-control p-1 ml-5' value={heading} onChange={(e) =>
               setHeading(e.target.value)
             } />
-            <label>description:</label>
-            <input type='text' value={description} onChange={(e) =>
+            <label className='form-label m-2 text-dark'>Description :</label>
+            <input type='text' className='form-control p-1 ml-5' value={description} onChange={(e) =>
               setDescription(e.target.value)
             } />
             <button type='submit'>Submit</button>
