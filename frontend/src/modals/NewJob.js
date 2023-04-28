@@ -44,8 +44,8 @@ function NewJob() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                +NewJob
+            <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
+                + New Job
             </Button>
 
             <Modal
