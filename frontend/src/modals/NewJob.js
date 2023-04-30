@@ -29,7 +29,7 @@ function NewJob() {
 
         console.log(heading, description,role,noofbacklogs,cgpa,history,branch);
         const announcement = { heading, description,role,noofbacklogs,cgpa,history,branch};
-        axios.post("http://localhost:5000/api/jobs", announcement).then((response) => {
+        axios.post("http://localhost:9000/api/jobs", announcement).then((response) => {
             console.log(response.data);
             console.log('vishayam')
             // setHeading('');
