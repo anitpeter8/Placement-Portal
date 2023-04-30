@@ -16,7 +16,7 @@ function EditAnnouncement({ announcement }) {
     console.log(heading, description);
     const id = announcement._id;
     const announcementee = { heading, description }
-    axios.patch('http://localhost:5000/api/announcements/' + id, announcementee).then((response) => {
+    axios.patch('http://localhost:9000/api/announcements/' + id, announcementee).then((response) => {
       console.log(response.data);
       console.log('vishayam')
 

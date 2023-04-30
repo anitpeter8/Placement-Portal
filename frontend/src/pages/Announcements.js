@@ -3,7 +3,7 @@ import Announcement from '../components/Announcement';
 import { useEffect, useState } from 'react';
 import NewAnnouncement from '../modals/NewAnnouncement';
 import '../css/Announcements.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Announcements = () => {
   const [announcements, setancment] = useState(null)
   useEffect(() => {
-    axios.get('http://localhost:5000/api/announcements').then((response) => {
+    axios.get('http://localhost:9000/api/announcements').then((response) => {
       setancment(response.data);
     });
   }, [])

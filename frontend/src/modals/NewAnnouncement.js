@@ -15,7 +15,7 @@ function NewAnnouncement() {
 
     console.log(heading, description);
     const announcement = { heading, description };
-    axios.post("http://localhost:5000/api/announcements", announcement).then((response) => {
+    axios.post("http://localhost:9000/api/announcements", announcement).then((response) => {
       console.log(response.data);
       console.log('vishayam')
       setHeading('');

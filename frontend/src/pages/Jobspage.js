@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import NewJob from  '../modals/NewJob';
 import Job from '../components/Job';
 import '../css/JobsPage.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Jobspage = () => {
     const [jobs, setjobs] = useState()
     useEffect(() => {
-        axios.get('http://localhost:5000/api/jobs').then((response) => {
+        axios.get('http://localhost:9000/api/jobs').then((response) => {
             
             console.log(response.data)
             setjobs(response.data);
