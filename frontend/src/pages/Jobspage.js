@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import NewJob from  '../modals/NewJob';
+import NewJob from '../modals/NewJob';
 import Job from '../components/Job';
 import '../css/JobsPage.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,31 +14,31 @@ const Jobspage = () => {
     const [jobs, setjobs] = useState()
     useEffect(() => {
         axios.get('http://localhost:9000/api/jobs').then((response) => {
-            
+
             console.log(response.data)
             setjobs(response.data);
-          
+
         });
-    },[])
+    }, [])
     console.log(jobs)
     return (
-        <>
-        <div id="head-container" className="d-flex justify-content-between">
-            <h1 id="heading">JOBS</h1>
-            <NewJob/>
+        <div className="main">
+            <div id="head-container" className="d-flex justify-content-between">
+                <h1 id="heading">JOBS</h1>
+                <NewJob />
+            </div>
+            <div className="content">
+                {jobs && (
+                    <div className="row row-cols-2">
+                        {jobs.map((job) => (
+                            <div className="col" key={job._id}>
+                                <Job job={job} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
-        <div className="content">
-        {jobs && (
-            <div className="row row-cols-2">
-            {jobs.map((job)=>(
-                <div className="col" key={job._id}>
-                    <Job job={job} />
-                </div>
-        ))}
-        </div>
-        )}
-      </div>
-    </>
 
     )
 }

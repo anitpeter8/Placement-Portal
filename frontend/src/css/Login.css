@@ -1,221 +1,160 @@
- @import url('https://fonts.googleapis.com/css2?family=Public+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans&display=swap');
 
 * {
     box-sizing: border-box;
     font-family: 'Public Sans', sans-serif;
     margin: 0;
-   
 }
-body{
+
+
+.container--row-1 {
+    font-size: 2vw;
+    padding-bottom: 50px;
+    display: flex;
+}
+
+#logo {
+    width: 80px;
+    height: 40px;
+    object-fit: cover;
+    padding-right: 10px;
 
 }
-.headercss{
-    font-size: xx-large;
+
+.container-intro h1 {
+    font-size: 5vw;
 }
-.containercss{
+
+.container-intro h2 {
+    font-size: 2vw
+}
+
+.containercss {
     color: #EBDCDC;
     margin: 0;
     height: 100vh;
-    background-color: rgb(45, 14, 8);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(168, 125, 116);
     background-blend-mode: multiply;
     background-image: url('bgimage.jpg');
-     background-size: cover;
-     margin:0px;
-padding:70px;
-display: flex;
-flex-direction: column;
-
-justify-content: space-evenly;
-
-}
-.container--row-2{
+    background-size: cover;
+    padding-left: 70px;
+    padding-top: 70px;
+    padding-right: 70px;
+    padding-bottom: 70px;
     display: flex;
-    justify-content:space-between;
+    flex-direction: column;
+}
 
+.container--row-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
 }
-.container-intro{
-width: 50%;
+
+.container-intro {
+    width: 100%;
 }
-.container--loginReg{
+
+.container--loginReg {
+
     width: 50%;
 }
 
-.container--loginReg__card{
- background-color:#514d4e;
- background-image: url('bgimage2.jpg');
- background-size: cover;
- background-blend-mode:darken;
- color: rgb(236, 236, 236);
- border-radius:10px ;
- padding: 20px;
- width: 80%;
- align-items: center;
-}
-/* .main {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    height: 100vh;
-    background-color: #2B1C1F;
-    text-align: left;
-    flex-direction: column;
-}
-
-.container{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.heading {
-  
-   
-    font-size: 25px;
-    font-weight: 400;
-    margin-top: 60px;
-    padding-left:55px;
-}
-
-.portal {
-    color: #EBDCDC;
-    font-size: 20px;
-    text-align: left;
-    margin-top: 60px;
-    word-spacing: 0.25em;
-}
-
-.first {
-    font-family: 'Public Sans', sans-serif;
-    font-size: 35px;
-    line-height: 0px;
-    font-weight: 400;
-    margin-bottom: auto;
-}
-
-.mainhead {
-    font-size: 100px;
-
-    margin-bottom: 20px;
-    line-height: 0.85;
-    font-weight: 400;
-    font-family: 'Public Sans', sans-serif;
-}
-
-.sub {
-    margin-top: 20px;
-    color: #EBDCDC;
-    display: flex;
-    align-items: flex-start;
-}
-
-.login,
-.register,
-.otp {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background-color: rgba(196, 186, 188, 0.6);
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 70px;
-    margin-top: 130px;
-}
-
-.login1 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: left;
-    font-size: 35px;
-}
-
-.details {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-input {
-    background-color: #904e4b;
-    color: white;
-    width: 300px;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 5px;
-    text-align: start;
-    padding-left: 15px;
-    border: none;
-    outline: none;
-}
-
-::placeholder {
-    color: white;
-    opacity: 1;
-}
-
-.button,
-.signin {
-    height: 30px;
-    width: 120px;
-    border-radius: 5px;
-    position: relative;
-    display: inline-block;
-    left: 50%;
+.container--loginReg__card {
+    background-color: rgba(139, 84, 84, 0.3);
+    ;
+    background-size: cover;
     opacity: 0.9;
     color: #EBDCDC;
-    border: 2px solid #d2756e;
-    background-color: #904e4b;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+
 }
 
-.button:hover {
-    background-color: #d2756e;
-    color: #EBDCDC;
+.email {
+    padding-top: 5px;
 }
 
-.first {
-    font-family: 'Public Sans', sans-serif;
-    font-size: 35px;
-    line-height: 0px;
-    font-weight: 400;
-    margin-bottom: auto;
+.log_mail {
+    background-color: #EEEEEE;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
 }
 
-.mainhead {
-    font-size: 100px;
-    font-family: 'Public Sans', sans-serif;
-    line-height: 0.95;
-    margin-top: 0.33em;
-    margin-bottom: 0;
-    font-weight: 400;
-    padding-bottom:40px;
+.password {
+    padding-top: 5px;
 }
 
-.details1 {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+.log_pass {
+    width: 100%;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    border: none;
 }
 
-.email,
-.password,
-.name,
-.otp1 {
-    margin: 10px auto 10px auto;
+.subButton {
+    text-align: center;
+    padding: 15px;
 }
 
-.account {
-    margin-top: 0px;
-    display: flex;
-    flex-direction: column;
+.subBtn {
+    background-color: #EBDCDC;
+    color: #660a0a;
+    border-radius: 5px;
+    border: none;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+}
+
+.imgBox {
+    max-width: 50px;
+    min-width: 5px;
+}
+
+.newRegister {
     text-align: center;
 }
 
-.forgot {
-    margin-bottom: 0px;
-    display: flex;
-    justify-content: center;
-} */ 
+.mail-textbox {
+    background-color: #EEEEEE;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+}
+
+.send-otp-container {
+    padding: 15px 0px 15px 0px;
+}
+
+.send-otp-btn {
+    background-color: #EBDCDC;
+    color: #660a0a;
+    border-radius: 5px;
+    border: none;
+}
+
+.otp-textbox {
+    width: 100%;
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    border: none;
+}
+
+.otp-confirm-box {
+    padding: 15px 0px 15px 0px;
+}
+
+.confirm-btn {
+    background-color: #EBDCDC;
+    color: #660a0a;
+    border-radius: 5px;
+    border: none;
+    width: auto;
+}

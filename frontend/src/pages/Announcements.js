@@ -18,7 +18,7 @@ const Announcements = () => {
     });
   }, [])
   return (
-    <>
+    <div className="main">
       <div id="head-container" className="d-flex justify-content-between">
         <h1 id="heading">ANNOUNCEMENTS</h1>
         <NewAnnouncement />
@@ -34,7 +34,7 @@ const Announcements = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
