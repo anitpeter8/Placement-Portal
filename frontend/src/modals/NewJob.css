@@ -1,0 +1,81 @@
+
+.backlog-textbox{
+    width:40%;
+    color: black;
+}
+.cgpa-textbox{
+    width:40%; 
+    color: black;
+}
+.modal-content{
+    background-color: rgb(244, 123, 123);
+}
+.title-textbox{
+    width:100%;
+    color: black;
+}
+.desc-textarea{
+    width:100%;
+    color: black;
+}
+.role-textbox{
+    width:100%;
+    color: black;
+}
+.history-textbox{
+    width:40%;
+    color: black;
+}
+.my-multiselect {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    /*font-size: 14px;
+    padding: 6px 12px;*/
+  }
+  
+  .my-multiselect__control {
+    border: none;
+  }
+  
+  .my-multiselect__option {
+    background-color: rgb(244, 123, 123);
+    color: #333;
+  }
+  
+  .my-multiselect__option--is-selected {
+    background-color: rgb(244, 123, 123);
+    color: #fff;
+  }
+  
+  .my-multiselect__option--is-focused {
+    background-color: #f2f2f2;
+  }
+  
+  .my-multiselect__multi-value {
+    background-color: rgb(244, 123, 123);
+    border-radius: 4px;
+    color: #fff;
+    
+  }
+  
+  .my-multiselect__multi-value__remove {
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .my-multiselect__placeholder {
+    color: #ccc;
+  }
+  .submit{
+    text-align: center;
+  }
+  .sub-btn{
+    background-color: rgb(41, 154, 236);
+    border: 5%;
+    border-radius: 10%;
+    border-color: black;
+    margin-top: 5%;
+  }
+  
