@@ -1,0 +1,32 @@
+.modal-content{
+    background-color: rgb(238, 86, 86);
+}
+.heading{
+    font-size:x-large;
+    font-weight: bold;
+}
+.textbox{
+    position:relative;
+    color:rgb(238, 86, 86) ;
+    width:100%;
+}
+.textarea{
+    position:relative;
+     
+}
+.text1{
+    width:100%;
+}
+.area1{
+    width:100%;
+}
+.sub{
+   text-align:center;
+   
+}
+.sub-but{
+    background-color: rgb(41, 154, 236);
+    border: 5%;
+    border-radius: 10%;
+    border-color: black;
+}

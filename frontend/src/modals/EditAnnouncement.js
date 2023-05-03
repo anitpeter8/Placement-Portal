@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
+import "./EditAnnouncement.css";
 
 function EditAnnouncement({ announcement }) {
   const [show, setShow] = useState(false);
@@ -37,20 +38,36 @@ function EditAnnouncement({ announcement }) {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
-          <Modal.Title className='announcement-label text-center pt-6 text-dark'>Edit Announcement</Modal.Title>
+       <Modal.Header closeButton>
+          
+          <Modal.Title >Edit Announcement</Modal.Title>
+          
         </Modal.Header>
+        
         <Modal.Body>
           <form onSubmit={handlesubmit}>
-            <label className='form-label m-2 text-dark'>Heading :</label>
-            <input type='text' className='heading form-control p-1 ml-5' value={heading} onChange={(e) =>
+            <div className='title'>
+            <div className='title-label'>
+            <label>Title :</label>
+            </div>
+            <div className='textbox'>
+            <input className='text1' type='text' value={heading} onChange={(e) =>
               setHeading(e.target.value)
             } />
-            <label className='form-label m-2 text-dark'>Description :</label>
-            <input type='text' className='form-control p-1 ml-5' value={description} onChange={(e) =>
+            </div>
+            </div>
+            <div className='desc'>
+            <div className='desc-label'>
+            <label>Description :</label></div>
+            <div className='textarea'>
+            <textarea className='area1' value={description} onChange={(e) =>
               setDescription(e.target.value)
             } />
-            <button type='submit'>Submit</button>
+            </div>
+            </div>
+            <div className='sub'>
+            <button className='sub-but'  type='submit'>Submit</button>
+            </div>
           </form>
         </Modal.Body>
 
