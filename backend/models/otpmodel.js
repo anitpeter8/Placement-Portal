@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 const OtpSchema=Schema({
     emailid:String,
-    otp:String,
+    otp:Number,
     createdAt:Date,
     expiresAt:Date
 });

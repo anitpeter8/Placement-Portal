@@ -4,7 +4,7 @@ const app = express();
 const announcementRoutes = require('./routes/announcements')
 const jobroutes = require('./routes/jobalert');
 const mongoose = require('mongoose');
-const OtpRoutes = require('./models/OtpRoutes');
+const OtpRoutes = require('./routes/Otp');
 
 
 mongoose.connect('mongodb+srv://121miniproject:8I6QiQo3efbSgFsq@cluster0.eumy0d8.mongodb.net/test').then(

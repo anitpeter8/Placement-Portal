@@ -14,6 +14,7 @@ function Login() {
 
   const submitmail = (e) => {
     e.preventDefault();
+    console.log('helloooo otp')
     const emailid = { emailid: email }
     axios.post('http://localhost:9000/otp', emailid).then((response) => {
       console.log(response.data)
@@ -27,7 +28,7 @@ function Login() {
   const Handlesubmit = (e) => {
     e.preventDefault();
     console.log(realotp, unrealotp)
-    if (realotp === unrealotp) {
+    if (realotp == unrealotp) {
       console.log('verified');
       navigate('/registration')
     }

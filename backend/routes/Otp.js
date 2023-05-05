@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport({
 });
 
 const express=require('express');
-const Otp = require('../models/Otp');
+const Otp = require('../models/otpmodel');
 const OtpRoutes=express.Router();
 OtpRoutes.post('/',async(req,res)=>{
     const {emailid}=req.body;
