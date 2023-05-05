@@ -6,6 +6,7 @@ const jobroutes = require('./routes/jobalert');
 const mongoose = require('mongoose');
 const OtpRoutes = require('./routes/Otp');
 const studentroutes=require('./routes/students')
+const rolesroutes=require('./routes/roles')
 
 mongoose.connect('mongodb+srv://121miniproject:8I6QiQo3efbSgFsq@cluster0.eumy0d8.mongodb.net/test').then(
     () => {
@@ -23,3 +24,4 @@ app.use('/api/announcements', announcementRoutes)
 app.use('/api/jobs', jobroutes)
 app.use('/otp', OtpRoutes);
 app.use('/students',studentroutes);
+app.use('/roles',rolesroutes)
