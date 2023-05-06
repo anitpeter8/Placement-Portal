@@ -9,10 +9,11 @@ function Login() {
   const [email, setEmail] = useState('')
   const [realotp, setOtp] = useState(null);
   const [unrealotp, setotp] = useState(null);
-  const [password1,setpassword1]=useState('');
-  const [password2,setpassword2]=useState('');
-
-
+  const [password1, setpassword1] = useState('');
+  const [password2, setpassword2] = useState('');
+  const [error,setError]=useState(null);
+  const [emailid, setEmailid] = useState('');
+  const [password, setpassword] = useState('');
 
 
   const submitmail = (e) => {
@@ -40,18 +41,19 @@ function Login() {
     }
 
   }
-  const Handlesubmit2=(e)=>{
+  const Handlesubmit2 = (e) => {
     e.preventDefault();
-    if(password1==password2){
-      const user={emailid:email,password:password1,role:'student'};
+    if (password1 == password2) {
+      const user = { emailid: email, password: password1, role: 'student' };
       console.log(user);
-      axios.post('http://localhost:9000/roles',user).then((response)=>{
+      axios.post('http://localhost:9000/roles', user).then((response) => {
         console.log(response.data)
-      }).catch((error)=>{
+        navigate('/registration')
+      }).catch((error) => {
         console.log(error);
       })
     }
-    else{
+    else {
       console.log('not same passwords')
     }
 
@@ -59,7 +61,22 @@ function Login() {
 
   const LoginSubmit = (e) => {
     e.preventDefault();
-    navigate('/admin/Announcements')
+    axios.post('http://localhost:9000/roles/login',{email:emailid,password}).then((res)=>{
+    console.log(res.data);
+    if(res.data.role=='student'){
+
+      navigate('/student/Announcements')    }
+    else if(res.data.role=='faculty'){
+      navigate('/faculty/Announcements')
+    }
+    else if(res.data.role=='admin'){
+      navigate('/admin/Announcements')
+    }
+    }).catch((error)=>{
+      console.log(error.response.data.error);
+      setError(error.response.data.error);
+    })
+   
 
   }
 
@@ -79,18 +96,25 @@ function Login() {
           <div className="container--loginReg">
             <div className="container--loginReg__card">
 
-              {loginboolean=='login' &&
+              {loginboolean == 'login' &&
                 <>
                   <h4>Login</h4>
                   <form>
                     <div className="email">
                       <p>Email</p>
-                      <input type="text" className="log_mail" placeholder=" example@mgits.ac.in" />
+                      <input type="text" className="log_mail" placeholder=" example@mgits.ac.in" onChange={(e) => {
+                        setEmailid(e.target.value)
+                  
+                      }} />
                     </div>
                     <div className="password">
                       <p>Password</p>
-                      <input type="password" className="log_pass" />
+                      <input type="password" className="log_pass" onChange={(e) => {
+                        setpassword(e.target.value)
+                       
+                      }}/>
                     </div>
+                    {error && <p>{error}</p>}
                     <div className="subButton">
                       <button type="submit" onClick={LoginSubmit} className="subBtn" style={{ backgroundColor: '#EBDCDC', color: '#660a0a', borderRadius: "5px", border: "none" }} >Submit</button>
                     </div>
@@ -101,76 +125,76 @@ function Login() {
                     }}>New user? Register here</a>
                   </div>
                 </>
-}
-{loginboolean=='register1' && 
- <>
- <h4>Verify Email</h4>
- <form>
-   <div className="otp-mail">
-     <label>Email id :</label>
-   </div>
-   <div className="mail-tb">
-     <input type='mail' className="mail-textbox" placeholder=" example@mgits.ac.in" onChange={(e) => {
-       setEmail(e.target.value)
-       console.log(email)
-     }} />
-   </div>
-   <div className="send-otp-container">
-     <button className="send-otp-btn" onClick={submitmail}>Send OTP</button>
-   </div>
-   <div className="otp-label">
-     <label>OTP</label>
-   </div>
-   <div className="otp-box">
-     <input type="number" className="otp-textbox" placeholder="enter otp" onChange={(e) => {
-       setotp(e.target.value);
-       console.log(unrealotp)
-     }} />
-   </div>
-   <div className="otp-confirm-box">
-     <button type='submit' className='confirm-btn' onClick={Handlesubmit1}>Confirm</button>
-   </div>
- </form>
+              }
+              {loginboolean == 'register1' &&
+                <>
+                  <h4>Verify Email</h4>
+                  <form>
+                    <div className="otp-mail">
+                      <label>Email id :</label>
+                    </div>
+                    <div className="mail-tb">
+                      <input type='mail' className="mail-textbox" placeholder=" example@mgits.ac.in" onChange={(e) => {
+                        setEmail(e.target.value)
+                        console.log(email)
+                      }} />
+                    </div>
+                    <div className="send-otp-container">
+                      <button className="send-otp-btn" onClick={submitmail}>Send OTP</button>
+                    </div>
+                    <div className="otp-label">
+                      <label>OTP</label>
+                    </div>
+                    <div className="otp-box">
+                      <input type="number" className="otp-textbox" placeholder="enter otp" onChange={(e) => {
+                        setotp(e.target.value);
+                        console.log(unrealotp)
+                      }} />
+                    </div>
+                    <div className="otp-confirm-box">
+                      <button type='submit' className='confirm-btn' onClick={Handlesubmit1}>Confirm</button>
+                    </div>
+                  </form>
 
-</>
-}
-{
-  loginboolean=='register2' &&
-  <>
-  <h4>Set Your Password</h4>
-  <form>
-    <div className="otp-mail">
-      <label >Email id :</label>
-    </div>
-    <div className="mail-tb">
-      <input type='mail' value={email} className="mail-textbox" disabled onChange={(e) => {
-        setEmail(e.target.value)
-        console.log(email)
-      }} />
-    </div>
+                </>
+              }
+              {
+                loginboolean == 'register2' &&
+                <>
+                  <h4>Set Your Password</h4>
+                  <form>
+                    <div className="otp-mail">
+                      <label >Email id :</label>
+                    </div>
+                    <div className="mail-tb">
+                      <input type='mail' value={email} className="mail-textbox" disabled onChange={(e) => {
+                        setEmail(e.target.value)
+                        console.log(email)
+                      }} />
+                    </div>
 
-    <div className="send-otp-container">
-    <label>Password</label>
-    <input type="text" className="otp-textbox" placeholder="enter password" onChange={(e) => {
-        setpassword1(e.target.value);
-        console.log(password1)
-      }} />
-    </div>
-   
-    <div className="otp-box">
-      <input type="text" className="otp-textbox" placeholder="re-enter password" onChange={(e) => {
-        setpassword2(e.target.value);
-        console.log(password2)
-      }} />
-    </div>
-    <div className="otp-confirm-box">
-      <button type='submit' className='confirm-btn' onClick={Handlesubmit2}>Confirm</button>
-    </div>
-  </form>
+                    <div className="send-otp-container">
+                      <label>Password</label>
+                      <input type="text" className="otp-textbox" placeholder="enter password" onChange={(e) => {
+                        setpassword1(e.target.value);
+                        console.log(password1)
+                      }} />
+                    </div>
 
-</>
-}       
-              
+                    <div className="otp-box">
+                      <input type="text" className="otp-textbox" placeholder="re-enter password" onChange={(e) => {
+                        setpassword2(e.target.value);
+                        console.log(password2)
+                      }} />
+                    </div>
+                    <div className="otp-confirm-box">
+                      <button type='submit' className='confirm-btn' onClick={Handlesubmit2}>Confirm</button>
+                    </div>
+                  </form>
+
+                </>
+              }
+
             </div>
           </div>
 
