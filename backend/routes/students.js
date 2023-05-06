@@ -14,6 +14,17 @@ routes.get('/',async(req,res)=>{
 
 })
 
+routes.get('/:emailid',async(req,res)=>{
+    const {emailid}=req.params;
+    try {
+        const student=await Students.findOne({emailid});
+        res.json(student);  
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+ 
+})
+
 routes.post('/',async(req,res)=>{
   const obj={...req.body};
  

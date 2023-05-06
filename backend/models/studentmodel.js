@@ -9,7 +9,7 @@ const studentSchema=new Schema({
         type:String
     },
     class:{
-        type:Number
+        type:String
     },
     semester:{
         type:Number

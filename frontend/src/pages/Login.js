@@ -1,9 +1,29 @@
 
 import axios from 'axios';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/authcontext';
 import "../css/Login.css"
+
 function Login() {
+
+  //context things
+ const authcontext=useContext(UserAuth);
+ if(!authcontext){
+  console.log('cannot ascess outside the provider');
+ }
+ else{
+  console.log(authcontext);
+  
+ }
+ const {user,dispatch}=authcontext;
+
+
+
+
+
+
+
   const navigate = useNavigate();
   const [loginboolean, setboolean] = useState('login');
   const [email, setEmail] = useState('')
@@ -63,8 +83,11 @@ function Login() {
     e.preventDefault();
     axios.post('http://localhost:9000/roles/login',{email:emailid,password}).then((res)=>{
     console.log(res.data);
+    dispatch({type:'LOGIN',payload:res.data});
     if(res.data.role=='student'){
-
+     axios.get(`http://localhost:9000/students/${res.data.emailid}`).then((res)=>{
+      console.log(res.data);
+     })
       navigate('/student/Announcements')    }
     else if(res.data.role=='faculty'){
       navigate('/faculty/Announcements')

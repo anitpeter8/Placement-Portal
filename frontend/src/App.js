@@ -7,10 +7,14 @@ import Navbar from './components/Navbar';
 import Registration from './pages/Registration'
 import './App.css';
 import Login from './pages/Login';
+import { UserAuthContextProvider } from './context/authcontext';
 
 function App() {
 
   return (<>
+  <UserAuthContextProvider>
+
+
     <BrowserRouter>
     <Routes>
     <Route path='/' element={<Login/>} />
@@ -37,6 +41,7 @@ function App() {
  
       </Routes>
     </BrowserRouter>
+    </UserAuthContextProvider>
   </>
   );
 }
