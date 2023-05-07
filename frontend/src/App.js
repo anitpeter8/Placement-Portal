@@ -7,15 +7,21 @@ import Navbar from './components/Navbar';
 import Registration from './pages/Registration'
 import './App.css';
 import Login from './pages/Login';
-import { UserAuthContextProvider } from './context/authcontext';
-import { UserStudentProvider } from './context/userStudentContext';
+
+import { userStudent } from './context/userStudentContext';
+import { useContext } from 'react';
+ 
 
 
 function App() {
 
+   const context=useContext(userStudent);
+   if(!context){
+    console.log('cannot asceess');
+   }
+   const {student}=context;
   return (<>
-  <UserAuthContextProvider>
-    <UserStudentProvider>
+
 
     <BrowserRouter>
     <Routes>
@@ -28,7 +34,20 @@ function App() {
         <Route path='/admin/Statistics' element={<Statistics />} />
     </Route>
     <Route path='/student' >
-    <Route path='/student/Announcements' element={<h1>Entha mone</h1>} />
+    <Route path='/student/Announcements' element={<>
+      <h1>Entha mone</h1>
+      {student &&  
+      <>
+      <p>{student.fullname}</p>
+      <p>{student.studentid}</p>
+      <p>{student.class}</p>
+      <p>s{student.semester}</p>
+      <p>{student.branch}</p>
+      <p>{student.emailid}</p>
+   
+      </> }
+     
+    </>} />
         <Route path='/student/JobAlerts' element={<Jobspage />} />
         <Route path='/student/Students' element={<Students />} />
         <Route path='/student/Statistics' element={<Statistics />} />
@@ -43,8 +62,7 @@ function App() {
  
       </Routes>
     </BrowserRouter>
-    </UserStudentProvider>
-    </UserAuthContextProvider>
+
   </>
   );
 }

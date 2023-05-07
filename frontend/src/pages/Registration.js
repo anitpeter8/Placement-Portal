@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import "../css/Registration.css";
+import { userStudent } from '../context/userStudentContext';
 import { useForm, useFormContext } from 'react-hook-form';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Registration = () => {
-
+    const {student,dispatchstudent}=useContext(userStudent);
+   const Navigate=useNavigate();
     const { handleSubmit, register } = useForm();
     const onSubmit = (data) => {
         console.log(data);
         axios.post('http://localhost:9000/students',data).then((response)=>{
             console.log(response.data);
+            dispatchstudent({type:'SETSTUDENTUSER',payload:response.data})
+        Navigate('/student/Announcements');
         }).catch((error)=>{
             console.log(error.message)
         })
+        
+
     };
 
     return (
