@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import NewJob from '../modals/NewJob';
-import Job from '../components/Job';
-import '../css/JobsPage.css';
+import NewJob from '../../modals/NewJob';
+import Job from '../../components/Job';
+import '../../css/JobsPage.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
@@ -22,7 +22,7 @@ const Jobspage = () => {
     }, [])
     console.log(jobs)
     return (
-        <div className="main">
+        <div className="jobs-main">
             <div id="head-container" className="d-flex justify-content-between">
                 <h1 id="heading">JOBS</h1>
                 <NewJob />

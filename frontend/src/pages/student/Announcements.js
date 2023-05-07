@@ -1,8 +1,7 @@
 import axios from 'axios';
-import Announcement from '../components/Announcement';
+import Announcement from '../../components/StdtAnnouncement';
 import { useEffect, useState } from 'react';
-import NewAnnouncement from '../modals/NewAnnouncement';
-import '../css/Announcements.css';
+import '../../css/Announcements.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
@@ -19,9 +18,8 @@ const Announcements = () => {
   }, [])
   return (
     <div className="main">
-      <div id="head-container" className="d-flex justify-content-between">
-        <h1 id="heading">ANNOUNCEMENTS</h1>
-        <NewAnnouncement />
+      <div  className="head-container">
+        <h1 className="heading1">ANNOUNCEMENTS</h1>
       </div>
       <div className="content">
         {announcements && (
