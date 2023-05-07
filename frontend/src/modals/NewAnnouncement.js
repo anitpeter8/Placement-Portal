@@ -26,10 +26,10 @@ function NewAnnouncement() {
 
   return (
     <>
+   
       <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
         + New Announcement
       </Button>
-
       <Modal 
         show={show}
         onHide={handleClose}
