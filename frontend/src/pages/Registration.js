@@ -1,11 +1,17 @@
 import { useState } from "react";
 import "../css/Registration.css";
 import { useForm, useFormContext } from 'react-hook-form';
+import axios from "axios";
 const Registration = () => {
 
     const { handleSubmit, register } = useForm();
     const onSubmit = (data) => {
         console.log(data);
+        axios.post('http://localhost:9000/students',data).then((response)=>{
+            console.log(response.data);
+        }).catch((error)=>{
+            console.log(error.message)
+        })
     };
 
     return (

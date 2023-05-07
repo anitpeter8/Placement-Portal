@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/authcontext';
+import { userStudent } from '../context/userStudentContext';
 import "../css/Login.css"
 
 function Login() {
@@ -17,7 +18,7 @@ function Login() {
   
  }
  const {user,dispatch}=authcontext;
-
+ const {student,dispatchstudent}=useContext(userStudent);
 
 
 
@@ -87,6 +88,7 @@ function Login() {
     if(res.data.role=='student'){
      axios.get(`http://localhost:9000/students/${res.data.emailid}`).then((res)=>{
       console.log(res.data);
+      dispatchstudent({type:'SETSTUDENTUSER',payload:res.data})
      })
       navigate('/student/Announcements')    }
     else if(res.data.role=='faculty'){

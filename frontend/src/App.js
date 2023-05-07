@@ -8,12 +8,14 @@ import Registration from './pages/Registration'
 import './App.css';
 import Login from './pages/Login';
 import { UserAuthContextProvider } from './context/authcontext';
+import { UserStudentProvider } from './context/userStudentContext';
+
 
 function App() {
 
   return (<>
   <UserAuthContextProvider>
-
+    <UserStudentProvider>
 
     <BrowserRouter>
     <Routes>
@@ -41,6 +43,7 @@ function App() {
  
       </Routes>
     </BrowserRouter>
+    </UserStudentProvider>
     </UserAuthContextProvider>
   </>
   );
