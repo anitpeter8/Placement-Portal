@@ -26,6 +26,9 @@ const studentSchema=new Schema({
     address:{
         type:String
     },
+    dob:{
+        type:Date
+    },
     street:{
         type:String
     },
