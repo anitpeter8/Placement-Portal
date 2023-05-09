@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans&display=swap');
+
+* {
+ 
+  /*background-color:  #2B1C1F;*/
+  box-sizing: border-box;
+}
+  
+.myprofile{
+    /*background-color:  #2B1C1F;*/
+  color: #EBDCDC; 
+  background-image: url(bgimage.jpg);
+  background-size: cover ;
+  background-repeat: no-repeat;
+  
+  margin: 0px; 
+}
+
+.details{
+    display: flex;
+    flex-direction: column;  
+    
+}
+
+  .main1{
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+  }
+
+  input,select{
+    width: 400px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #EBDCDC;
+    outline:rgb(249, 240, 240); 
+    color: #fff5f5;
+    border-radius: 5px;
+    background:rgba(232, 229, 229, 0); 
+    
+  }
+
+  .button{
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    color: #EBDCDC;
+    
+    background:rgba(49, 45, 45, 0);
+    border:1px solid #fff;
+    
+  }
+  
+  .button:hover {
+    background-color: #58140f;
+    color: #EBDCDC;
+  }
+
+  .button1{
+    display: flex;
+    padding: 0px 0px 0px 650px;
+    margin-bottom: 100px;
+    margin-top: -45px;
+  }
+
+  .heading1{
+    padding:10px 0px 0px 60px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    color:#fafafa
+  }
+
+  option{
+     background-color:#c6716b;
+     color:#EBDCDC;
+     font-size: 15px;
+  }
+
+  .wrap {
+    
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 0px 250px 0px 250px;
+  }
+
+  label{
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  @media only screen and (max-width: 1200px){
+    .navbar {
+      width: max(70%, 300px);
+    }
+   
+    .main1{
+      display: flex;
+      column-gap: 50px;
+    }
+    
+    .details {
+      margin-bottom: 20px;
+    }
+    
+    input,select{
+      width: 300px;
+    }
+
+    .heading1{
+      margin-top: 60px;
+      padding-left: 60px;
+    }
+
+    .button1{
+      padding: 0px 0px 0px 470px;
+      margin-bottom: 100px;
+      margin-top: -70px;
+    }
+
+    .wrap {
+      margin: 50px 200px;
+    }
+  }
+
+    
+  @media only screen and (max-width: 992px){
+    .navbar {
+      width: max(70%, 300px);
+    }
+   
+    .main1{
+      display: flex;
+      column-gap: 30px;
+    }
+    
+    .details {
+      margin-bottom: 20px;
+    }
+    
+    input,select{
+      width: 300px;
+    }
+
+    .heading1{
+      margin-top: 60px;
+      padding-left: 50px;
+    }
+
+    .button1{
+      padding: 0px 0px 0px 460px;
+      margin-bottom: 100px;
+      margin-top: -70px
+    }
+
+    .wrap {
+      margin: 50px 100px;
+    }
+  }
+
+  @media only screen and (max-width: 768px){
+    .myprofile{
+      height: 2300px;
+    }
+
+    .navbar {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+    
+    .navbar a {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+    }
+    
+    .main1{
+      flex-direction: column;
+      column-gap: 0;
+      padding: 20px 100px 20px 100px;
+    }
+    
+    .details {
+      margin-bottom: 20px;
+      
+    }
+    
+    input,select {
+     width:100%;
+      max-width: 700px;
+    }
+
+    .heading1{
+      margin-top: 60px;
+      padding-left: 100px;;
+    }
+
+    .button1{
+      padding: 80px 0px 0px 100px;
+      margin-bottom: 100px;
+    }
+  }
+
+    @media only screen and (max-width: 576px){
+      
+      .myprofile{
+        height: 2500px;
+      }
+
+      .navbar {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+      
+      .navbar a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+      }
+      
+      .main1 {
+        flex-direction: column;
+        column-gap: 0;
+        padding: 20px 100px 20px 100px;
+      }
+      
+      .details {
+        margin-bottom: 20px;
+      }
+      
+      input,select{
+        width: 100%;
+        max-width: 500px;
+      }
+  
+      .heading{
+        margin-top: 60px;
+        text-align: center;
+        padding-left: 0px;
+      }
+  
+      .button1{
+        padding: 80px 0px 0px 100px;
+        margin-bottom: 100px;
+      }
+    }
+  
+    
