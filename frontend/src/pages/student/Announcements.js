@@ -17,9 +17,9 @@ const Announcements = () => {
     });
   }, [])
   return (
-    <div className="main">
+    <div className="anctmain">
       <div  className="head-container">
-        <h1 className="heading1">ANNOUNCEMENTS</h1>
+        <h1 className="head1">ANNOUNCEMENTS</h1>
       </div>
       <div className="content">
         {announcements && (
