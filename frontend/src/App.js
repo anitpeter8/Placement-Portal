@@ -23,6 +23,7 @@ import Login from "./pages/Login";
 
 import { userStudent } from "./context/userStudentContext";
 import { useContext } from "react";
+import Myprofile from "./pages/student/Myprofile";
 
 function App() {
   const context = useContext(userStudent);
@@ -45,7 +46,7 @@ function App() {
           <Route path="/Student" element={<NavbarStudent/>}>
             <Route path="/Student/Announcements" element={<AnnounceStudent/>}/>
             <Route path="/Student/JobAlerts" element={<JobsStudent />} />
-            <Route path="/Student/Students" element={<> my profile</>} />
+            <Route path="/Student/Myprofile" element={< Myprofile/>} />
             <Route path="/Student/Statistics" element={<StatisticsStudent />} />
           </Route>
           <Route path="/faculty" element={<NavbarFaculty/>}>
