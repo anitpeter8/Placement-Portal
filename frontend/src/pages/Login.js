@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authcontext";
 import { userStudent } from "../context/userStudentContext";
@@ -7,16 +7,26 @@ import "../css/Login.css";
 
 function Login() {
   //context things
+  const context = useContext(userStudent);
+  const navigate=useNavigate();
+  const { student, dispatchstudent } = useContext(userStudent);
+  useEffect(()=>{
+    const student= localStorage.getItem('student');
+    if(student){
+
+      dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
+      navigate('/Student/Announcements');
+    }
+    
+  },[])
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
-  } else {
-    console.log(authcontext);
-  }
+  } 
   const { user, dispatch } = authcontext;
-  const { student, dispatchstudent } = useContext(userStudent);
+ 
 
-  const navigate = useNavigate();
+
   const [loginboolean, setboolean] = useState("login");
   const [email, setEmail] = useState("");
   const [realotp, setOtp] = useState(null);
@@ -84,6 +94,7 @@ function Login() {
             .then((res) => {
               console.log(res.data);
               dispatchstudent({ type: "SETSTUDENTUSER", payload: res.data });
+              localStorage.setItem("student",JSON.stringify(res.data));
             });
           navigate("/student/Announcements");
         } else if (res.data.role == "faculty") {

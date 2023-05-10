@@ -20,7 +20,7 @@ function NewJob() {
     const [cgpa, setcgpa] = useState(null);
     const [history, sethistory] = useState(true);
     const [branch,setBranch]=useState([]);
-    const  options  = ['CS','EEE','ECE','MECH','AI'
+    const  options  = ['CSE','EEE','ECE','MECH','AI'
     ]
 
     const handleClose = () => setShow(false);

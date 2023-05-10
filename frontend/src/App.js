@@ -22,17 +22,25 @@ import "./App.css";
 import Login from "./pages/Login";
 
 import { userStudent } from "./context/userStudentContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+
 import Myprofile from "./pages/student/Myprofile";
 
 function App() {
   const context = useContext(userStudent);
-  if (!context) {
-    console.log("cannot access");
-  }
-  const { student } = context;
+  const { student, dispatchstudent } = useContext(userStudent);
+  useEffect(() => {
+    const student = localStorage.getItem('student');
+    if (student) {
+
+      dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
+
+    }
+
+  }, [])
   return (
     <>
+      
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
