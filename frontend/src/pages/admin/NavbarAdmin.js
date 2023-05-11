@@ -12,7 +12,7 @@ const Navbar = () => {
         <NavLink className="head" activeClassName="active" to='/admin/Statistics'> Statistics </NavLink>
       </div>
       <div className="logout">
-        <NavLink className="log" to="/"> Logout </NavLink>
+        <NavLink className="log" to="/" onClick={localStorage.removeItem("student")}> Logout </NavLink>
       </div>
     </nav>
     </div>
