@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;400&family=Roboto:wght@100;300;400;500&display=swap');
+
+.stmain {
+    font-family: 'Public Sans', sans-serif;
+    background-color: #2B1C1F;
+    min-height:100vh;
+    height:100%;
+}
+
+.stheading1 {
+    color: #FFFFFf;
+    font-size: 4vw;
+}
+
+.stcontent {
+    color: black;
+    margin-left: 45px;
+    margin-right: 45px;
+
+}
+.sthead-container {
+    display: flex;
+    justify-content:space-between;
+    margin:0vw 4vw 0vw 4vw;
+    padding:2vw 0vw 2vw 0vw;
+}
+.name-search{
+    border-radius: 5px;
+    background-color: white;
+    width:fit-content;
+    color:black;
+}
+.branch-search{
+    border-radius: 5px; 
+    background-color: white;
+    width:fit-content;
+    color:black;
+}
+.year-search{
+    border-radius: 5px;
+    background-color: white;
+    width:fit-content;
+    color:black;
+}
+.sform{
+    display: flex;
+    flex-shrink: 1;
+}
+.sname{
+    margin-left:1%;
+    margin-top:2%;
+    
+}
+.syear{
+    margin-left:1%;
+    margin-top:2%;
+}
+.sbranch{
+    margin-left:1%;
+    margin-top: 0%;
+
+}
+.sicon{
+    margin-top:2%;
+    margin-left:1%;
+    
+}
+.label{
+    color: white;
+    margin-left:2%;
+}

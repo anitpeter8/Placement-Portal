@@ -1,0 +1,55 @@
+.name_branch{
+    display: flex;
+    justify-content: space-between;
+}
+.tenth_twelth{
+    display: flex;
+    justify-content: space-between;
+}
+.id_class{
+    display: flex;
+    justify-content: space-between;
+}
+.sem_email{
+    display: flex;
+    justify-content: space-between;
+}
+.mob_dob{
+    display: flex;
+    justify-content: space-between;
+}
+.textaddress{
+    width:100%;
+}
+.street_city{
+    display: flex;
+    justify-content: space-between;
+}
+.dis_pin{
+    display: flex;
+    justify-content: space-between;
+}
+.cgpa_nback{
+    display: flex;
+    justify-content: space-between;
+}
+
+.coc_amcat{
+    display: flex;
+    justify-content: space-between;
+}
+.sub-but-student{
+    margin-top: 2%;
+    background-color: rgb(41, 154, 236);
+    border: 5%;
+    border-radius: 10%;
+    border-color: black;
+}
+.textst{
+    background-color: white;
+    color:black;
+    width:fit-content;
+}
+.textaddress{
+    width:fit-content;
+}

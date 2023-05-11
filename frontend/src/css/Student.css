@@ -1,0 +1,8 @@
+.stbody{
+background: linear-gradient(to left,#FFA8A2,#F8F8F8);
+border-radius: 25px;
+}
+.edit{
+    display: flex;
+    justify-content: space-between;
+}
