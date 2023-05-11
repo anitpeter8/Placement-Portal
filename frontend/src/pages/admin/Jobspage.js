@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import NewJob from '../../modals/NewJob';
 import Job from '../../components/Job';
 import '../../css/JobsPage.css';
+import { Jobscontext } from "../../context/jobscontext";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
@@ -11,15 +12,18 @@ import '../../css/JobsPage.css';
     crossorigin="anonymous"
 />
 const Jobspage = () => {
-    const [jobs, setjobs] = useState()
+   
+    const context=useContext(Jobscontext);
+    const {jobs,dispatch}=context;
     useEffect(() => {
         axios.get('http://localhost:9000/api/jobs').then((response) => {
 
-            console.log(response.data)
-            setjobs(response.data);
+           console.log(response.data)
+            dispatch({type:'SETJOBS',payload:response.data});
+           
 
         });
-    }, [])
+    }, [dispatch])
     console.log(jobs)
     return (
         <div className="jobs-main">
