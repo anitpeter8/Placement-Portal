@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './NewAnnouncement.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Jobscontext } from '../context/jobscontext';
 function NewAnnouncement() {
+  const context=useContext(Jobscontext);
+  const {dispatch}=context;
   const [show, setShow] = useState(false);
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
@@ -18,6 +21,8 @@ function NewAnnouncement() {
     const announcement = { heading, description };
     axios.post("http://localhost:9000/api/announcements", announcement).then((response) => {
       console.log(response.data);
+      dispatch({type:'CREATEANNOUNCEMENT',payload:response.data});
+
       console.log('vishayam')
       setHeading('');
       setDescription('');

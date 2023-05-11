@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import "./EditAnnouncement.css";
+import { Jobscontext } from '../context/jobscontext';
 
 function EditAnnouncement({ announcement }) {
+  const context=useContext(Jobscontext);
+  const {dispatch}=context;
+
   const [show, setShow] = useState(false);
   const [heading, setHeading] = useState(announcement.heading);
   const [description, setDescription] = useState(announcement.description);
@@ -19,6 +23,7 @@ function EditAnnouncement({ announcement }) {
     const announcementee = { heading, description }
     axios.patch('http://localhost:9000/api/announcements/' + id, announcementee).then((response) => {
       console.log(response.data);
+      dispatch({type:'UPDATEANNOUNCEMENT',payload:response.data});
       console.log('vishayam')
 
     }).catch((error) => {

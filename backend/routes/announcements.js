@@ -19,7 +19,8 @@ routes.patch('/:id',async(req,res)=>{
         ...req.body
 
     })
-    res.status(200).json(announcement)
+    const updatedannouncement=await Announcements.findOne({_id:id})
+    res.status(200).json(updatedannouncement)
 })
 routes.post('/',async (req,res)=>{
 const {heading,description}=req.body;
