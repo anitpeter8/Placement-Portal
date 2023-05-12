@@ -11,3 +11,14 @@
     margin: auto;
     padding: 20px;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons Button {
+    width: auto;
+    size: .5vw;
+    margin: .5vw;
+}
