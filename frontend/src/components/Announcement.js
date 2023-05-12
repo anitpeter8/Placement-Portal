@@ -4,7 +4,25 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Announcement.css";
 import moment from "moment";
+import { useContext } from "react";
+import { Jobscontext } from "../context/jobscontext";
+import axios from "axios";
+
 const Announcement = ({ announcement }) => {
+  const context=useContext(Jobscontext);
+  const {dispatch}=context;
+  const handledelete=()=>{
+    console.log(announcement._id);
+    axios.delete(`http://localhost:9000/api/announcements/${announcement._id}`).then((response)=>{
+      console.log(response.data._id);
+     dispatch({type:'DELETEANNOUNCEMENT',payload:response.data})
+   
+      
+    }).catch((error)=>{
+      console.log(error);
+    })
+   
+    }
   return (
     <div className="single-card">
       <Card style={{ borderRadius: "25px" }} className="card-content">
@@ -15,7 +33,7 @@ const Announcement = ({ announcement }) => {
             </Card.Title>
             <div className="btns">
               <EditAnnouncement announcement={announcement} />
-              <Button className="dlt-btn" onClick={{}}>
+              <Button className="dlt-btn" onClick={handledelete}>
                 Delete
               </Button>
             </div>

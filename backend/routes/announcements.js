@@ -13,6 +13,19 @@ catch(error)
     })
 }
 })
+
+routes.delete('/:id',async(req,res)=>{
+   const {id}=req.params;
+   try {
+    const announcement=await Announcements.findOneAndDelete({_id:id})
+    res.json(announcement);
+ }
+    catch (error) {
+    res.status(400).json({error:error.message});
+   }
+}
+)
+
 routes.patch('/:id',async(req,res)=>{
     const {id}=req.params;
     const announcement=await Announcements.findOneAndUpdate({_id:id},{

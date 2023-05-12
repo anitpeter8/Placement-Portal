@@ -3,7 +3,27 @@ import Card from "react-bootstrap/Card";
 import moment from "moment";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
+import { useContext } from "react";
+import { Jobscontext } from "../context/jobscontext";
+import axios from "axios";
 const Job = ({ job }) => {
+
+  console.log(job._id);
+  const context=useContext(Jobscontext);
+  const {dispatch}=context;
+  const handledelete=()=>{
+    console.log(job._id);
+    axios.delete(`http://localhost:9000/api/jobs/${job._id}`).then((response)=>{
+      console.log(response.data._id);
+     dispatch({type:'DELETEJOB',payload:response.data})
+   
+      
+    }).catch((error)=>{
+      console.log(error);
+    })
+   
+    }
+  
   return (
     <div className="single-card">
       <Card style={{ borderRadius: "25px" }} className="card-content">
@@ -26,7 +46,7 @@ const Job = ({ job }) => {
                 >
                   Apply Here
                 </Button>
-                <Button variant="danger" className="dlt-btn" onClick={{}}>
+                <Button variant="danger" className="dlt-btn" onClick={handledelete}>
                   Delete
                 </Button>
               </div>

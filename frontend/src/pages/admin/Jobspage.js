@@ -20,7 +20,7 @@ const Jobspage = () => {
 
            console.log(response.data)
             dispatch({type:'SETJOBS',payload:response.data});
-           
+            
 
         });
     }, [dispatch])

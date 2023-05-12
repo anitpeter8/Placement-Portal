@@ -10,15 +10,15 @@ export const jobreducer=(state,action)=>{
                 return{
                     jobs:action.payload,
                     //announcements:[...state.jobs]
-                    ...state
+                    announcements:[...state.announcements]
                 }
             case 'SETANNOUNCEMENTS':
                 console.log(action.payload);
                 console.log('set announcements')
                 return{
                     announcements:action.payload,
-                    //jobs:[...state.jobs]
-                    ...state
+                    jobs:[...state.jobs]
+                    
                 }
             case 'DELETEJOB':
                 return{
@@ -27,9 +27,14 @@ export const jobreducer=(state,action)=>{
 
                 }
             case 'DELETEANNOUNCEMENT':
+        
                 return{
                     jobs:[...state.jobs],
-                    announcements:state.announcements.filter((w)=>w._id!==action.payload._id) 
+                    announcements:state.announcements.filter((w)=>{
+                        console.log('hey');
+                        console.log(w._id);
+                       return  w._id!==action.payload._id }
+                        ) 
                 }
             case 'CREATEJOB':
                 return{
@@ -69,7 +74,8 @@ export const jobreducer=(state,action)=>{
 }
 export const JobscontextProvider=({children})=>{
     const [state,dispatch]=useReducer(jobreducer,{
-     
+     jobs:[],
+     announcements:[]
     })
     console.log('context',state);
     return(

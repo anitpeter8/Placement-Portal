@@ -25,5 +25,26 @@ routes.post('/',async(req,res)=>{
 })
 
 
+routes.delete('/:id',async(req,res)=>{
+    const {id}=req.params;
+    try {
+     const job=await Jobs.findOneAndDelete({_id:id})
+     res.json(job);
+  }
+     catch (error) {
+     res.status(400).json({error:error.message});
+    }
+ }
+ )
+ 
+ routes.patch('/:id',async(req,res)=>{
+     const {id}=req.params;
+     const job=await Jobs.findOneAndUpdate({_id:id},{
+         ...req.body
+ 
+     })
+     const updatedjob=await Jobs.findOne({_id:id})
+     res.status(200).json(updatedjob)
+ })
 
 module.exports=routes;

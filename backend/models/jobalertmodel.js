@@ -2,6 +2,10 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 const jobSchema=new Schema({
+    applylink:{
+        type:String
+    },
+    
     heading:{
         type:String
     },
