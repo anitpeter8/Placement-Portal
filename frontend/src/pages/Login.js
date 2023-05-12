@@ -158,12 +158,6 @@ function Login() {
                         type="submit"
                         onClick={LoginSubmit}
                         className="subBtn"
-                        style={{
-                          backgroundColor: "#EBDCDC",
-                          color: "#660a0a",
-                          borderRadius: "5px",
-                          border: "none",
-                        }}
                       >
                         Submit
                       </button>

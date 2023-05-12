@@ -1,23 +1,23 @@
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import "../css/Registration.css";
 import { userStudent } from '../context/userStudentContext';
 import { useForm, useFormContext } from 'react-hook-form';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Registration = () => {
-    const {student,dispatchstudent}=useContext(userStudent);
-   const Navigate=useNavigate();
+    const { student, dispatchstudent } = useContext(userStudent);
+    const Navigate = useNavigate();
     const { handleSubmit, register } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        axios.post('http://localhost:9000/students',data).then((response)=>{
+        axios.post('http://localhost:9000/students', data).then((response) => {
             console.log(response.data);
-            dispatchstudent({type:'SETSTUDENTUSER',payload:response.data})
-        Navigate('/student/Announcements');
-        }).catch((error)=>{
+            dispatchstudent({ type: 'SETSTUDENTUSER', payload: response.data })
+            Navigate('/student/Announcements');
+        }).catch((error) => {
             console.log(error.message)
         })
-        
+
 
     };
 
@@ -47,7 +47,15 @@ const Registration = () => {
                                 </div>
                                 <div className="input-field">
                                     <label for="branch">Branch :</label>
-                                    <input type="text" name="branch" placeholder=" " {...register('branch')}></input>
+                                    <select id="branch" name="branch"  {...register('branch')}>
+                                        <option value="ALL">ALL</option>
+                                        <option value="CE">Civil Engineering</option>
+                                        <option value="CSE">Computer Science and Engineering</option>
+                                        <option value="CSE AI">Computer Science and Engineering Artificial Intelligence</option>
+                                        <option value="ECE">Electronics and Communication</option>
+                                        <option value="EEE">Electrical and Electronics</option>
+                                        <option value="ME">Mechanical Engineering</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="input-group">
@@ -83,7 +91,23 @@ const Registration = () => {
                             <div className="input-group">
                                 <div className="input-field">
                                     <label for="district">District :</label>
-                                    <input type="text" name="district" placeholder=" " {...register('district')}></input>
+                                    <select name="district" id="district" required {...register('district')}>
+                                        <option></option>
+                                        <option>Alappuzha</option>
+                                        <option>Ernakulam</option>
+                                        <option>Idukki</option>
+                                        <option>Kannur</option>
+                                        <option>Kasaragod</option>
+                                        <option>Kollam</option>
+                                        <option>Kottayam</option>
+                                        <option>Kozhikode</option>
+                                        <option>Malappuram</option>
+                                        <option>Palakkad</option>
+                                        <option>Pathanamthitta</option>
+                                        <option>Thiruvananthapuram</option>
+                                        <option>Thrissur</option>
+                                        <option>Wayanad</option>
+                                    </select>
                                 </div>
                                 <div className="input-field">
                                     <label for="pincode">Pincode :</label>

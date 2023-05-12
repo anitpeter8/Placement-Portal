@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;400&family=Roboto:wght@100;300;400;500&display=swap");
 
 * {
@@ -8,7 +9,8 @@
     color: #ffff;
     font-size: 0.9vw;
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(168, 125, 116);
@@ -29,8 +31,7 @@
     flex-direction: column;
     justify-content: center;
     width: 70vw;
-    ;
-    height: 90vh;
+    height: 95vh;
     background-color: rgba(168, 157, 157, 0.2);
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -38,7 +39,7 @@
     box-shadow: 0 20px 40px rgba(247, 243, 243, 0.18);
 }
 
-.input-group {
+.input-group{
     justify-content: center;
     padding: 0.2vw;
     margin-top: 2px;
@@ -100,4 +101,24 @@
 .submit-button button:hover {
     background-color: rgba(150, 3, 3, 0.6);
     color: rgba(236, 221, 221, 0.6);
+}
+
+.input-field select {
+    background: transparent;
+    outline: none;
+    width: 30vw;
+    height: 50%;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    cursor:default;
+}
+
+option{
+    background-color: #2B1C1F;
+}
+
+.input-field select:focus {
+    outline: none;
+    border-color: #fff;
 }

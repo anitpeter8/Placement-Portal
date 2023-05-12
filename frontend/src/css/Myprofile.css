@@ -19,7 +19,7 @@
 .details {
   display: flex;
   flex-direction: column;
-
+  
 }
 
 .main1 {
@@ -39,7 +39,22 @@ select {
   color: #fff5f5;
   border-radius: 5px;
   background: rgba(232, 229, 229, 0);
+  cursor: not-allowed;
+}
 
+ .check 
+ {
+  display: flex;
+  align-items: center;
+  padding: 30px 0px 0px 0px;
+}
+
+.history1{
+  flex: none;
+}
+
+.check input{
+  width: 1.3vw;
 }
 
 .button {
@@ -123,7 +138,7 @@ select {
   }
 
   .wrap {
-    margin: 50px 200px;
+    margin: 50px 100px;
   }
 }
 
