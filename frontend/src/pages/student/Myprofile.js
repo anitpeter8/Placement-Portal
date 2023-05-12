@@ -1,17 +1,37 @@
+import { userStudent } from "../../context/userStudentContext";
 import "../../css/Myprofile.css";
+import { useForm, useFormContext } from 'react-hook-form';
+import { useContext, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Myprofile() {
+  const {student,dispatchstudent}=useContext(userStudent);
+  const Navigate=useNavigate();
+   const { handleSubmit, register } = useForm({
+    defaultValues:student
+   });
+   const onSubmit = (data) => {
+       console.log(data);
+       axios.post('http://localhost:9000/students',data).then((response)=>{
+           console.log(response.data);
+           dispatchstudent({type:'SETSTUDENTUSER',payload:response.data})
+       Navigate('/student/Announcements');
+       }).catch((error)=>{
+           console.log(error.message)
+       })
+      };
   return (
     <div class="myprofile">
       <div class="profile">
       <div className="wrap">
         <h1 class="heading1">MY PROFILE</h1>
         
-          <form action="#">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div class="main1">
               <div class="details">
                 <label for="name">Full Name:</label>
-                <input type="text" id="name" class="name" required></input>
+                <input type="text" id="name" class="name" name="fullname" required {...register('fullname')}></input>
                 <br></br>
 
                 <label for="sem">Semester:</label>
