@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import moment from "moment";
+import EditJob from "../modals/EditJob";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
 import { useContext } from "react";
@@ -37,13 +38,13 @@ const Job = ({ job }) => {
                 <h4>{job.heading}</h4>
               </Card.Title>
               <div className="buttons">
+              <EditJob job={job} />
                 <Button
                   variant="primary"
                   className="apply-btn"
                   onClick={() => {
                     window.location.href = job.link;
-                  }}
-                >
+                  }}>
                   Apply Here
                 </Button>
                 <Button variant="danger" className="dlt-btn" onClick={handledelete}>

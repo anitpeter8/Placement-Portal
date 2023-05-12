@@ -18,10 +18,9 @@ function NewJob() {
     const [role, setrole] = useState('');
     const [noofbacklogs, setnoofbacklogs] = useState(null);
     const [cgpa, setcgpa] = useState(null);
-    const [history, sethistory] = useState(true);
+    const [history, sethistory] = useState(null);
     const [branch,setBranch]=useState([]);
-    const  options  = ['CSE','EEE','ECE','MECH','AI'
-    ]
+    const  options  = ['CSE','EEE','ECE','MECH','AI']
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,8 +28,8 @@ function NewJob() {
         e.preventDefault();
 
         console.log(heading, description,role,noofbacklogs,cgpa,history,branch);
-        const announcement = { heading, description,role,noofbacklogs,cgpa,history,branch};
-        axios.post("http://localhost:9000/api/jobs", announcement).then((response) => {
+        const job = { heading, description,role,noofbacklogs,cgpa,history,branch };
+        axios.post("http://localhost:9000/api/jobs", job).then((response) => {
             console.log(response.data);
             console.log('vishayam')
             // setHeading('');
@@ -113,8 +112,7 @@ function NewJob() {
                         </div>
                       <div className='branch'>
                         <label className='branch-label'>Branch :</label>
-                        <
-                        Multiselect  isObject={false}  options={options} showCheckbox onSelect={(e)=>{
+                        <Multiselect  isObject={false}  options={options} showCheckbox onSelect={(e)=>{
                             setBranch(e)
                             console.log(branch);
                         }} onRemove={(e)=>{
