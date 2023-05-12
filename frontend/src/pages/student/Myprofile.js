@@ -23,10 +23,8 @@ function Myprofile() {
   };
   return (
     <div class="myprofile">
-      <div class="profile">
         <div className="wrap">
           <h1 class="heading1">MY PROFILE</h1>
-
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="main1">
               <div class="details">
@@ -151,7 +149,6 @@ function Myprofile() {
           </form>
         </div>
       </div>
-    </div>
   );
 }
 

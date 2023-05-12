@@ -7,80 +7,65 @@
 
 .registration {
     color: #ffff;
-    font-size: 0.9vw;
-    margin: 0 auto;
+    margin: 0px;
     min-height: 100vh;
     height: 100%;
-    background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(168, 125, 116);
     background-blend-mode: multiply;
     background-image: url("bgimage.jpg");
     background-size: cover;
-    display: flex;
-    justify-content: center;
-}
-
-.head {
-    margin-left: 3vw;
 }
 
 .reg-box {
-    margin-top: 2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 70vw;
-    height: 95vh;
+    margin:0 auto;
+    padding: 4vw;
+    width: fit-content;
     background-color: rgba(168, 157, 157, 0.2);
     backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 20px 40px rgba(247, 243, 243, 0.18);
 }
-
-.input-group{
+.reg-form{
+    display: flex;
     justify-content: center;
-    padding: 0.2vw;
-    margin-top: 2px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    column-gap:2vw;
+    
+}
+.columns{
+    display:flex;
+    flex-direction:column;
 }
 
-.input-field {
-    padding: 0px 30px 0px 30px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-.input-field input {
+.columns input ,select{
     background: transparent;
     outline: none;
-    width: 30vw;
-    height: 50%;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 6px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top:10px;
+    height: 30px;
+    
+    
 }
-
-.input-field input:focus {
-    outline: none;
-    border-color: #fff;
-}
-
 .input-history {
-    width: 34vw;
-    padding: 20px 30px 10px 30px;
+    margin-top:2vw;
     display: flex;
     flex-direction: row;
-    text-align: left;
 }
-
-.history {
-    margin-left: 10px;
+.history-label {
+    flex:none;
+    margin-top: 1vw;
+}
+.history-box {
+    margin:0px;
     width: 1vw;
+    box-sizing: border-box;
 }
 
 .submit-button {
@@ -103,22 +88,11 @@
     color: rgba(236, 221, 221, 0.6);
 }
 
-.input-field select {
-    background: transparent;
-    outline: none;
-    width: 30vw;
-    height: 50%;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 6px;
-    cursor:default;
-}
-
-option{
+option {
     background-color: #2B1C1F;
 }
 
-.input-field select:focus {
+.columns select:focus {
     outline: none;
     border-color: #fff;
 }

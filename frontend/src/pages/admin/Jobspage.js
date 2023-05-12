@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useContext } from "react";
 import NewJob from '../../modals/NewJob';
-import Job from '../../components/Job';
+import Job from '../../components/AdminJob';
 import '../../css/JobsPage.css';
 import { Jobscontext } from "../../context/jobscontext";
 //import 'bootstrap/dist/css/bootstrap.min.css';

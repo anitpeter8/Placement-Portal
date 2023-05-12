@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Job from '../../components/Job';
+import Job from '../../components/FacultyJob';
 import '../../css/JobsPage.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
