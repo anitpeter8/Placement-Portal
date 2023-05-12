@@ -2,7 +2,6 @@ import axios from "axios";
 import Student from "../../components/Student";
 import "../../css/Studentpage.css";
 import React, { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -41,7 +40,7 @@ const Students = () => {
               type="text"
               className="name-search"
               value={namesearch}
-              placeholder="name"
+              placeholder=" Name "
               onChange={(e) => {
                 setname(e.target.value);
                 console.log(namesearch);
@@ -81,8 +80,9 @@ const Students = () => {
               <option>ME</option>
             </select>
           </div>
-          <div className="sicon">
-            <AiOutlineSearch onClick={search} size="2.5vw" color="white" />
+    
+          <div className="ficon">
+           
           </div>
         </div>
       </div>

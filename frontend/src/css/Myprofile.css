@@ -10,9 +10,10 @@
   /*background-color:  #2B1C1F;*/
   color: #EBDCDC;
   background-image: url(bgimage.jpg);
+background-color: rgb(168, 125, 116);
+  background-blend-mode: multiply;
   background-size: cover;
   background-repeat: no-repeat;
-
   margin: 0px;
 }
 
@@ -81,7 +82,7 @@ select {
 }
 
 .heading1 {
-  padding: 10px 0px 0px 60px;
+  padding:10px 0px 10px 0px;
   font-family: 'Public Sans', sans-serif;
   font-size: 40px;
   font-weight: 400;
@@ -95,11 +96,11 @@ select {
 }
 
 .wrap {
-
   border-radius: 20px;
-  padding: 20px;
+  padding: 4vw;
   background-color: rgba(255, 255, 255, 0.08);
-  margin: 0px 250px 0px 250px;
+  margin:0 auto;
+  width:fit-content;
 }
 
 .details label {

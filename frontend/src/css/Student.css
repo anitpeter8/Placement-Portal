@@ -6,3 +6,31 @@ border-radius: 25px;
     display: flex;
     justify-content: space-between;
 }
+.sform{
+    display: flex;
+    place-items:center;
+    gap:0.5vw;
+    margin-right:2vw;
+}
+.sform input{
+    margin-top:.8vw;
+    height:2.3vw;
+}
+.sform input,
+select {
+    box-sizing: border-box;
+    border:none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.sform option{
+    background-color:#f1ecec;
+}
+.ficon{
+    
+}
+.filter{
+    color:white;
+    margin-top:1vw;
+
+}

@@ -1,13 +1,14 @@
-import { useState,useContext } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import axios from 'axios';
+import { useState, useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 import "./EditAnnouncement.css";
-import { Jobscontext } from '../context/jobscontext';
-
+import { Jobscontext } from "../context/jobscontext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function EditAnnouncement({ announcement }) {
-  const context=useContext(Jobscontext);
-  const {dispatch}=context;
+  const context = useContext(Jobscontext);
+  const { dispatch } = context;
 
   const [show, setShow] = useState(false);
   const [heading, setHeading] = useState(announcement.heading);
@@ -20,21 +21,32 @@ function EditAnnouncement({ announcement }) {
 
     console.log(heading, description);
     const id = announcement._id;
-    const announcementee = { heading, description }
-    axios.patch('http://localhost:9000/api/announcements/' + id, announcementee).then((response) => {
-      console.log(response.data);
-      dispatch({type:'UPDATEANNOUNCEMENT',payload:response.data});
-      console.log('vishayam')
-
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
+    const announcementee = { heading, description };
+    axios
+      .patch("http://localhost:9000/api/announcements/" + id, announcementee)
+      .then((response) => {
+        console.log(response.data);
+        dispatch({ type: "UPDATEANNOUNCEMENT", payload: response.data });
+        console.log("vishayam");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
-      <Button variant="primary" style={{ backgroundColor: '#3A8ECB', height: '35px', width: '90px' }} onClick={handleShow}>
-        Edit
+      <Button
+        variant="secondary"
+        style={{ backgroundColor: "#3A8ECB" }}
+        onClick={handleShow}
+      >
+        <div className="edit-btn">
+          <div>Edit</div>
+          <div>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </div>
+        </div>
       </Button>
 
       <Modal
@@ -43,39 +55,44 @@ function EditAnnouncement({ announcement }) {
         backdrop="static"
         keyboard={false}
       >
-       <Modal.Header closeButton>
-          
-          <Modal.Title >Edit Announcement</Modal.Title>
-          
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Announcement</Modal.Title>
         </Modal.Header>
-        
+
         <Modal.Body>
           <form onSubmit={handlesubmit}>
-            <div className='title'>
-            <div className='title-label'>
-            <label>Title :</label>
+            <div className="title">
+              <div className="title-label">
+                <label>Title :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="text1"
+                  type="text"
+                  value={heading}
+                  onChange={(e) => setHeading(e.target.value)}
+                />
+              </div>
             </div>
-            <div className='textbox'>
-            <input className='text1' type='text' value={heading} onChange={(e) =>
-              setHeading(e.target.value)
-            } />
+            <div className="desc">
+              <div className="desc-label">
+                <label>Description :</label>
+              </div>
+              <div className="textarea">
+                <textarea
+                  className="area1"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
             </div>
-            </div>
-            <div className='desc'>
-            <div className='desc-label'>
-            <label>Description :</label></div>
-            <div className='textarea'>
-            <textarea className='area1' value={description} onChange={(e) =>
-              setDescription(e.target.value)
-            } />
-            </div>
-            </div>
-            <div className='sub'>
-            <button className='sub-but'  type='submit'>Submit</button>
+            <div className="sub">
+              <button className="sub-but" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </Modal.Body>
-
       </Modal>
     </>
   );

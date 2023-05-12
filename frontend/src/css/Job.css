@@ -14,11 +14,15 @@
 
 .buttons {
     display: flex;
+    flex-direction:row;
     justify-content: center;
+    gap:.5vw;
+    height:4vh;
+    align-items:center;
 }
-
-.buttons Button {
-    width: auto;
-    size: .5vw;
-    margin: .5vw;
+.apply-here{
+    display: flex;
+        flex-direction: row;
+        justify-content: center;
+    gap:.5vw;
 }

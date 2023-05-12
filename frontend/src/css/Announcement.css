@@ -10,3 +10,13 @@
     padding:20px;
 }
 
+.dlt-button{
+    display:flex;
+    justify-content:center;
+    gap:.5vw;
+}
+.btns{
+    display: flex;
+        justify-content: center;
+        gap: .5vw;
+}

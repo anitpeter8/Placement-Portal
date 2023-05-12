@@ -53,3 +53,8 @@
 .textaddress{
     width:fit-content;
 }
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    gap: .5vw;
+}

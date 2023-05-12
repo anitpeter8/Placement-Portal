@@ -7,7 +7,10 @@ import moment from "moment";
 import { useContext } from "react";
 import { Jobscontext } from "../context/jobscontext";
 import axios from "axios";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrashCan,
+} from "@fortawesome/free-solid-svg-icons";
 const Announcement = ({ announcement }) => {
   const context=useContext(Jobscontext);
   const {dispatch}=context;
@@ -33,8 +36,13 @@ const Announcement = ({ announcement }) => {
             </Card.Title>
             <div className="btns">
               <EditAnnouncement announcement={announcement} />
-              <Button className="dlt-btn" onClick={handledelete}>
-                Delete
+              <Button variant="danger" className="dlt" onClick={handledelete}>
+                <div className="dlt-button">
+                  <div>Delete</div>
+                  <div>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </div>
+                </div>
               </Button>
             </div>
           </div>
