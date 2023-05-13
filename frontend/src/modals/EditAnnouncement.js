@@ -87,9 +87,9 @@ function EditAnnouncement({ announcement }) {
               </div>
             </div>
             <div className="sub">
-              <button className="sub-but" type="submit">
+              <Button className="sub-but" type="submit">
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
         </Modal.Body>

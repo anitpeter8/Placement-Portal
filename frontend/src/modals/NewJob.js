@@ -16,6 +16,7 @@ function NewJob() {
     const [heading, setHeading] = useState('');
     const [description, setDescription] = useState('');
     const [role, setrole] = useState('');
+    const [applylink,setapplylink] = useState('');
     const [noofbacklogs, setnoofbacklogs] = useState(null);
     const [cgpa, setcgpa] = useState(null);
     const [history, sethistory] = useState(null);
@@ -61,58 +62,66 @@ function NewJob() {
                 <Modal.Body>
                     <form onSubmit={handlesubmit}>
                         <div className='title-lb'>
-                        <label className='title-label'>Title :</label>
+                        <label for="title" className='title-label'>Title :</label>
                         </div>
                         <div className='title_tb'>
-                        <input className='title-textbox' type='text' value={heading} onChange={(e) =>
+                        <input id="title" className='title-textbox' type='text' value={heading} onChange={(e) =>
                             setHeading(e.target.value)
                         } />
                         </div>
                         <div className='desc-lb'>
-                        <label className='desc-label'>Description :</label>
+                        <label for="desc" className='desc-label'>Description :</label>
                         </div>
                         <div className='desc-ta'>
-                        <textarea className='desc-textarea' value={description} onChange={(e) =>
+                        <textarea id="desc" className='desc-textarea' value={description} onChange={(e) =>
                             setDescription(e.target.value)
                         } />
                         </div>
                         <div className='role-lb'>
-                        <label className='role-label'>Role :</label>
+                        <label for="role" className='role-label'>Role :</label>
                         </div>
                         <div className='role-tb'>
-                        <input className='role-textbox' type='text' value={role} onChange={(e) =>
+                        <input id="role" className='role-textbox' type='text' value={role} onChange={(e) =>
                             setrole(e.target.value)
+                        } />
+                        </div>
+                        <div className='applylink-lb'>
+                        <label for="applylink" className='applylink-label'>Application Link :</label>
+                        </div>
+                        <div className='applylink-tb'>
+                        <input id="applylink" className='applylink-textbox' type='text' value={applylink} onChange={(e) =>
+                            setapplylink(e.target.value)
                         } />
                         </div>
                         <div className='backlog-cgpa'>
                         <div className='backlog-lb'>
-                        <label className='backlog-label'>No. of backlogs :</label>
+                        <label for="backlog" className='backlog-label'>No. of backlogs :</label>
                         </div>
                         <div className='backlog-tb'>
-                        <input className='backlog-textbox' type='text' value={noofbacklogs} onChange={(e) =>
+                        <input id="backlog" className='backlog-textbox' type='text' value={noofbacklogs} onChange={(e) =>
                             setnoofbacklogs(e.target.value)
                         } />
                         </div>
                         <div className='cgpa-lb'>
-                        <label className='cgpa-label'>CGPA :</label>
+                        <label for="cgpa" className='cgpa-label'>CGPA :</label>
                         </div>
                         <div className='cgpa-tb'>
-                        <input className='cgpa-textbox' type='text' value={cgpa} onChange={(e) =>
+                        <input id="cgpa" className='cgpa-textbox' type='text' value={cgpa} onChange={(e) =>
                             setcgpa(e.target.value)
                         } />
                         </div>
                         </div>
                         <div className='history-lb'>
-                        <label className='history-label'>History :</label>
+                        <label for="history" className='history-label'>History :</label>
                         </div>
                         <div className='history-tb'>
-                        <input className='history-textbox' type='text' value={history} onChange={(e) =>
+                        <input id="history" className='history-textbox' type='text' value={history} onChange={(e) =>
                             sethistory(e.target.value)
                         } />
                         </div>
                       <div className='branch'>
-                        <label className='branch-label'>Branch :</label>
-                        <Multiselect  isObject={false}  options={options} showCheckbox onSelect={(e)=>{
+                        <label for="branch" className='branch-label'>Branch :</label>
+                        <Multiselect id="branch" isObject={false}  options={options} showCheckbox onSelect={(e)=>{
                             setBranch(e)
                             console.log(branch);
                         }} onRemove={(e)=>{
@@ -124,7 +133,7 @@ function NewJob() {
                         />
                         </div>
                         <div className='submit'>
-                        <button className="sub-btn" type='submit'>Submit</button>
+                        <Button className="sub-btn" type='submit'>Submit</Button>
                         </div>
                     </form>
                 </Modal.Body>

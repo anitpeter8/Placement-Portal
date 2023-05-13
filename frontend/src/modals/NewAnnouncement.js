@@ -70,7 +70,7 @@ function NewAnnouncement() {
             </div>
             </div>
             <div className='sub'>
-            <button className='sub-but'  type='submit'>Submit</button>
+            <Button className='sub-but'  type='submit'>Submit</Button>
             </div>
           </form>
         </Modal.Body>

@@ -1,38 +1,23 @@
-
-.backlog-textbox{
-    width:40%;
-    color: black;
-}
-.cgpa-textbox{
-    width:40%; 
-    color: black;
-}
 .modal-content{
-    background-color: rgb(244, 123, 123);
+  background-color: rgb(244, 123, 123);
 }
-.title-textbox{
-    width:100%;
-    color: black;
-}
-.desc-textarea{
-    width:100%;
-    color: black;
-}
-.role-textbox{
-    width:100%;
-    color: black;
-}
-.history-textbox{
+.backlog-textbox,.cgpa-textbox,.history-textbox{
     width:40%;
     color: black;
+    border-radius: 5px;
 }
+.title-textbox,.desc-textarea,.role-textbox,.applylink-textbox{
+    width:100%;
+    color: black;
+    border-radius: 5px;
+    border-color: black;
+}
+
 .my-multiselect {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     color: #333;
-    /*font-size: 14px;
-    padding: 6px 12px;*/
   }
   
   .my-multiselect__control {

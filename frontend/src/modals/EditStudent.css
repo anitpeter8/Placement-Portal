@@ -1,40 +1,6 @@
-.name_branch{
-    display: flex;
-    justify-content: space-between;
-}
-.tenth_twelth{
-    display: flex;
-    justify-content: space-between;
-}
-.id_class{
-    display: flex;
-    justify-content: space-between;
-}
-.sem_email{
-    display: flex;
-    justify-content: space-between;
-}
-.mob_dob{
-    display: flex;
-    justify-content: space-between;
-}
-.textaddress{
-    width:100%;
-}
-.street_city{
-    display: flex;
-    justify-content: space-between;
-}
-.dis_pin{
-    display: flex;
-    justify-content: space-between;
-}
-.cgpa_nback{
-    display: flex;
-    justify-content: space-between;
-}
-
-.coc_amcat{
+.name_branch,.tenth_twelth,.id_class,.sem_email,
+.mob_dob,.street_city,.dis_pin,.cgpa_nback,
+.coc_amcat,.his_link{
     display: flex;
     justify-content: space-between;
 }
@@ -49,12 +15,28 @@
     background-color: white;
     color:black;
     width:fit-content;
+    border-radius: 5px;
 }
 .textaddress{
     width:fit-content;
+    border-radius: 5px;
+    border-color: black;
 }
 .edit-btn {
     display: flex;
     justify-content: center;
     gap: .5vw;
+}
+.district-list{
+    background-color: white;
+    color:black;
+    border-color: black;
+    border-radius: 5px;
+    width:100%;
+    position: relative;
+    bottom: 10px;
+}
+.sthistory{
+    position: relative;
+    bottom: 15px;
 }

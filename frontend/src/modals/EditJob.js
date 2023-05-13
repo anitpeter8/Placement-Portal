@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import "./EditJob.css";
+import { useForm, useFormContext } from "react-hook-form";
 import { Jobscontext } from '../context/jobscontext';
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
@@ -11,27 +12,22 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function EditJob({ job }) {
   const context=useContext(Jobscontext);
   const {dispatch}=context;
-
+  const { handleSubmit, register } = useForm({
+    defaultValues: job
+      
+  });
   const [show, setShow] = useState(false);
-  const [applylink, setapplylink] = useState(job.applylink);
-  const [heading, setHeading] = useState(job.heading);
-  const [description, setDescription] = useState(job.description);
-  const [role, setrole] = useState(job.role);
-  const [noofbacklogs, setnoofbacklogs] = useState(job.noofbacklogs);
-  const [cgpa, setcgpa] = useState(job.cgpa);
-  const [history, sethistory] = useState(job.history);
-  const [branch, setBranch] = useState(job.branch);
-  const  options  = ['CSE','EEE','ECE','MECH','AI']
+  const  options  = ['CSE','EEE','ECE','MECH','AI','CIVIL']
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handlesubmit = (e) => {
     e.preventDefault();
 
-    console.log(applylink,heading, description,role,noofbacklogs,cgpa,history,branch);
+   /*console.log(applylink, description,role,noofbacklogs,cgpa,history,branch);*/
     const id = job._id;
-    const jobee = {applylink,heading, description,role,noofbacklogs,cgpa,history,branch}
-    axios.patch('http://localhost:9000/api/jobs/' + id, jobee).then((response) => {
+    /*const jobee = {applylink, description,role,noofbacklogs,cgpa,history,branch}*/
+    axios.patch('http://localhost:9000/api/jobs/' + id).then((response) => {
       console.log(response.data);
       dispatch({type:'UPDATEJOB',payload:response.data});
       console.log('vishayam')
@@ -60,120 +56,106 @@ function EditJob({ job }) {
         <Modal.Body>
           <form onSubmit={handlesubmit}>
             <div className="title">
-              <div className="title-label">
+              <div className="edit-label">
                 <label>Title :</label>
               </div>
               <div className="textbox">
                 <input
-                  className="title-textbox"
+                  className="textbox-max"
                   type="text"
-                  value={heading}
-                  onChange={(e) => setHeading(e.target.value)}
+                  required {...register("heading")}
                 />
               </div>
             </div>
             <div className="desc">
-              <div className="desc-label">
+              <div className="edit-label">
                 <label>Description :</label>
               </div>
               <div className="textarea">
                 <textarea
                   className="desc-textarea"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  required {...register("description")}
                 />
               </div>
             </div>
             <div className="role">
-              <div className="role-label">
+              <div className="edit-label">
                 <label>Role :</label>
               </div>
               <div className="textbox">
                 <input
-                  className="role-textbox"
+                  className="textbox-max"
                   type="text"
-                  value={role}
-                  onChange={(e) => setrole(e.target.value)}
+                  required {...register("role")}
                 />
               </div>
             </div>
             <div className="link">
-              <div className="link-label">
+              <div className="edit-label">
                 <label>Application link:</label>
               </div>
               <div className="textbox">
                 <input
-                  className="link-textbox"
+                  className="textbox-max"
                   type="text"
-                  value={applylink}
-                  onChange={(e) => setapplylink(e.target.value)}
+                  required {...register("applylink")}
                 />
               </div>
             </div>
             <div className="noofbacklogs">
-              <div className="noofbacklogs-label">
+              <div className="edit-label">
                 <label>No. of backlogs :</label>
               </div>
               <div className="textbox">
                 <input
-                  className="edit-backlog-textbox"
+                  className="textbox-min"
                   type="text"
-                  value={noofbacklogs}
-                  onChange={(e) => setnoofbacklogs(e.target.value)}
+                  required {...register("noofbacklogs")}
                 />
               </div>
             </div>
             <div className="cgpa">
-              <div className="cgpa-label">
+              <div className="edit-label">
                 <label>CGPA :</label>
               </div>
               <div className="textbox">
                 <input
-                  className="edit-cgpa-textbox"
+                  className="textbox-min"
                   type="text"
-                  value={cgpa}
-                  onChange={(e) => setcgpa(e.target.value)}
+                  required {...register("cgpa")}
                 />
               </div>
             </div>
             <div className="history">
-              <div className="edit-history-label">
+              <div className="edit-label">
                 <label>History:</label>
               </div>
               <div className="textbox">
                 <input
-                  className="edit-history-textbox"
+                  className="textbox-min"
                   type="text"
-                  value={history}
-                  onChange={(e) => sethistory(e.target.value)}
+                  required {...register("history")}
                 />
               </div>
             </div>
             <div className="branch">
-              <div className="branch-label">
+              <div className="edit-label">
                 <label>Branch :</label>
               </div>
               <Multiselect
                 isObject={false}
                 options={options}
                 showCheckbox
-                onSelect={(e) => {
-                  setBranch(e);
-                  console.log(branch);
-                }}
-                onRemove={(e) => {
-                  setBranch(e);
-                  console.log(branch);
-                }}
+                required {...register("branch")}
                 className="my-multiselect"
                 classNamePrefix="my-multiselect"
               />
             </div>
 
             <div className="sub">
-              <button className="sub-but" type="submit">
+              <Button className="sub-but" type="submit">
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
         </Modal.Body>
