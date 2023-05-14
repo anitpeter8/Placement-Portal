@@ -26,7 +26,7 @@ const Job = ({ job }) => {
   return (
     <div className="single-card">
       <Card style={{ borderRadius: "25px" }} className="card-content">
-        <Card.Header className="header" style={{ borderRadius: "25px" }}>
+        <Card.Header className="job-header" style={{ borderRadius: "25px" }}>
           <div>
             <Card.Title>
               <h5>{moment(job.createdAt).format("LL")}</h5>
@@ -38,7 +38,6 @@ const Job = ({ job }) => {
               <div className="buttons">
               </div>
             </div>
-
             <Card.Title>
               <h5>{job.role}</h5>
             </Card.Title>

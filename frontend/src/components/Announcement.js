@@ -29,7 +29,7 @@ const Announcement = ({ announcement }) => {
   return (
     <div className="single-card">
       <Card style={{ borderRadius: "25px" }} className="card-content">
-        <Card.Header className="header" style={{ borderRadius: "25px" }}>
+        <Card.Header className="anct-header" style={{ borderRadius: "25px" }}>
           <div className="d-flex justify-content-between">
             <Card.Title>
               <h5>{moment(announcement.createdAt).format("LL")}</h5>
