@@ -3,7 +3,7 @@ import Announcement from '../../components/Announcement';
 import { useEffect, useContext } from 'react';
 import NewAnnouncement from '../../modals/NewAnnouncement';
 import '../../css/Announcements.css';
-import { Jobscontext } from "../../context/jobscontext";
+import { Jobscontext } from "../../context/Jobscontext";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
@@ -15,13 +15,8 @@ const Announcements = () => {
   
      
   const context=useContext(Jobscontext);
-  const {announcements,dispatch}=context;
- 
-  useEffect(() => {
-    axios.get('http://localhost:9000/api/announcements').then((response) => {
-      dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
-    });
-  }, [])
+  const {announcements}=context;
+
   return (
     <div className="anctmain">
       <div  className="head-container">

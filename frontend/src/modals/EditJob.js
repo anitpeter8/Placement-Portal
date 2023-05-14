@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import "./EditJob.css";
 import { useForm, useFormContext } from "react-hook-form";
-import { Jobscontext } from '../context/jobscontext';
+import { Jobscontext } from '../context/Jobscontext';
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,16 +21,14 @@ function EditJob({ job }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handlesubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = (data) => {
    /*console.log(applylink, description,role,noofbacklogs,cgpa,history,branch);*/
     const id = job._id;
     /*const jobee = {applylink, description,role,noofbacklogs,cgpa,history,branch}*/
-    axios.patch('http://localhost:9000/api/jobs/' + id).then((response) => {
+    axios.patch('http://localhost:9000/api/jobs/' + id,data).then((response) => {
       console.log(response.data);
       dispatch({type:'UPDATEJOB',payload:response.data});
-      console.log('vishayam')
+      console.log('vishayam updated')
 
     }).catch((error) => {
       console.log(error)
@@ -54,7 +52,7 @@ function EditJob({ job }) {
         </Modal.Header>
 
         <Modal.Body>
-          <form onSubmit={handlesubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="title">
               <div className="edit-label">
                 <label>Title :</label>
@@ -145,6 +143,10 @@ function EditJob({ job }) {
               <Multiselect
                 isObject={false}
                 options={options}
+
+              
+
+
                 showCheckbox
                 required {...register("branch")}
                 className="my-multiselect"

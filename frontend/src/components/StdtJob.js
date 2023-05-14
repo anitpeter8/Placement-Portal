@@ -8,7 +8,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
 import { useContext } from "react";
-import { Jobscontext } from "../context/jobscontext";
+import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 const Job = ({ job }) => {
 

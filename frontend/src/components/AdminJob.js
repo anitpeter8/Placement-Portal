@@ -5,7 +5,7 @@ import EditJob from "../modals/EditJob";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
 import { useContext } from "react";
-import { Jobscontext } from "../context/jobscontext";
+import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

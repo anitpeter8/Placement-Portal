@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import Job from '../../components/StdtJob';
 import '../../css/JobsPage.css';
 import { userStudent } from "../../context/userStudentContext";
+import { useJobContext } from "../../customhooks/UseJobContext";
+
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
@@ -11,41 +13,25 @@ import { userStudent } from "../../context/userStudentContext";
     crossorigin="anonymous"
 />
 const Jobspage = () => {
-    const context=useContext(userStudent);
-    const {student,dispatchstudent}=context;
- 
-    const [jobs, setjobs] = useState()
-    useEffect(() => {
-        axios.get('http://localhost:9000/api/jobs').then((response) => {
 
-            console.log(response.data)
-            const studentuser=JSON.parse(localStorage.getItem('student'));
-            if(studentuser){
-                console.log(studentuser);
-                dispatchstudent({ type: "SETSTUDENTUSER", payload:studentuser});
+    const [eligibleJobs,seteligibleJobs]=useState();
+    const {jobs}=useJobContext();
+    const {student}=useContext(userStudent);
+    console.log(student);
+    useEffect(()=>{
+        
+       // 
+       
+        seteligibleJobs(jobs.filter((job)=>
+        {
+           return student.cgpa>=job.cgpa 
+           && student.noofbacklogs<=job.noofbacklogs 
+           && student.historyofbacklogs==job.history
+           && job.branch.includes(student.branch)
+        }))
 
-            }
-            setjobs(response.data);
-            
-        });
-    }, [])
-  
-    var eligibleJobs=null;
-    if(student){
-        if(jobs){
-            console.log(jobs)
-            eligibleJobs=jobs.filter((job)=>
-            {
-               return student.cgpa>=job.cgpa 
-               && student.noofbacklogs<=job.noofbacklogs 
-               && student.historyofbacklogs==job.history
-               && job.branch.includes(student.branch)
-            }
-            );
-            if(eligibleJobs){
-            console.log(eligibleJobs)}
-        }
-    }
+    } , [jobs]
+    )
   
    
         return (

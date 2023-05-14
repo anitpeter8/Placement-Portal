@@ -94,7 +94,7 @@ function Login() {
             .then((res) => {
               console.log(res.data);
               dispatchstudent({ type: "SETSTUDENTUSER", payload: res.data });
-              localStorage.setItem("student",JSON.stringify(res.data));
+              localStorage.setItem("studentuser",JSON.stringify(res.data));
             });
           navigate("/student/Announcements");
         } else if (res.data.role == "faculty") {

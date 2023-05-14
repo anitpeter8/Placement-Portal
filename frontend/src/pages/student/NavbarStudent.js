@@ -44,7 +44,11 @@ const Navbar = () => {
             <NavLink
               className="log"
               to="/"
-              onClick={localStorage.removeItem("student")}
+              onClick={
+                ()=>{
+                  console.log('logout')
+                  localStorage.removeItem("studentuser")}
+                }
             >
               {" "}
               Logout{" "}

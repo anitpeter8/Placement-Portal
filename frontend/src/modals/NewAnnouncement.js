@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './NewAnnouncement.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Jobscontext } from '../context/jobscontext';
+import { Jobscontext } from '../context/Jobscontext';
 function NewAnnouncement() {
   const context=useContext(Jobscontext);
   const {dispatch}=context;
