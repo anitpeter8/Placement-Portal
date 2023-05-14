@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react";
 import NewJob from '../../modals/NewJob';
 import Job from '../../components/AdminJob';
 import '../../css/JobsPage.css';
-import { Jobscontext } from "../../context/jobscontext";
+import { Jobscontext } from "../../context/Jobscontext";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
@@ -14,16 +14,7 @@ import { Jobscontext } from "../../context/jobscontext";
 const Jobspage = () => {
    
     const context=useContext(Jobscontext);
-    const {jobs,dispatch}=context;
-    useEffect(() => {
-        axios.get('http://localhost:9000/api/jobs').then((response) => {
-
-           console.log(response.data)
-            dispatch({type:'SETJOBS',payload:response.data});
-            
-
-        });
-    }, [dispatch])
+    const {jobs}=context;
     console.log(jobs)
     return (
         <div className="jobs-main">

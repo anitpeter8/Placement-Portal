@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Announcement.css";
 import moment from "moment";
 import { useContext } from "react";
-import { Jobscontext } from "../context/jobscontext";
+import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

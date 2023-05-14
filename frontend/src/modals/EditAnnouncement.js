@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import "./EditAnnouncement.css";
-import { Jobscontext } from "../context/jobscontext";
+import { Jobscontext } from "../context/Jobscontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 function EditAnnouncement({ announcement }) {

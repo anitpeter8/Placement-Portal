@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './NewJob.css';
+import { Jobscontext } from '../context/Jobscontext';
 
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
@@ -10,8 +11,9 @@ import Multiselect from 'multiselect-react-dropdown';
 
 function NewJob() {
   
-
-    
+   
+    const context=useContext(Jobscontext);
+    const {dispatch}=context; 
     const [show, setShow] = useState(false);
     const [heading, setHeading] = useState('');
     const [description, setDescription] = useState('');
@@ -33,6 +35,8 @@ function NewJob() {
         axios.post("http://localhost:9000/api/jobs", job).then((response) => {
             console.log(response.data);
             console.log('vishayam')
+            dispatch({type:'CREATEJOB',payload:response.data});
+
             // setHeading('');
             // setDescription('');
             // setcgpa('');

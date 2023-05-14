@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Announcement from '../../components/StdtAnnouncement';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { Jobscontext } from "../../context/Jobscontext";
 import '../../css/Announcements.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
@@ -9,13 +10,9 @@ import '../../css/Announcements.css';
   integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
   crossorigin="anonymous"
 />
-const Announcements = () => {
-  const [announcements, setancment] = useState(null)
-  useEffect(() => {
-    axios.get('http://localhost:9000/api/announcements').then((response) => {
-      setancment(response.data);
-    });
-  }, [])
+const Announcements = () => {     
+  const context=useContext(Jobscontext);
+  const {announcements}=context;
   return (
     <div className="anctmain">
       <div  className="head-container">
