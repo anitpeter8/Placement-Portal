@@ -25,17 +25,25 @@ import { userStudent } from "./context/userStudentContext";
 import { useContext, useEffect } from "react";
 
 import Myprofile from "./pages/student/Myprofile";
+import axios from "axios";
+import { Jobscontext } from "./context/Jobscontext";
 
 function App() {
-  const context = useContext(userStudent);
-  const { student, dispatchstudent } = useContext(userStudent);
+
+  const {dispatchstudent } = useContext(userStudent);
+  const {dispatch}=useContext(Jobscontext);
+ 
   useEffect(() => {
-    const student = localStorage.getItem('student');
+    const student = localStorage.getItem('studentuser');
     if (student) {
-
       dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
-
     }
+    axios.get('http://localhost:9000/api/announcements').then((response)=>{
+      dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
+    })
+    axios.get('http://localhost:9000/api/jobs').then((response)=>{
+      dispatch({type:'SETJOBS',payload:response.data});
+    })
 
   }, [])
   return (
