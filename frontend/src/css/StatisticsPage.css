@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;400&family=Roboto:wght@100;300;400;500&display=swap');
+
+.statmain {
+    font-family: 'Public Sans', sans-serif;
+    background-color: #2B1C1F;
+    min-height: 100vh;
+    height: 100%;
+}
+.stathead{
+    display: flex;
+    justify-content:space-between;
+    margin: 0vw 4vw 0vw 4vw;
+    padding: 2vw 0vw 2vw 0vw;
+}
+.statheading{
+    color: white;
+    font-size: 4vw;
+}
+.year{
+    display: flex;
+    justify-content:space-between;
+    margin-right: 4vw;
+}
+.year_heading{
+    color: white;
+    margin: 0vw 4vw 0vw 4vw;
+    padding: 2vw 0vw 2vw 0vw;
+}
+.hor_line{
+    color: white;
+    width:93%;
+    margin-top: 0;
+}
+
+table{
+    color:white;
+    width:60%;
+    text-align: center;
+    
+}
+.stat-table{
+    display: flex;
+    justify-content: center;
+    
+}
+th{
+    padding:10px 0px;
+    text-align: center;
+    background-color: #e299a7;
+    
+}
+th:nth-child(1){
+    text-align: left;
+    padding-left:20px;
+
+    
+}
+td:nth-child(1){
+    text-align: left;
+    padding-left: 20px;
+}
+tr:nth-child(1){
+    background-color: #e299a7;
+    border-radius:5px;
+}
+tr:nth-child(odd){
+    background-color: #e299a86a;
+}
+tr:nth-child(even) {
+
+    padding: 50px 10px;
+    background-color: #7a5f6469;
+}
+td{
+    padding:10px 0px;
+}

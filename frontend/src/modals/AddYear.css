@@ -1,0 +1,9 @@
+.text-year{
+    
+    border-radius: 5px;
+}
+.year-modal{
+    display: flex;
+    justify-content: space-evenly;
+
+}
