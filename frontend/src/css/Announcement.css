@@ -1,6 +1,10 @@
 .anct-header{
-    background: linear-gradient(to left,#FFA8A2,#F8F8F8);
-    display:inline-block;
+    background-repeat: no-repeat;
+        background-color: rgb(249, 244, 243);
+        background-blend-mode: multiply;
+        background-image: url("card-bg.jpg");
+        background-size: cover;
+        display: inline-block;
 }
 .card-content{
     background:#FFA8A2;
