@@ -18,7 +18,7 @@ const Jobspage = () => {
     return (
         <div className="jobs-main">
             <div id="head-container" className="d-flex justify-content-between">
-                <h1 id="heading">JOBS</h1>
+                <h1 id="heading">JOB ALERTS</h1>
             </div>
             <div className="content">
                 {jobs && (
