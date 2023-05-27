@@ -50,16 +50,26 @@ const Job = ({ job }) => {
                 >
                   <div className="apply-here">
                     <div>Apply Here</div>
+                    
                     <div>
                       <FontAwesomeIcon icon={faArrowUpRightFromSquare} /> 
+                     
                     </div>
                   </div>
                 </Button>
+               
               </div>
+             
             </div>
+            
 
             <Card.Title>
               <h5>{job.role}</h5>
+              <div class="form-check form-switch">
+                <h6>Have you applied?</h6>
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+  
+</div>
             </Card.Title>
           </div>
         </Card.Header>

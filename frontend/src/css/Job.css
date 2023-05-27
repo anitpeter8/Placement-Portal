@@ -31,3 +31,7 @@
         justify-content: center;
     gap:.5vw;
 }
+
+.apply input{
+    gap: 1vw;
+}

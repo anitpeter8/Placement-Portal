@@ -22,6 +22,8 @@ const Student = ({ student }) => {
                 <EditStudent student={student} /></div>
             </div>
             <p>{student.branch}</p>
+            <p>CGPA: {student.cgpa}</p>
+            <p>Backlogs: {student.noofbacklogs}</p>
           </Card.Text>
         </Card.Body>
       </Card>
