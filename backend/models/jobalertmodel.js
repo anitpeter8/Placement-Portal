@@ -5,7 +5,12 @@ const jobSchema=new Schema({
     applylink:{
         type:String
     },
-    
+
+    applied:[{year:String,
+              name:String,
+              branch:String,
+              database_id:String}],
+
     heading:{
         type:String
     },
