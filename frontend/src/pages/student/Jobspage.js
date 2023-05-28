@@ -17,23 +17,18 @@ const Jobspage = () => {
     const [eligibleJobs,seteligibleJobs]=useState();
     const {jobs}=useJobContext();
     const {student}=useContext(userStudent);
-    console.log(student);
+
     useEffect(()=>{
-        
-       // 
-       
         seteligibleJobs(jobs.filter((job)=>
         {
+            console.log(job);
            return student.cgpa>=job.cgpa 
            && student.noofbacklogs<=job.noofbacklogs 
            && student.historyofbacklogs==job.history
            && job.branch.includes(student.branch)
         }))
-
-    } , [jobs]
+    } ,[jobs]
     )
-  
-   
         return (
         <div className="jobs-main">
             <div id="head-container" className="d-flex justify-content-between">

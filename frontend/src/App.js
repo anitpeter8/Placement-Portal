@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const student = localStorage.getItem('studentuser');
     if (student) {
-      dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
+      dispatchstudent({ type: "SETSTUDENTUSER", payload: JSON.parse(student)});
     }
     axios.get('http://localhost:9000/api/announcements').then((response)=>{
       dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
