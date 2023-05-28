@@ -40,4 +40,17 @@ routes.post('/',async(req,res)=>{
 
 })
 
+routes.patch('/addjob/:id',async(req,res)=>{
+    const {id}=req.params;
+    try {
+        const student=await Students.findByIdAndUpdate({_id:id},{
+            $set:{applied_jobs:{...req.body}}
+        });
+
+        const updatedstudent=await Students.findByIdAndUpdate({_id:id});
+        res.json(updatedstudent);
+    } catch (error) {
+        res.status(400).json({error:error.message});
+    }
+})
 module.exports=routes;

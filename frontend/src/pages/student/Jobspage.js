@@ -39,7 +39,7 @@ const Jobspage = () => {
                     <div className="row row-cols-2">
                         {eligibleJobs.map((job) => (
                             <div className="col" key={job._id}>
-                                <Job job={job} />
+                                <Job job={job} student={student}/>
                             </div>
                         ))}
                     </div>
