@@ -37,6 +37,23 @@ routes.delete('/:id',async(req,res)=>{
  }
  )
  
+ routes.patch('/addstudent/:id',async(req,res)=>{
+ const {id}=req.params;
+ try {
+    const job=await Jobs.findByIdAndUpdate({_id:id},{
+        $set:{applied_students:{...req.body}}
+     });
+     const updatedjob=await Jobs.findByIdAndUpdate({_id:id});
+     res.json(updatedjob);
+    
+ } catch (error) {
+    res.status(400).json({error:error.message});
+ }
+
+ })
+
+
+
  routes.patch('/:id',async(req,res)=>{
      const {id}=req.params;
      const job=await Jobs.findOneAndUpdate({_id:id},{
