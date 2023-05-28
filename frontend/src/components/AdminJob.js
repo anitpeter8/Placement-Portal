@@ -4,6 +4,7 @@ import moment from "moment";
 import EditJob from "../modals/EditJob";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
+
 import { useContext } from "react";
 import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
@@ -11,7 +12,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
   faArrowUpRightFromSquare,
+  faAddressBook,
 } from "@fortawesome/free-solid-svg-icons";
+import ViewAppliedStudents from "../modals/ViewAppliedStudents";
 const Job = ({ job }) => {
   console.log(job._id);
   const context = useContext(Jobscontext);
@@ -52,17 +55,27 @@ const Job = ({ job }) => {
                 </Button>
                 <EditJob job={job} />
 
-                <Button 
-                title="Delete Job"
+                <Button
+                  title="Delete Job"
                   variant="danger"
                   className="dlt-btn"
                   onClick={handledelete}
                 >
                   <FontAwesomeIcon icon={faTrashCan} />
                 </Button>
+                <Button
+                  title="Applied Students"
+                  variant="danger"
+                  className="dlt-btn"
+                  
+                >
+                  <FontAwesomeIcon icon={faAddressBook} />
+                 
+                </Button>
+               
               </div>
             </div>
-
+            <ViewAppliedStudents/>
             <Card.Title>
               <h5>{job.role}</h5>
             </Card.Title>

@@ -44,7 +44,7 @@ routes.patch('/addjob/:id',async(req,res)=>{
     const {id}=req.params;
     try {
         const student=await Students.findByIdAndUpdate({_id:id},{
-            $set:{applied_jobs:{...req.body}}
+            $push:{applied_jobs:{...req.body}}
         });
 
         const updatedstudent=await Students.findByIdAndUpdate({_id:id});
@@ -53,4 +53,9 @@ routes.patch('/addjob/:id',async(req,res)=>{
         res.status(400).json({error:error.message});
     }
 })
+
+//paste
+
+
+
 module.exports=routes;

@@ -31,11 +31,14 @@ const Job = ({ job,student }) => {
 
     const [checked, setChecked] = useState(false);
     const handlechange = () => {
-      setChecked(!checked)
-      const data={heading:job.heading,
-                  role:job.role,
-                  database_id:job._id}
-      axios.patch('http://localhost:9000/students/addjob/' + student._id,data).then((response) => {
+      setChecked(!checked) 
+      if(!checked)
+      {
+
+      
+      axios.patch('http://localhost:9000/students/addjob/' + student._id,{heading:job.heading,
+      role:job.role,
+      database_id:job._id}).then((response) => {
       console.log(response.data);
       console.log('job added')
 
@@ -43,6 +46,32 @@ const Job = ({ job,student }) => {
       console.log(error)
       console.log("hi")
     })
+    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,{year:student.year,
+    name:student.name,branch:student.branch,database_id:student._id}).then((response) => {
+    console.log(response.data);
+    console.log('student added')
+
+  }).catch((error) => {
+    console.log(error)
+    console.log("hi")
+  })
+}
+
+else{
+  //copy
+  axios.put(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}`).then((response)=>
+  {
+    console.log(response.data);
+    console.log('student removed');
+  }).catch((error)=>{
+    console.log(error.message);
+  })
+//paste
+
+
+}
+
+
     }
   
 
