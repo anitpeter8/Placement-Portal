@@ -8,6 +8,11 @@ const studentSchema=new Schema({
     studentid:{
         type:String
     },
+
+    applied_jobs:[{heading:String,
+        role:String,
+        database_id:String}],
+
     class:{
         type:String
     },

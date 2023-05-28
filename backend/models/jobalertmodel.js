@@ -6,7 +6,7 @@ const jobSchema=new Schema({
         type:String
     },
 
-    applied:[{year:String,
+    applied_students:[{year:String,
               name:String,
               branch:String,
               database_id:String}],
