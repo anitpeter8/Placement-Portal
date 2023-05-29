@@ -3,13 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './NewJob.css';
+
 import { Jobscontext } from '../context/Jobscontext';
 
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
 
 
-function NewJob() {
+function NewJob({NewJobmodal,onclose}) {
   
    
     const context=useContext(Jobscontext);
@@ -47,9 +48,146 @@ function NewJob() {
         }).catch()
     }
 
+    if(NewJobmodal){
+
+    
+
     return (
         <>
-            <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
+            <div className='jobedit-modal-container' >
+        <div className='jobedit-modal-content' >
+          <button className='modal-close-btn' onClick={onclose} ><p>X</p></button>
+          <div className='jobedit-modal-title'>
+            <h3>New Job</h3>
+            <hr></hr>
+          </div>
+          <div className='jobedit-modal-body'>
+          <form className="jobedit-modal-form" onSubmit={handlesubmit}>
+            <div className="title">
+              <div className="edit-label">
+                <label>Title :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-max"
+                  type="text"
+                  value={heading} onChange={(e) =>
+                    setHeading(e.target.value)
+                             } 
+                />
+              </div>
+            </div>
+            <div className="desc">
+              <div className="edit-label">
+                <label>Description :</label>
+              </div>
+              <div className="textarea">
+                <textarea
+                  className="desc-textarea"
+                  value={description} onChange={(e) =>
+                    setDescription(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="role">
+              <div className="edit-label">
+                <label>Role :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-max"
+                  type="text"
+                  value={role} onChange={(e) =>
+                    setrole(e.target.value)
+                }
+                />
+              </div>
+            </div>
+            <div className="link">
+              <div className="edit-label">
+                <label>Application link:</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-max"
+                  type="text"
+                  value={applylink} onChange={(e) =>
+                    setapplylink(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="noofbacklogs">
+              <div className="edit-label">
+                <label>No. of backlogs :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-min"
+                  type="text"
+                  value={noofbacklogs} onChange={(e) =>
+                    setnoofbacklogs(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="cgpa">
+              <div className="edit-label">
+                <label>CGPA :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-min"
+                  type="text"
+                  value={cgpa} onChange={(e) =>
+                    setcgpa(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="history">
+              <div className="edit-label">
+                <label>History:</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="textbox-min"
+                  type="text"
+                  value={history} onChange={(e) =>
+                    sethistory(e.target.value)
+                }
+                />
+              </div>
+            </div>
+            <div className="branch">
+              <div className="edit-label">
+                <label>Branch :</label>
+              </div>
+              <Multiselect
+                isObject={false}
+   options={options} showCheckbox onSelect={(e)=>{
+                    setBranch(e)
+                    console.log(branch);
+                }} onRemove={(e)=>{
+                    setBranch(e)
+                    console.log(branch);
+                }}
+                classNamePrefix="my-multiselect"
+              />
+            </div>
+
+            <div className="sub">
+              <Button className="sub-but" type="submit" onclick={onclose}>
+                Submit
+              </Button>
+            </div>
+          </form>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+            {/* <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={handleShow}>
                 + New Job
             </Button>
 
@@ -69,8 +207,15 @@ function NewJob() {
                         <label for="title" className='title-label'>Title :</label>
                         </div>
                         <div className='title_tb'>
-                        <input id="title" className='title-textbox' type='text' value={heading} onChange={(e) =>
-                            setHeading(e.target.value)
+
+                 <input
+                  className="textbox-max"
+                  type="text"
+                  required {...register("heading")}
+                />
+
+        <input id="title" className='title-textbox' type='text' value={heading} onChange={(e) =>
+               setHeading(e.target.value)
                         } />
                         </div>
                         <div className='desc-lb'>
@@ -142,8 +287,9 @@ function NewJob() {
                     </form>
                 </Modal.Body>
 
-            </Modal>
-        </>
+            </Modal>*/}
+        </> 
     );
+  }
 }
 export default NewJob;

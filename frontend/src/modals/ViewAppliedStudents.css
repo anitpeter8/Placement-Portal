@@ -1,5 +1,7 @@
 
 .applied-modal-container{
+    animation: fade-in-modal ease-in-out 300ms;
+    
     overflow-y: auto;
     width: 100vw;
     min-height: 100vh;
@@ -47,4 +49,21 @@
     background-color: brown;
     border-radius: 1rem;
     width: 80%;
+}
+
+@keyframes fade-in-modal {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fade-out-modal {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
 }
