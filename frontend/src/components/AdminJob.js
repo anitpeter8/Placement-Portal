@@ -5,10 +5,12 @@ import EditJob from "../modals/EditJob";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+
 import {
   faTrashCan,
   faArrowUpRightFromSquare,
@@ -16,6 +18,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ViewAppliedStudents from "../modals/ViewAppliedStudents";
 const Job = ({ job }) => {
+
+  const [ViewAppliedStudentsmodal,setViewAppliedStudentsmodal]=useState(false);
+  const [EditJobmodal,setEditJobmodal]=useState(false);
+
+
+
   console.log(job._id);
   const context = useContext(Jobscontext);
   const { dispatch } = context;
@@ -45,6 +53,8 @@ const Job = ({ job }) => {
                 <h4>{job.heading}</h4>
               </Card.Title>
               <div className="buttons">
+
+
                 <Button
                   className="apply-btn" title="Application link"
                   onClick={() => {
@@ -53,7 +63,20 @@ const Job = ({ job }) => {
                 >
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                 </Button>
-                <EditJob job={job} />
+
+
+
+               
+                <Button title="Edit Job" variant="secondary" 
+                onClick={()=>{setEditJobmodal(true)}}
+             
+                 >
+        <FontAwesomeIcon icon={faPenToSquare} />
+             </Button>
+
+             <EditJob job={job}  EditJobmodal={EditJobmodal} onClose={()=>{
+              setEditJobmodal(false);
+             }}/>
 
                 <Button
                   title="Delete Job"
@@ -63,11 +86,14 @@ const Job = ({ job }) => {
                 >
                   <FontAwesomeIcon icon={faTrashCan} />
                 </Button>
+
+
+
                 <Button
                   title="Applied Students"
                   variant="danger"
                   className="dlt-btn"
-                  
+                  onClick={()=>setViewAppliedStudentsmodal(true)}
                 >
                   <FontAwesomeIcon icon={faAddressBook} />
                  
@@ -75,7 +101,12 @@ const Job = ({ job }) => {
                
               </div>
             </div>
-            <ViewAppliedStudents/>
+            <ViewAppliedStudents  job={job} ViewAppliedStudentsmodal={ViewAppliedStudentsmodal} setViewAppliedStudentsmodal={()=>setViewAppliedStudentsmodal(false)}/>
+          
+          
+          
+          
+          
             <Card.Title>
               <h5>{job.role}</h5>
             </Card.Title>

@@ -5,8 +5,8 @@ import axios from "axios";
 import "./EditAnnouncement.css";
 import { Jobscontext } from "../context/Jobscontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-function EditAnnouncement({ announcement }) {
+
+function EditAnnouncement({ announcement,onclose,EditAnnouncementmodal }) {
   const context = useContext(Jobscontext);
   const { dispatch } = context;
 
@@ -33,23 +33,61 @@ function EditAnnouncement({ announcement }) {
         console.log(error);
       });
   };
+  
+  if(EditAnnouncementmodal)
+  {
 
   return (
     <>
-      <Button
-        variant="secondary"
-        style={{ backgroundColor: "#3A8ECB" }}
-        onClick={handleShow}
-      >
-        <div className="edit-btn">
-          <div>Edit</div>
-          <div>
-            <FontAwesomeIcon icon={faPenToSquare} />
+       <div className='announcementedit-modal-container' >
+        <div className='announcementedit-modal-content' >
+          <button className='modal-close-btn' onClick={onclose} ><p>X</p></button>
+          <div className='announcementedit-modal-title'>
+            <h3>Edit Announcement</h3>
+            <hr></hr>
+          </div>
+          <div className='announcementedit-modal-body'>
+          <form onSubmit={handlesubmit} className="announcement-form">
+            <div className="title">
+              <div className="title-label">
+                <label>Title :</label>
+              </div>
+              <div className="textbox">
+                <input
+                  className="text1"
+                  type="text"
+                  value={heading}
+                  onChange={(e) => setHeading(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="desc">
+              <div className="desc-label">
+                <label>Description :</label>
+              </div>
+              <div className="textarea">
+                <textarea
+                  className="desc-textarea"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="sub">
+              <Button className="sub-but" type="submit">
+                Submit
+              </Button>
+            </div>
+          </form>
+
           </div>
         </div>
-      </Button>
 
-      <Modal
+      </div>
+
+      
+
+      {/* <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
@@ -93,8 +131,9 @@ function EditAnnouncement({ announcement }) {
             </div>
           </form>
         </Modal.Body>
-      </Modal>
+      </Modal> */}
     </>
   );
+  }
 }
 export default EditAnnouncement;

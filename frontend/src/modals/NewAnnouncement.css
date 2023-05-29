@@ -31,3 +31,10 @@
     border-radius: 10%;
     border-color: black;
 }
+
+.desc-textarea{
+    background-color: #f4d1cf;
+    border:0px;
+    border-bottom:2px solid rgb(230, 127, 127);
+    resize: vertical;
+  }

@@ -3,7 +3,9 @@ import Announcement from '../../components/Announcement';
 import { useEffect, useContext } from 'react';
 import NewAnnouncement from '../../modals/NewAnnouncement';
 import '../../css/Announcements.css';
+import { useState } from 'react';
 import { Jobscontext } from "../../context/Jobscontext";
+import Button from 'react-bootstrap/Button';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
@@ -16,13 +18,19 @@ const Announcements = () => {
      
   const context=useContext(Jobscontext);
   const {announcements}=context;
-
+  const [NewAnnouncementmodal,setNewAnnouncementmodal]=useState(false);
+  
   return (
     <div className="anctmain">
       <div  className="head-container">
         <h1 className="head1">ANNOUNCEMENTS</h1>
          <div className="new-announcement-btn">
-        <NewAnnouncement />
+         <Button variant="primary" 
+         style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }}
+          onClick={()=>setNewAnnouncementmodal(true)}>
+        + New Announcement
+      </Button>
+        <NewAnnouncement onclose={()=>setNewAnnouncementmodal(false)} NewAnnouncementmodal={NewAnnouncementmodal}/>
         </div>
       </div>
       <div className="content">
@@ -37,7 +45,7 @@ const Announcements = () => {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Announcements;

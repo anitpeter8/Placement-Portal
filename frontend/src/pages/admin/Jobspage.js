@@ -4,6 +4,9 @@ import NewJob from '../../modals/NewJob';
 import Job from '../../components/AdminJob';
 import '../../css/JobsPage.css';
 import { Jobscontext } from "../../context/Jobscontext";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+
 //import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
@@ -12,7 +15,7 @@ import { Jobscontext } from "../../context/Jobscontext";
     crossorigin="anonymous"
 />
 const Jobspage = () => {
-   
+    const [NewJobmodal,setNewJobmodal]=useState(false);
     const context=useContext(Jobscontext);
     const {jobs}=context;
     console.log(jobs)
@@ -20,7 +23,11 @@ const Jobspage = () => {
         <div className="jobs-main">
             <div id="head-container" className="d-flex justify-content-between">
                 <h1 id="heading">JOB ALERTS</h1>
-                <NewJob />
+                <Button variant="primary" style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }} onClick={()=>{setNewJobmodal(true)
+                console.log("hellllllllllllllllllllllo")}} NewJobmodal={NewJobmodal} onclose={()=>setNewJobmodal(false)}>
+                New Job
+            </Button>
+                <NewJob NewJobmodal={NewJobmodal} onclose={()=>setNewJobmodal(false)}/> 
             </div>
             <div className="content">
                 {jobs && (

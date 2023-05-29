@@ -1,7 +1,73 @@
 
-.modal-content{
-    background-color: rgb(244, 123, 123);
+.jobedit-modal-container{
+  animation: fade-in-modal ease-in-out 300ms;
+  
+  overflow-y: auto;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.62); 
+  position: fixed;
+  transform: (-50%,-50%);
+  top:0;
+  left: 0;
+  z-index: 1;
 }
+.modal-close-btn{
+  /* position:relative;
+  top:10px;
+  left: -10px; */
+  color: white;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(237, 79, 79);
+  border: 2px solid rgb(147, 2, 2);
+  border-radius: 5px;
+}
+.jobedit-modal-content{
+  overflow-y: auto;
+ margin:20px auto ;
+ border-radius: 20px;
+ padding: 20px 50px;
+ background-repeat: no-repeat;
+ background-color: rgb(249, 244, 243);
+ background-blend-mode: multiply;
+ background-image: url("card-bg.jpg");
+ background-size: cover;
+ width: 100%;
+ max-width: 650px;
+ border: 2px solid rgb(227, 173, 203);
+ 
+}
+.jobedit-modal-body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jobedit-modal-table{
+  background-color: brown;
+  border-radius: 1rem;
+  width: 80%;
+}
+
+@keyframes fade-in-modal {
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+@keyframes fade-out-modal {
+  0%{
+      opacity: 1;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+
 .textbox-max{
     width:100%;
     color: black;
@@ -64,4 +130,19 @@
     margin-top: 5%;
   }
   
+  .jobedit-modal-form{
+    width: 90%;
+  }
  
+  input{
+    background-color: #f4d1cf;
+    border:0px;
+    border-bottom:2px solid rgb(230, 127, 127);
+  }
+
+  .desc-textarea{
+    background-color: #f4d1cf;
+    border:0px;
+    border-bottom:2px solid rgb(230, 127, 127);
+    resize: vertical;
+  }
