@@ -46,8 +46,8 @@ const Job = ({ job,student }) => {
       console.log(error)
       console.log("hi")
     })
-    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,{year:student.year,
-    name:student.name,branch:student.branch,database_id:student._id}).then((response) => {
+    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,{year:student.class,
+    name:student.fullname,branch:student.branch,database_id:student._id}).then((response) => {
     console.log(response.data);
     console.log('student added')
 
