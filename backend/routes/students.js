@@ -55,7 +55,21 @@ routes.patch('/addjob/:id',async(req,res)=>{
 })
 
 //paste
-
-
+routes.put('/deletejob/:id/:jobid',async(req,res)=>{
+    const id=req.params.id;
+    const jobid=req.params.jobid;
+    try{
+      const job= await Students.findOneAndUpdate({_id:id},
+        {
+            $pull:{applied_jobs:{database_id:jobid}}
+        });
+       const updatedjob=await Students.findById({_id:id});
+       res.json(updatedjob);
+    }
+    catch(error)
+    {
+        res.status(400).json({error:error.message});
+    }
+})
 
 module.exports=routes;

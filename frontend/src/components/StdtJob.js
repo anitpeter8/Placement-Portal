@@ -67,13 +67,15 @@ else{
     console.log(error.message);
   })
 //paste
-
-
+  axios.put(`http://localhost:9000/api/jobs/deletejob/${student._id}/${job._id}`).then((response)=>
+  {
+    console.log(response.data);
+    console.log('job removed');
+  }).catch((error)=>{
+    console.log(error.message);
+  })
+  }
 }
-
-
-    }
-  
 
   return (
     <div className="single-card">
