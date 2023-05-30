@@ -2,34 +2,28 @@
 .mob_dob,.street_city,.dis_pin,.cgpa_nback,
 .coc_amcat,.his_link{
     display: flex;
+    
     justify-content: space-between;
+    align-items: center;
 }
 .sub-but-student{
     margin-top: 2%;
-    background-color: rgb(41, 154, 236);
+    background-color: rgb(225, 153, 245);
     border: 5%;
     border-radius: 10%;
-    border-color: black;
+    border-color: rgb(227, 119, 249);
 }
-.textst{
-    background-color: white;
-    color:black;
-    width:fit-content;
-    border-radius: 5px;
-}
-.textaddress{
-    width:fit-content;
-    border-radius: 5px;
-    border-color: black;
-}
+
+
 .edit-btn {
     display: flex;
     justify-content: center;
     gap: .5vw;
 }
 .district-list{
-    background-color: white;
-    color:black;
+    background-color: #f4d1cf;
+    border:0px;
+    color:rgb(0, 0, 0);
     border-color: black;
     border-radius: 5px;
     width:100%;
@@ -40,3 +34,100 @@
     position: relative;
     bottom: 15px;
 }
+
+
+
+.jobedit-modal-container{
+    animation: fade-in-modal ease-in-out 300ms;
+    
+    overflow-y: auto;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.62); 
+    position: fixed;
+    transform: (-50%,-50%);
+    top:0;
+    left: 0;
+    z-index: 1;
+  }
+  .modal-close-btn{
+    /* position:relative;
+    top:10px;
+    left: -10px; */
+    color: white;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(237, 79, 79);
+    border: 2px solid rgb(147, 2, 2);
+    border-radius: 5px;
+  }
+  .jobedit-modal-content{
+    overflow-y: auto;
+   margin:20px auto ;
+   border-radius: 20px;
+   padding: 20px 50px;
+   background-repeat: no-repeat;
+   background-color: rgb(249, 244, 243);
+   background-blend-mode: multiply;
+   background-image: url("card-bg.jpg");
+   background-size: cover;
+   width: 100%;
+   max-width: 650px;
+   border: 2px solid rgb(227, 173, 203);
+   
+  }
+  .jobedit-modal-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .jobedit-modal-table{
+    background-color: brown;
+    border-radius: 1rem;
+    width: 80%;
+  }
+  
+  @keyframes fade-in-modal {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+  }
+  @keyframes fade-out-modal {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+  }
+
+
+
+  .jobedit-modal-form{
+    width: 90%;
+  }
+ 
+  input{
+   
+    background-color: #f4d1cf;
+    border:0px;
+    border-bottom:2px solid rgb(230, 127, 127);
+    border-radius: 5px;
+  }
+
+
+  .desc-textarea{
+    background-color: #f4d1cf;
+    border:0px;
+    border-bottom:2px solid rgb(230, 127, 127);
+    resize: vertical;
+  }
+
+
+
+
