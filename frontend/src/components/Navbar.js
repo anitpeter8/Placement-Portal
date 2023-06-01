@@ -13,7 +13,10 @@ const Navbar = () => {
         <NavLink className="heading" activeClassName="active" to='/Statistics'> Statistics </NavLink>
       </div>
       <div className="logout">
-        <NavLink className="log" to="/"> Logout </NavLink>
+        <NavLink className="log" to="/" onClick={()=>{
+           localStorage.removeItem('roleuser')
+           dispatchRoleStudent({ type: "LOGOUT"});
+        }}> Logout </NavLink>
       </div>
     </nav>
   )

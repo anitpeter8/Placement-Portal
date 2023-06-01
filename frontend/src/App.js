@@ -22,19 +22,28 @@ import NavbarFaculty from "./pages/faculty/NavFaculty";
 import Registration from "./pages/Registration";
 import "./App.css";
 import Login from "./pages/Login";
-
+import { UserAuth } from "./context/authcontext";
 import { userStudent } from "./context/userStudentContext";
 import { useContext, useEffect } from "react";
 
 import Myprofile from "./pages/student/Myprofile";
-import axios from "axios";
-import { Jobscontext } from "./context/Jobscontext";
 
 function App() {
   const {dispatchstudent } = useContext(userStudent);
  
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
+
+
    const navigate=useNavigate();
   useEffect(() => {
+    const roleuser=localStorage.getItem('roleuser');
+    dispatchRoleStudent({ type: "LOGIN", payload: JSON.parse(roleuser)});
+    
     const student = localStorage.getItem('studentuser');
     if (student) {
       dispatchstudent({ type: "SETSTUDENTUSER", payload: JSON.parse(student)});

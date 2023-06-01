@@ -88,16 +88,22 @@ function Login() {
     axios
       .post("http://localhost:9000/roles/login", { email: emailid, password })
       .then((res) => {
-        console.log(res.data);
-        dispatchRoleStudent({ type: "LOGIN", payload: res.data });
-      
-        axios.get('http://localhost:9000/api/jobs').then((response)=>{
+
+        dispatchRoleStudent({ type: "LOGIN", payload:res.data});
+        localStorage.setItem('roleuser',JSON.stringify(res.data));
+        
+        axios.get('http://localhost:9000/api/jobs',
+        { headers: { 'Authorization': `Bearer ${res.data.token}` }}).then((response)=>{
           dispatch({type:'SETJOBS',payload:response.data});
+        }).catch((error)=>{
+          console.log(error);
         })
         axios.get('http://localhost:9000/api/announcements',
-        { headers: { 'Authorization': `Basic ${user.token}` }}
+        { headers: { 'Authorization': `Bearer ${res.data.token}` }}
         ).then((response)=>{
           dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
+        }).catch((error)=>{
+          console.log(error);
         })
         if (res.data.user.role == "student") {
           axios
@@ -115,8 +121,8 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.log(error.response.data.error);
-        setError(error.response.data.error);
+         console.log(error.response.data);
+         setError(error.response.data.error)
       });
   };
 

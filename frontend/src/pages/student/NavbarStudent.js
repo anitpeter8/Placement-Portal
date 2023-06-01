@@ -3,8 +3,16 @@ import { NavLink, Outlet } from 'react-router-dom'
 import '../../css/Navbar.css'
 import { useContext, useEffect } from "react";
 import { userStudent } from '../../context/userStudentContext';
+import { UserAuth } from '../../context/authcontext';
 
 const Navbar = () => {
+
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
   const {dispatchstudent } = useContext(userStudent);
   return (
     <>
@@ -53,6 +61,8 @@ const Navbar = () => {
                   console.log('logout')
                   
                   localStorage.removeItem('studentuser')
+                  localStorage.removeItem('roleuser')
+                  dispatchRoleStudent({ type: "LOGOUT"});
                   dispatchstudent({ type: "REMOVEUSER"});}
                 }
             >

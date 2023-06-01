@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink ,Outlet} from 'react-router-dom'
+import { UserAuth } from '../../context/authcontext';
+
 import '../../css/Navbar.css'
 const Navbar = () => {
+
+const authcontext = useContext(UserAuth);
+if (!authcontext) {
+  console.log("cannot ascess outside the provider");
+} 
+const { user, dispatchRoleStudent } = authcontext;
   return (
     <>
       <div>
@@ -44,7 +52,10 @@ const Navbar = () => {
             <NavLink
               className="log"
               to="/"
-              onClick={localStorage.removeItem("student")}
+              onClick={()=>{
+                localStorage.removeItem('roleuser')
+                dispatchRoleStudent({ type: "LOGOUT"});
+              }}
             >
               {" "}
               Logout{" "}
