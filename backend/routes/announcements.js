@@ -1,6 +1,8 @@
-const express=require('express')
+const express=require('express');
+const { tokenauth } = require('../middleware/tokenauth');
 const routes=express.Router();
 const Announcements=require('../models/announcementmodel')
+routes.use(tokenauth);
 routes.get('/',async (req,res)=>
 {   try{
     const announcementss=await Announcements.find({})

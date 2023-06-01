@@ -1,7 +1,11 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import '../../css/Navbar.css'
+import { useContext, useEffect } from "react";
+import { userStudent } from '../../context/userStudentContext';
+
 const Navbar = () => {
+  const {dispatchstudent } = useContext(userStudent);
   return (
     <>
       <div>
@@ -47,7 +51,9 @@ const Navbar = () => {
               onClick={
                 ()=>{
                   console.log('logout')
-                  localStorage.removeItem("studentuser")}
+                  
+                  localStorage.removeItem('studentuser')
+                  dispatchstudent({ type: "REMOVEUSER"});}
                 }
             >
               {" "}

@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 import AnnounceAdmin from "./pages/admin/Announcements";
 import JobsAdmin from "./pages/admin/Jobspage";
@@ -29,27 +31,22 @@ import axios from "axios";
 import { Jobscontext } from "./context/Jobscontext";
 
 function App() {
-
   const {dispatchstudent } = useContext(userStudent);
-  const {dispatch}=useContext(Jobscontext);
  
+   const navigate=useNavigate();
   useEffect(() => {
     const student = localStorage.getItem('studentuser');
     if (student) {
       dispatchstudent({ type: "SETSTUDENTUSER", payload: JSON.parse(student)});
+      navigate('/Student/Announcements');
     }
-    axios.get('http://localhost:9000/api/announcements').then((response)=>{
-      dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
-    })
-    axios.get('http://localhost:9000/api/jobs').then((response)=>{
-      dispatch({type:'SETJOBS',payload:response.data});
-    })
-
+  
   }, [])
+ 
   return (
     <>
       
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
@@ -73,7 +70,7 @@ function App() {
             <Route path="/faculty/Statistics" element={<StatisticsFaculty />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </>
   );
 }

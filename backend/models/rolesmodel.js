@@ -16,6 +16,7 @@ rolesSchema.statics.Login=async function (email,password) {
     }
     else {
         const user=await this.findOne({emailid:email});
+        console.log(email);
         if(!user){
             throw Error('User doesnt Exist');
         }

@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserAuthContextProvider } from './context/authcontext';
 import { UserStudentProvider } from './context/userStudentContext';
 import { JobscontextProvider } from './context/Jobscontext';
+import { BrowserRouter, Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +15,10 @@ root.render(
       <UserAuthContextProvider>
     <UserStudentProvider>
       <JobscontextProvider>
-    <App />
+        <BrowserRouter>
+        <App />
+        </BrowserRouter>
+ 
       </JobscontextProvider>
     </UserStudentProvider>
     </UserAuthContextProvider>

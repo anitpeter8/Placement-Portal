@@ -1,7 +1,9 @@
-const express=require('express')
+const express=require('express');
+const { tokenauth } = require('../middleware/tokenauth');
 const Jobs=require('../models/jobalertmodel');
 const routes=express.Router();
 
+routes.use(tokenauth);
 routes.get('/',async(req,res)=>{
     try {
         const jobs=await Jobs.find({});

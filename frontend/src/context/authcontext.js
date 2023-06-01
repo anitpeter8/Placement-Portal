@@ -17,12 +17,12 @@ export const authReducer=(state,action)=>{
 }
 
 export const UserAuthContextProvider=({children})=>{
-   const [state,dispatch]=useReducer(authReducer,{
+   const [state,dispatchRoleStudent]=useReducer(authReducer,{
     user:null
    })
    console.log("authcontext",state);
     return(
-        <UserAuth.Provider value={{...state,dispatch}} >
+        <UserAuth.Provider value={{...state,dispatchRoleStudent}} >
             {children}
         </UserAuth.Provider>
     )

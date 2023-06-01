@@ -2,28 +2,30 @@ import axios from "axios";
 import { useContext, useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authcontext";
+import { Jobscontext } from "../context/Jobscontext";
 import { userStudent } from "../context/userStudentContext";
 import "../css/Login.css";
 
 function Login() {
+  const {dispatch}=useContext(Jobscontext);
   //context things
   const context = useContext(userStudent);
   const navigate=useNavigate();
   const { student, dispatchstudent } = useContext(userStudent);
   useEffect(()=>{
-    const student= localStorage.getItem('student');
-    if(student){
+    // const student= localStorage.getItem('student');
+    // if(student){
 
-      dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
-      navigate('/Student/Announcements');
-    }
+    //   dispatchstudent({ type: "SETSTUDENTUSER", payload: student });
+    //   navigate('/Student/Announcements');
+    // }
     
   },[])
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
   } 
-  const { user, dispatch } = authcontext;
+  const { user, dispatchRoleStudent } = authcontext;
  
 
 
@@ -87,19 +89,28 @@ function Login() {
       .post("http://localhost:9000/roles/login", { email: emailid, password })
       .then((res) => {
         console.log(res.data);
-        dispatch({ type: "LOGIN", payload: res.data });
-        if (res.data.role == "student") {
+        dispatchRoleStudent({ type: "LOGIN", payload: res.data });
+      
+        axios.get('http://localhost:9000/api/jobs').then((response)=>{
+          dispatch({type:'SETJOBS',payload:response.data});
+        })
+        axios.get('http://localhost:9000/api/announcements',
+        { headers: { 'Authorization': `Basic ${user.token}` }}
+        ).then((response)=>{
+          dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
+        })
+        if (res.data.user.role == "student") {
           axios
-            .get(`http://localhost:9000/students/${res.data.emailid}`)
+            .get(`http://localhost:9000/students/${res.data.user.emailid}`)
             .then((res) => {
               console.log(res.data);
               dispatchstudent({ type: "SETSTUDENTUSER", payload: res.data });
               localStorage.setItem("studentuser",JSON.stringify(res.data));
             });
           navigate("/student/Announcements");
-        } else if (res.data.role == "faculty") {
+        } else if (res.data.user.role == "faculty") {
           navigate("/faculty/Announcements");
-        } else if (res.data.role == "admin") {
+        } else if (res.data.user.role == "admin") {
           navigate("/admin/Announcements");
         }
       })
