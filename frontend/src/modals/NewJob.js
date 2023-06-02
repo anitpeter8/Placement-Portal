@@ -8,10 +8,21 @@ import { Jobscontext } from '../context/Jobscontext';
 
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
+import { UserAuth } from '../context/authcontext';
+
 
 
 function NewJob({NewJobmodal,onclose}) {
   
+
+  
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
+ 
    
     const context=useContext(Jobscontext);
     const {dispatch}=context; 
@@ -33,7 +44,8 @@ function NewJob({NewJobmodal,onclose}) {
 
         console.log(heading, description,role,noofbacklogs,cgpa,history,branch);
         const job = { heading, description,role,noofbacklogs,cgpa,history,branch };
-        axios.post("http://localhost:9000/api/jobs", job).then((response) => {
+        axios.post("http://localhost:9000/api/jobs", job ,
+        { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
             console.log(response.data);
             console.log('vishayam')
             dispatch({type:'CREATEJOB',payload:response.data});
