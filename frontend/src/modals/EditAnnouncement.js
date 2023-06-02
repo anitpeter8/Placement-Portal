@@ -5,8 +5,16 @@ import axios from "axios";
 import "./EditAnnouncement.css";
 import { Jobscontext } from "../context/Jobscontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UserAuth } from '../context/authcontext';
+
 
 function EditAnnouncement({ announcement,onclose,EditAnnouncementmodal }) {
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
   const context = useContext(Jobscontext);
   const { dispatch } = context;
 
@@ -23,7 +31,8 @@ function EditAnnouncement({ announcement,onclose,EditAnnouncementmodal }) {
     const id = announcement._id;
     const announcementee = { heading, description };
     axios
-      .patch("http://localhost:9000/api/announcements/" + id, announcementee)
+      .patch("http://localhost:9000/api/announcements/" + id, announcementee,
+      { headers: { 'Authorization': `Bearer ${user.token}` }})
       .then((response) => {
         console.log(response.data);
         dispatch({ type: "UPDATEANNOUNCEMENT", payload: response.data });

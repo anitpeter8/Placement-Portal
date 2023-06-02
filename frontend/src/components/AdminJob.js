@@ -10,6 +10,7 @@ import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { UserAuth } from "../context/authcontext";
 
 import {
   faTrashCan,
@@ -17,12 +18,17 @@ import {
   faAddressBook,
 } from "@fortawesome/free-solid-svg-icons";
 import ViewAppliedStudents from "../modals/ViewAppliedStudents";
+//import { UserAuth, UserAuthContextProvider } from "../context/authcontext";
 const Job = ({ job }) => {
 
   const [ViewAppliedStudentsmodal,setViewAppliedStudentsmodal]=useState(false);
   const [EditJobmodal,setEditJobmodal]=useState(false);
 
-
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
 
   console.log(job._id);
   const context = useContext(Jobscontext);
@@ -30,7 +36,8 @@ const Job = ({ job }) => {
   const handledelete = () => {
     console.log(job._id);
     axios
-      .delete(`http://localhost:9000/api/jobs/${job._id}`)
+      .delete(`http://localhost:9000/api/jobs/${job._id}`,
+      { headers: { 'Authorization': `Bearer ${user.token}` }})
       .then((response) => {
         console.log(response.data._id);
         dispatch({ type: "DELETEJOB", payload: response.data });

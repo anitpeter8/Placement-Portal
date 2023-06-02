@@ -9,7 +9,15 @@ import 'react-multiple-select-dropdown-lite/dist/index.css'
 import Multiselect from 'multiselect-react-dropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { UserAuth } from '../context/authcontext';
+
 function EditJob({ job, EditJobmodal, onClose }) {
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const { handleSubmit, register } = useForm({
@@ -24,7 +32,8 @@ function EditJob({ job, EditJobmodal, onClose }) {
     /*console.log(applylink, description,role,noofbacklogs,cgpa,history,branch);*/
     const id = job._id;
     /*const jobee = {applylink, description,role,noofbacklogs,cgpa,history,branch}*/
-    axios.patch('http://localhost:9000/api/jobs/' + id, data).then((response) => {
+    axios.patch('http://localhost:9000/api/jobs/' + id, data,
+    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data);
       dispatch({ type: 'UPDATEJOB', payload: response.data });
       console.log('vishayam updated')

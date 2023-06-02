@@ -5,7 +5,16 @@ import axios from 'axios';
 import './NewAnnouncement.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Jobscontext } from '../context/Jobscontext';
+import { UserAuth } from '../context/authcontext';
+
 function NewAnnouncement({onclose,NewAnnouncementmodal}) {
+
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+ 
   const context=useContext(Jobscontext);
   const {dispatch}=context;
   const [show, setShow] = useState(false);
@@ -19,7 +28,8 @@ function NewAnnouncement({onclose,NewAnnouncementmodal}) {
 
     console.log(heading, description);
     const announcement = { heading, description };
-    axios.post("http://localhost:9000/api/announcements", announcement).then((response) => {
+    axios.post("http://localhost:9000/api/announcements", announcement, 
+    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data);
       dispatch({type:'CREATEANNOUNCEMENT',payload:response.data});
 

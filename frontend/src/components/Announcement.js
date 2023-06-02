@@ -13,12 +13,20 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
+import { UserAuth } from "../context/authcontext";
 const Announcement = ({ announcement }) => {
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+
+  const { user, dispatchRoleStudent } = authcontext;
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const handledelete = () => {
     console.log(announcement._id);
-    axios.delete(`http://localhost:9000/api/announcements/${announcement._id}`).then((response) => {
+    axios.delete(`http://localhost:9000/api/announcements/${announcement._id}`,
+    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data._id);
       dispatch({ type: 'DELETEANNOUNCEMENT', payload: response.data })
 
