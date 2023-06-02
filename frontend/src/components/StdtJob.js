@@ -11,14 +11,23 @@ import { useContext } from "react";
 import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { useState } from "react";
+import { UserAuth } from '../context/authcontext';
+
 const Job = ({ job,student }) => {
+  const authcontext = useContext(UserAuth);
+  if (!authcontext) {
+    console.log("cannot ascess outside the provider");
+  } 
+  const { user, dispatchRoleStudent } = authcontext;
+
 
   console.log(job._id);
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const handledelete = () => {
     console.log(job._id);
-    axios.delete(`http://localhost:9000/api/jobs/${job._id}`).then((response) => {
+    axios.delete(`http://localhost:9000/api/jobs/${job._id}`,
+    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data._id);
       dispatch({ type: 'DELETEJOB', payload: response.data })
 
@@ -38,7 +47,8 @@ const Job = ({ job,student }) => {
       
       axios.patch('http://localhost:9000/students/addjob/' + student._id,{heading:job.heading,
       role:job.role,
-      database_id:job._id}).then((response) => {
+      database_id:job._id},
+      { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data);
       console.log('job added')
 
@@ -46,8 +56,10 @@ const Job = ({ job,student }) => {
       console.log(error)
       console.log("hi")
     })
-    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,{year:student.class,
-    name:student.fullname,branch:student.branch,database_id:student._id}).then((response) => {
+    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,
+    {year:student.class,
+    name:student.fullname,branch:student.branch,database_id:student._id},
+    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
     console.log(response.data);
     console.log('student added')
 
@@ -59,7 +71,8 @@ const Job = ({ job,student }) => {
 
 else{
   //copy
-  axios.put(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}`).then((response)=>
+  axios.put(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}`,
+  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>
   {
     console.log(response.data);
     console.log('student removed');
@@ -67,7 +80,8 @@ else{
     console.log(error.message);
   })
 //paste
-  axios.put(`http://localhost:9000/api/jobs/deletejob/${student._id}/${job._id}`).then((response)=>
+  axios.put(`http://localhost:9000/students/deletejob/${student._id}/${job._id}`,
+  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>
   {
     console.log(response.data);
     console.log('job removed');
