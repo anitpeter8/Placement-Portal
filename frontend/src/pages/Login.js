@@ -5,6 +5,7 @@ import { UserAuth } from "../context/authcontext";
 import { Jobscontext } from "../context/Jobscontext";
 import { userStudent } from "../context/userStudentContext";
 import "../css/Login.css";
+import Logo from '../css/MITS LOGO.png';
 
 function Login() {
   const {dispatch}=useContext(Jobscontext);
@@ -130,6 +131,7 @@ function Login() {
     <div className="main">
       <div className="containercss">
         <div className="container--row-1">
+          <img src={Logo}  className="logo" />
           <p className="headercss">
             Muthoot Institute of Technology and Science
           </p>

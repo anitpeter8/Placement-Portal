@@ -13,6 +13,13 @@
     display: flex;
 }
 
+.logo{
+    width: 5%;
+    height: 60%;
+    padding-right: 10px;
+    margin-top: 0.1rem;
+}
+
 #logo {
     width: 80px;
     height: 40px;
@@ -174,3 +181,4 @@
     background-color:#660a0a;
     color:#EBDCDC;
 }
+
