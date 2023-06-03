@@ -41,6 +41,7 @@ function NewJob({NewJobmodal,onclose}) {
     const handleShow = () => setShow(true);
     const handlesubmit = (e) => {
         e.preventDefault();
+        onclose();
 
         console.log(heading, description,role,noofbacklogs,cgpa,history,branch);
         const job = { heading, description,role,noofbacklogs,cgpa,history,branch };
@@ -186,7 +187,7 @@ function NewJob({NewJobmodal,onclose}) {
             </div>
 
             <div className="sub">
-              <Button className="sub-but" type="submit" onclick={onclose}>
+              <Button className="sub-but" type="submit" >
                 Submit
               </Button>
             </div>

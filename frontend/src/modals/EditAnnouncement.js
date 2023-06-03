@@ -26,6 +26,7 @@ function EditAnnouncement({ announcement,onclose,EditAnnouncementmodal }) {
   const handleShow = () => setShow(true);
   const handlesubmit = (e) => {
     e.preventDefault();
+    onclose();
 
     console.log(heading, description);
     const id = announcement._id;

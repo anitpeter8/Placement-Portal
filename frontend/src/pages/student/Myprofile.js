@@ -84,9 +84,11 @@ function Myprofile() {
                 <input type="number" id="twelth" name="twelth" required {...register('twelth')} disabled></input>
                 <br></br>
 
-                <label for="resume">Resume Link:</label>
-                <input type="text" id="resume" name="resumelink" required {...register('resumelink')} disabled></input>
-                <br></br>
+                <div className="check">
+                <label for="history" className="history1">Do you have any history of backlogs:</label>
+                <input type="checkbox" name="historyofbacklogs" {...register('historyofbacklogs')} disabled></input>
+              </div>
+
               </div>
 
               <div class="details">
@@ -134,17 +136,16 @@ function Myprofile() {
                 <input type="number" id="tenth" name="tenth" required {...register('tenth')} disabled></input>
                 <br></br>
    
+                <label for="resume">Resume Link:</label>
+                <input type="text" id="resume" name="resumelink" required {...register('resumelink')} disabled></input>
+                <br></br>
               
-              
-                <div className="check">
-                <label for="history" className="history1">Do you have any history of backlogs:</label>
-                <input type="checkbox" className="history" name="historyofbacklogs" {...register('historyofbacklogs')} disabled></input>
-              </div>
+                
               
               </div>
             </div>
             <div class="button1">
-              <button class="button">submit</button>
+              <button class="button">Submit</button>
             </div>
           </form>
         </div>

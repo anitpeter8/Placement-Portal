@@ -24,7 +24,9 @@ function NewAnnouncement({onclose,NewAnnouncementmodal}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handlesubmit = (e) => {
+   
     e.preventDefault();
+    onclose()
 
     console.log(heading, description);
     const announcement = { heading, description };

@@ -17,12 +17,12 @@ function EditJob({ job, EditJobmodal, onClose }) {
     console.log("cannot ascess outside the provider");
   } 
   const { user, dispatchRoleStudent } = authcontext;
- 
+  const [branch,setBranch]=useState([]);
+
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const { handleSubmit, register } = useForm({
     defaultValues: job
-
   });
   const [show, setShow] = useState(false);
   const options = ['CSE', 'EEE', 'ECE', 'MECH', 'AI', 'CIVIL']
@@ -31,12 +31,14 @@ function EditJob({ job, EditJobmodal, onClose }) {
   const onSubmit = (data) => {
     /*console.log(applylink, description,role,noofbacklogs,cgpa,history,branch);*/
     const id = job._id;
+    data['branch']=branch;
     /*const jobee = {applylink, description,role,noofbacklogs,cgpa,history,branch}*/
     axios.patch('http://localhost:9000/api/jobs/' + id, data,
     { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data);
       dispatch({ type: 'UPDATEJOB', payload: response.data });
       console.log('vishayam updated')
+      onClose();
 
     }).catch((error) => {
       console.log(error)
@@ -149,10 +151,16 @@ function EditJob({ job, EditJobmodal, onClose }) {
                   isObject={false}
                   options={options}
                    
-                  selectedValues={selectedValue}
+                  selectedValues={job.branch}
 
                   showCheckbox
-                  required {...register("branch")}
+                  onSelect={(e)=>{
+                    setBranch(e)
+                    console.log(branch);
+                }} onRemove={(e)=>{
+                    setBranch(e)
+                    console.log(branch);
+                }}
                   className="my-multiselect"
                   classNamePrefix="my-multiselect"
                 /> 
@@ -160,7 +168,7 @@ function EditJob({ job, EditJobmodal, onClose }) {
               </div>
 
               <div className="sub">
-                <Button className="sub-but" type="submit" onClick={onClose}>
+                <Button className="sub-but" type="submit">
                   Submit
                 </Button>
               </div>
