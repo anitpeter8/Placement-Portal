@@ -71,16 +71,10 @@ const Job = ({ job,student }) => {
 
 else{
   //copy
-  axios.put(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}`,
-  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>
-  {
-    console.log(response.data);
-    console.log('student removed');
-  }).catch((error)=>{
-    console.log(error.message);
-  })
+  
+ 
 //paste
-  axios.put(`http://localhost:9000/students/deletejob/${student._id}/${job._id}`,
+  axios.put(`http://localhost:9000/students/deletejob/${student._id}/${job._id}`,{mssg:'hello'},
   { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>
   {
     console.log(response.data);
@@ -88,6 +82,17 @@ else{
   }).catch((error)=>{
     console.log(error.message);
   })
+
+  axios.patch(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}/`,{id:job._id},
+  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>{
+    console.log('student removed');
+  }
+  ).catch((error)=>{
+   console.log(error);
+ })
+
+
+  
   }
 }
 
