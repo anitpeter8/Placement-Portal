@@ -34,7 +34,7 @@ background-color: rgb(168, 125, 116);
 }
 
 .details input,
-select {
+ select {
   width: 400px;
   height: 30px;
   margin-top: 10px;
@@ -112,6 +112,7 @@ select {
   background-size: cover;
   background-blend-mode: normal;
   background-color: #0d0204;
+  box-shadow: 0 20px 40px rgba(247, 243, 243, 0.18);
 }
 
 .check{
