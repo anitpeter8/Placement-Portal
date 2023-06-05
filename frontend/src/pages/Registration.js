@@ -3,11 +3,15 @@ import "../css/Registration.css";
 import { userStudent } from "../context/userStudentContext";
 import { useForm, useFormContext } from "react-hook-form";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import SR from "../modals/SR";
 const Registration = () => {
+  const location=useLocation();
     const { student, dispatchstudent } = useContext(userStudent);
     const Navigate = useNavigate();
     const { handleSubmit, register } = useForm();
+    const[SRmodal,setSRmodal]=useState(false);
+    
     const onSubmit = (data) => {
         console.log(data);
         axios
@@ -15,14 +19,17 @@ const Registration = () => {
             .then((response) => {
                 console.log(response.data);
                 dispatchstudent({ type: "SETSTUDENTUSER", payload: response.data });
-                Navigate("/student/Announcements");
+                setSRmodal(true);
+               
             })
             .catch((error) => {
                 console.log(error.message);
             });
+        
     };
 
     return (
+     
       <div className="registration">
         <div className="reg-box">
           <h1 className="head">Student Registration</h1>
@@ -49,6 +56,7 @@ const Registration = () => {
                 <br></br>
                 <label for="email">Email ID :</label>
                 <input
+                value={location.state.emailid}
                   type="email"
                   name="email"
                   placeholder=" "
@@ -224,6 +232,9 @@ const Registration = () => {
             </div>
           </form>
         </div>
+        <SR SRmodal={SRmodal} onclose={()=>{setSRmodal(false);
+         Navigate("/");}
+        }  />
       </div>
     );
 };

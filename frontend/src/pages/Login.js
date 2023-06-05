@@ -74,7 +74,7 @@ function Login() {
         .post("http://localhost:9000/roles", user)
         .then((response) => {
           console.log(response.data);
-          navigate("/registration");
+          navigate("/registration",{state:{emailid:email}});
         })
         .catch((error) => {
           console.log(error);
