@@ -7,25 +7,34 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { useState } from "react";
 import { UserAuth } from '../context/authcontext';
 
 const Job = ({ job,student }) => {
+  const[toggle,setToggle]=useState()
+  console.log(job.applied_students);
+  console.log(student._id);
+  useEffect(()=>{
+    job.applied_students.map((stud)=>{
+      console.log(stud.database_id);
+    if(stud.database_id===student._id)
+    {setToggle(true)
+    console.log("true")}
+  })}
+
+    ,[setToggle,toggle])
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
   } 
   const { user, dispatchRoleStudent } = authcontext;
 
-
-  console.log(job._id);
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const handledelete = () => {
-    console.log(job._id);
     axios.delete(`http://localhost:9000/api/jobs/${job._id}`,
     { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
       console.log(response.data._id);
@@ -135,9 +144,9 @@ else{
               <h5>{job.role}</h5>
               <h6>Have you applied?</h6>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={handlechange} />
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={handlechange} defaultChecked={toggle}/>
               </div>
-              {checked===true?'Checked':''}
+      
             </Card.Title>
           </div>
         </Card.Header>
