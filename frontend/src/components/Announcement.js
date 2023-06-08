@@ -47,20 +47,19 @@ const Announcement = ({ announcement }) => {
             <Card.Title>
               <h5>{moment(announcement.createdAt).format("LL")}</h5>
             </Card.Title>
-           <div >
+           <div className="btns">
             
             <Button
               variant="secondary"
               style={{ backgroundColor: "#3A8ECB" , marginleft:"10px" }}
               onClick={()=>setEditAnnouncementmodal(true)}>
 
-              <div className="btns">
+              
                 <div className="edit-btn">
                   <div>Edit</div>
                   <div>
                     <FontAwesomeIcon icon={faPenToSquare} />
                   </div>
-                </div>
                 </div>
 
             </Button>
