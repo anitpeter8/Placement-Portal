@@ -46,6 +46,14 @@ const Job = ({ job }) => {
         console.log(error);
       });
   };
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+  const onClickUrl = (url) => {
+    return () => openInNewTab(url);
+  };
+
 
   return (
     <div className="single-card">
@@ -60,30 +68,31 @@ const Job = ({ job }) => {
                 <h4>{job.heading}</h4>
               </Card.Title>
               <div className="buttons">
-
-
                 <Button
-                  className="apply-btn" title="Application link"
-                  onClick={() => {
-                    window.location.href = job.applylink;
-                  }}
+                  className="apply-btn"
+                  title="Application link"
+                  onClick={onClickUrl(job.applylink)}
                 >
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                 </Button>
 
+                <Button
+                  title="Edit Job"
+                  variant="secondary"
+                  onClick={() => {
+                    setEditJobmodal(true);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </Button>
 
-
-               
-                <Button title="Edit Job" variant="secondary" 
-                onClick={()=>{setEditJobmodal(true)}}
-             
-                 >
-        <FontAwesomeIcon icon={faPenToSquare} />
-             </Button>
-
-             <EditJob job={job}  EditJobmodal={EditJobmodal} onClose={()=>{
-              setEditJobmodal(false);
-             }}/>
+                <EditJob
+                  job={job}
+                  EditJobmodal={EditJobmodal}
+                  onClose={() => {
+                    setEditJobmodal(false);
+                  }}
+                />
 
                 <Button
                   title="Delete Job"
@@ -94,26 +103,24 @@ const Job = ({ job }) => {
                   <FontAwesomeIcon icon={faTrashCan} />
                 </Button>
 
-
-
                 <Button
                   title="Applied Students"
                   variant="danger"
                   className="dlt-btn"
-                  onClick={()=>setViewAppliedStudentsmodal(true)}
+                  onClick={() => setViewAppliedStudentsmodal(true)}
                 >
                   <FontAwesomeIcon icon={faAddressBook} />
-                 
                 </Button>
-               
               </div>
             </div>
-            <ViewAppliedStudents  job={job} ViewAppliedStudentsmodal={ViewAppliedStudentsmodal} setViewAppliedStudentsmodal={()=>setViewAppliedStudentsmodal(false)}/>
-          
-          
-          
-          
-          
+            <ViewAppliedStudents
+              job={job}
+              ViewAppliedStudentsmodal={ViewAppliedStudentsmodal}
+              setViewAppliedStudentsmodal={() =>
+                setViewAppliedStudentsmodal(false)
+              }
+            />
+
             <Card.Title>
               <h5>{job.role}</h5>
             </Card.Title>
