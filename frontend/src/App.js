@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-
+import axios from "axios";
 import AnnounceAdmin from "./pages/admin/Announcements";
 import JobsAdmin from "./pages/admin/Jobspage";
 import StudentsAdmin from "./pages/admin/Students";
@@ -24,12 +23,16 @@ import "./App.css";
 import Login from "./pages/Login";
 import { UserAuth } from "./context/authcontext";
 import { userStudent } from "./context/userStudentContext";
+
+
 import { useContext, useEffect } from "react";
 
 import Myprofile from "./pages/student/Myprofile";
+import { Jobscontext } from "./context/Jobscontext";
 
 function App() {
   const {dispatchstudent } = useContext(userStudent);
+  const {dispatch}=useContext(Jobscontext);
  
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
@@ -41,8 +44,28 @@ function App() {
 
    const navigate=useNavigate();
   useEffect(() => {
-    const roleuser=localStorage.getItem('roleuser');
-    dispatchRoleStudent({ type: "LOGIN", payload: JSON.parse(roleuser)});
+    const roleuser=JSON.parse(localStorage.getItem('roleuser'));
+    if(roleuser)
+    {
+      dispatchRoleStudent({ type: "LOGIN", payload:roleuser});
+      console.log(roleuser)
+      console.log(roleuser.token)
+      axios.get('http://localhost:9000/api/jobs',
+      { headers: { 'Authorization': `Bearer ${roleuser.token}` }}).then((response)=>{
+        dispatch({type:'SETJOBS',payload:response.data});
+      }).catch((error)=>{
+        console.log(error);
+      })
+      axios.get('http://localhost:9000/api/announcements',
+      { headers: { 'Authorization': `Bearer ${roleuser.token}` }}
+      ).then((response)=>{
+        dispatch({type:'SETANNOUNCEMENTS',payload:response.data});
+      }).catch((error)=>{
+        console.log(error);
+      })
+
+    }
+   
     
     const student = localStorage.getItem('studentuser');
     if (student) {
