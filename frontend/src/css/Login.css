@@ -182,3 +182,19 @@
     color:#EBDCDC;
 }
 
+.errormsgg{
+    background-color: rgba(210, 68, 68, 0.7);
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 7px;
+    border: 2px solid red;
+    /* margin: 0 auto; */
+    height: 30;
+}
+
+.errormsgg p{
+    margin-bottom: 0px;
+}

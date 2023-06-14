@@ -39,20 +39,35 @@ function Login() {
   const [error, setError] = useState(null);
   const [emailid, setEmailid] = useState("");
   const [password, setpassword] = useState("");
+  const [errormsg, setErrormsg] = useState("");
+  const [otpmsg, setOtpmsg] =useState("");
+  const [otpbutton, setOtpbutton] = useState("Send Otp");
 
   const submitmail = (e) => {
     e.preventDefault();
-    console.log("helloooo otp");
-    const emailid = { emailid: email };
-    axios
-      .post("http://localhost:9000/otp", emailid)
-      .then((response) => {
-        console.log(response.data);
-        setOtp(response.data.otp);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if(email.includes("@mgits.ac.in"))
+    {
+      setErrormsg("");
+      console.log("helloooo otp");
+      const emailid = { emailid: email };
+      axios
+        .post("http://localhost:9000/otp", emailid)
+        .then((response) => {
+          console.log(response.data);
+          setOtp(response.data.otp);
+          setOtpmsg("Otp has been sent successfully");
+          setOtpbutton("Resend Otp");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    else
+    {
+      setErrormsg("Not a valid mgits id");
+    }
+   
   };
 
   const Handlesubmit1 = (e) => {
@@ -63,6 +78,8 @@ function Login() {
       setboolean("register2");
     } else {
       console.log("failed");
+      <br></br>
+      setErrormsg("Otp is invalid");
     }
   };
   const Handlesubmit2 = (e) => {
@@ -211,9 +228,13 @@ function Login() {
                         }}
                       />
                     </div>
+                    
                     <div className="send-otp-container">
+                    {otpmsg && <>
+                       <p>{otpmsg}</p>
+                    </>}
                       <button className="send-otp-btn" onClick={submitmail}>
-                        Send OTP
+                        {otpbutton}
                       </button>
                     </div>
                     <div className="otp-label">
@@ -230,6 +251,7 @@ function Login() {
                         }}
                       />
                     </div>
+
                     <div className="otp-confirm-box">
                       <button
                         type="submit"
@@ -238,7 +260,16 @@ function Login() {
                       >
                         Confirm
                       </button>
+                     
+                      
+                      
                     </div>
+                    {errormsg && <>
+                        <div className="errormsgg">
+                          <p>{errormsg}</p>
+                        </div>
+                       </>}
+
                   </form>
                 </>
               )}
