@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authcontext";
 import { Jobscontext } from "../context/Jobscontext";
 import { userStudent } from "../context/userStudentContext";
+import {StudentContext} from "../context/studentcontext"; 
 import "../css/Login.css";
 import Logo from '../css/MITS LOGO.png';
 
@@ -11,6 +12,7 @@ function Login() {
   const {dispatch}=useContext(Jobscontext);
   //context things
   const context = useContext(userStudent);
+  const {dispatchstudents}=useContext(StudentContext);
   const navigate=useNavigate();
   const { student, dispatchstudent } = useContext(userStudent);
   useEffect(()=>{
@@ -123,6 +125,18 @@ function Login() {
         }).catch((error)=>{
           console.log(error);
         })
+
+        axios
+        .get("http://localhost:9000/students")
+        .then((res) => {
+          dispatchstudents({ type: "SETSTUDENTS", payload: res.data });
+          
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
+        
         if (res.data.user.role == "student") {
           axios
             .get(`http://localhost:9000/students/${res.data.user.emailid}`)

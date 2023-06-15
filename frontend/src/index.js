@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserAuthContextProvider } from './context/authcontext';
 import { UserStudentProvider } from './context/userStudentContext';
 import { JobscontextProvider } from './context/Jobscontext';
+import { StudentContextProvider } from './context/studentcontext';
 import { BrowserRouter, Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,12 +15,14 @@ root.render(
   <React.StrictMode>
       <UserAuthContextProvider>
     <UserStudentProvider>
+    <StudentContextProvider>
       <JobscontextProvider>
         <BrowserRouter>
         <App />
         </BrowserRouter>
- 
+
       </JobscontextProvider>
+      </StudentContextProvider>
     </UserStudentProvider>
     </UserAuthContextProvider>
   </React.StrictMode>

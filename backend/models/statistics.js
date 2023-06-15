@@ -12,7 +12,8 @@ const statisticsSchema=new Schema({
             MECH:Number,
             CIVIL:Number,
             EEE:Number,
-            ECE:Number
+            ECE:Number,
+            LPA:Number,
         }
     ]
 

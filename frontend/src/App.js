@@ -24,7 +24,7 @@ import Login from "./pages/Login";
 import { UserAuth } from "./context/authcontext";
 import { userStudent } from "./context/userStudentContext";
 
-
+import {StudentContext} from "./context/studentcontext"; 
 import { useContext, useEffect } from "react";
 
 import Myprofile from "./pages/student/Myprofile";
@@ -33,7 +33,7 @@ import { Jobscontext } from "./context/Jobscontext";
 function App() {
   const {dispatchstudent } = useContext(userStudent);
   const {dispatch}=useContext(Jobscontext);
- 
+  const {dispatchstudents}=useContext(StudentContext);
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
@@ -47,6 +47,7 @@ function App() {
     const roleuser=JSON.parse(localStorage.getItem('roleuser'));
     if(roleuser)
     {
+      
       dispatchRoleStudent({ type: "LOGIN", payload:roleuser});
       console.log(roleuser)
       console.log(roleuser.token)
@@ -63,15 +64,25 @@ function App() {
       }).catch((error)=>{
         console.log(error);
       })
+      axios
+      .get("http://localhost:9000/students")
+      .then((res) => {
+        dispatchstudents({ type: "SETSTUDENTS", payload: res.data });
+        
+      })
+     
 
+      const student = localStorage.getItem('studentuser');
+      if (student) {
+        dispatchstudent({ type: "SETSTUDENTUSER", payload: JSON.parse(student)});
+        navigate('/Student/Announcements');
+      }
+      else if(roleuser.user.role=="admin")    navigate('/admin/Announcements');
+      else   navigate('/faculty/Announcements');
     }
    
     
-    const student = localStorage.getItem('studentuser');
-    if (student) {
-      dispatchstudent({ type: "SETSTUDENTUSER", payload: JSON.parse(student)});
-      navigate('/Student/Announcements');
-    }
+  
   
   }, [])
  

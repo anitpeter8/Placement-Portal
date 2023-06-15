@@ -1,8 +1,9 @@
 import axios from "axios";
 import Student from "../../components/Student";
+import { StudentContext } from "../../context/studentcontext";
+
 import "../../css/Studentpage.css";
-import React, { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import React, { useEffect, useState ,useContext} from "react";
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -11,24 +12,17 @@ import { AiOutlineSearch } from "react-icons/ai";
 />;
 
 const Students = () => {
-  const [students, setStudents] = useState([]);
+
   const [branchsearch, setbranch] = useState("ALL");
   const [classsearch, setclass] = useState("ALL");
   const [namesearch, setname] = useState("");
 
   const search = () => {};
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:9000/students")
-      .then((res) => {
-        setStudents(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
+ 
+    const context=useContext(StudentContext);
+    const {students}=context
+  
 
   return (
     <div className="stmain">
@@ -41,7 +35,7 @@ const Students = () => {
               type="text"
               className="name-search"
               value={namesearch}
-              placeholder="name"
+              placeholder=" Name "
               onChange={(e) => {
                 setname(e.target.value);
                 console.log(namesearch);
@@ -81,19 +75,20 @@ const Students = () => {
               <option>ME</option>
             </select>
           </div>
-          <div className="sicon">
-            <AiOutlineSearch onClick={search} size="2.5vw" color="white" />
+    
+          <div className="ficon">
+           
           </div>
         </div>
       </div>
 
       <div className="stcontent">
         <div className="branch-name">
-          {students.length > 0 && (
+          {students!=null  && (
             <>
               <hr style={{ color: "white", height: "5px" }} />
               <div className="row row-cols-2">
-                {students
+                { students && students
                   .filter((s) => {
                     if (branchsearch === "ALL") {
                       return true;
