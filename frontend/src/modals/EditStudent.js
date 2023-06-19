@@ -15,19 +15,24 @@ function EditStudent({ student,EditStudentModal,onClose }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handlesubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    
+    // e.preventDefault();
 
     console.log(student.fullname,student.branch);
     const sid = student.id;
     /*const studentee = {name,branch }*/
-    axios.patch('http://localhost:9000/students' + sid).then((response) => {
+    axios.patch('http://localhost:9000/students' + student._id,data).then((response) => {
       console.log(response.data);
       console.log('vishayam')
 
     }).catch((error) => {
       console.log(error)
     })
+
+    onClose();
+
+    
   }
   if(EditStudentModal)
   {
@@ -45,7 +50,7 @@ function EditStudent({ student,EditStudentModal,onClose }) {
             <hr></hr>
           </div>
           <div className='jobedit-modal-body'>
-          <form onSubmit={handlesubmit} className="jobedit-modal-form">
+          <form onSubmit={handleSubmit(onSubmit)} className="jobedit-modal-form">
             <div className="name_branch">
               <div className="name">
                 <div className="title-name">
@@ -351,7 +356,7 @@ function EditStudent({ student,EditStudentModal,onClose }) {
               </div>
             </div>
             <div className="sub">
-              <Button className="sub-but-student" type="submit" onClick={onClose}>
+              <Button className="sub-but-student" type="submit">
                 Submit
               </Button>
             </div>
