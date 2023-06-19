@@ -17,7 +17,7 @@ function EditJob({ job, EditJobmodal, onClose }) {
     console.log("cannot ascess outside the provider");
   } 
   const { user, dispatchRoleStudent } = authcontext;
-  const [branch,setBranch]=useState([]);
+  const [branch,setBranch]=useState(job.branch);
 
   const context = useContext(Jobscontext);
   const { dispatch } = context;
