@@ -7,6 +7,7 @@ export const userStudentReducer=(state,action)=>{
             return {
                 student:action.payload
             }
+     
         case 'REMOVEUSER':
             console.log('removed')
             return {

@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import "./EditStudent.css";
 import { useForm, useFormContext } from "react-hook-form";
+import { StudentContext } from '../context/studentcontext';
 
 
 function EditStudent({ student,EditStudentModal,onClose }) {
+  const {dispatchstudents}=useContext(StudentContext);
   const [show, setShow] = useState(false);
   const { handleSubmit, register } = useForm({
     defaultValues: student
@@ -27,6 +29,7 @@ function EditStudent({ student,EditStudentModal,onClose }) {
     /*const studentee = {name,branch }*/
     axios.patch('http://localhost:9000/students/' + student._id,data).then((response) => {
       console.log(response.data);
+      dispatchstudents({type:'EDITASTUDENT',payload:response.data})
       console.log('vishayam')
 
     }).catch((error) => {

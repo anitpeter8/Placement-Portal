@@ -9,7 +9,13 @@ export const studentreducer=(state,action)=>{
             }
         case 'EDITASTUDENT':
             return{
-                user:null
+                students:state.students.map((student)=>{
+                    if(student._id===action.payload._id)
+                    {
+                        return action.payload
+                    }
+                    else return student;
+                })
             }
         default:
         return state
