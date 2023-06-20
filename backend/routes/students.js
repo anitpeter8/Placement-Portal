@@ -42,14 +42,18 @@ routes.post('/',async(req,res)=>{
 
 routes.patch('/:id',async(req,res)=>{
     const {id}=req.params;
-    try {
-        const student=await Students.findByIdAndUpdate({_id:id},...req.body);
+    
 
+    try {
+        console.log(req.body)
+        console.log('hellloooooooo')
+        const student=await Students.findByIdAndUpdate({_id:id},{...req.body});
+        const updatedstudent=await Students.findById({_id:id});
+        res.json(updatedstudent);
     } catch (error) {
         res.status(400).json({err:error.message});
     }
-    const updatedstudent=await Students.findById({_id:id});
-    res.json(updatedstudent);
+  
 
 })
 

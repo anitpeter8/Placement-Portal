@@ -20,9 +20,12 @@ function EditStudent({ student,EditStudentModal,onClose }) {
     // e.preventDefault();
 
     console.log(student.fullname,student.branch);
+    
+    delete data.applied_jobs;
+    console.log(data);
     const sid = student.id;
     /*const studentee = {name,branch }*/
-    axios.patch('http://localhost:9000/students' + student._id,data).then((response) => {
+    axios.patch('http://localhost:9000/students/' + student._id,data).then((response) => {
       console.log(response.data);
       console.log('vishayam')
 
