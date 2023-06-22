@@ -16,6 +16,10 @@
     color: white;
     font-size: 4vw;
 }
+.table-form{
+  display: flex;
+  justify-content: center;
+}
 .year{
     display: flex;
     justify-content:space-between;
