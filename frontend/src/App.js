@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AnnounceAdmin from "./pages/admin/Announcements";
@@ -38,7 +38,7 @@ function App() {
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
   } 
-  const { user, dispatchRoleStudent } = authcontext;
+  const { dispatchRoleStudent } = authcontext;
  
 
 

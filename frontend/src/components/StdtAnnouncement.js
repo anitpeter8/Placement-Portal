@@ -1,4 +1,3 @@
-
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Announcement.css';

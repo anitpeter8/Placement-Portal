@@ -1,10 +1,9 @@
-import axios from 'axios';
+
 import Announcement from '../../components/Announcement';
 import { useContext } from 'react';
 import NewAnnouncement from '../../modals/NewAnnouncement';
 import '../../css/Announcements.css';
 import { Jobscontext } from "../../context/Jobscontext";
-//import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"

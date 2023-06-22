@@ -9,7 +9,7 @@ const authcontext = useContext(UserAuth);
 if (!authcontext) {
   console.log("cannot ascess outside the provider");
 } 
-const { user, dispatchRoleStudent } = authcontext;
+const { dispatchRoleStudent } = authcontext;
   return (<>
     <div>
     <nav>

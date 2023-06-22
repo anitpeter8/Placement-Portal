@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import '../../css/Navbar.css'
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { userStudent } from '../../context/userStudentContext';
 import { UserAuth } from '../../context/authcontext';
 

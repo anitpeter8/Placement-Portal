@@ -1,9 +1,9 @@
-import axios from "axios";
+
 import Student from "../../components/Student";
 import { StudentContext } from "../../context/studentcontext";
 
 import "../../css/Studentpage.css";
-import React, { useEffect, useState ,useContext} from "react";
+import React, { useState ,useContext} from "react";
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -106,7 +106,6 @@ const Students = () => {
                     if (namesearch === "") {
                       return true;
                     }
-                    // console.log(s.fullname.toLowerCase().includes(namesearch.toLowerCase))
                     return s.fullname
                       .toLowerCase()
                       .includes(namesearch.toLowerCase());

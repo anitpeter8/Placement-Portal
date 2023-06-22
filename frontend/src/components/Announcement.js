@@ -20,7 +20,7 @@ const Announcement = ({ announcement }) => {
     console.log("cannot ascess outside the provider");
   } 
 
-  const { user, dispatchRoleStudent } = authcontext;
+  const { user } = authcontext;
   const context = useContext(Jobscontext);
   const { dispatch } = context;
   const handledelete = () => {

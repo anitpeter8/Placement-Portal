@@ -8,7 +8,6 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/Job.css";
 import { useContext, useEffect } from "react";
-import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { useState } from "react";
 import { UserAuth } from '../context/authcontext';
@@ -30,23 +29,9 @@ const Job = ({ job,student }) => {
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
   } 
-  const { user, dispatchRoleStudent } = authcontext;
+  const { user } = authcontext;
 
-  const context = useContext(Jobscontext);
-  const { dispatch } = context;
-  const handledelete = () => {
-    axios.delete(`http://localhost:9000/api/jobs/${job._id}`,
-    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
-      console.log(response.data._id);
-      dispatch({ type: 'DELETEJOB', payload: response.data })
-
-
-    }).catch((error) => {
-      console.log(error);
-    })
-
-  }
-
+  
     const [checked, setChecked] = useState(false);
     const handlechange = () => {
       setChecked(!checked) 

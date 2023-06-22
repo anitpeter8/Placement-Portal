@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from 'react-bootstrap/esm/Button'
 import './ViewAppliedStudents.css'
 const ViewAppliedStudents = ({ViewAppliedStudentsmodal,setViewAppliedStudentsmodal,job}) => {
     if(ViewAppliedStudentsmodal)

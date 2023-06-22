@@ -1,9 +1,8 @@
-import axios from 'axios';
+
 import Announcement from '../../components/StdtAnnouncement';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { Jobscontext } from "../../context/Jobscontext";
 import '../../css/Announcements.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"

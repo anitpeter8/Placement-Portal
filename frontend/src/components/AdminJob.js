@@ -28,7 +28,7 @@ const Job = ({ job }) => {
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
   } 
-  const { user, dispatchRoleStudent } = authcontext;
+  const { user } = authcontext;
 
   console.log(job._id);
   const context = useContext(Jobscontext);

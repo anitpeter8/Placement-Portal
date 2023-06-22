@@ -4,12 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import './AddYear.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
-//import { Jobscontext } from '../context/Jobscontext';
-
 function NewBatch() {
-  /*const context=useContext(Jobscontext);
-  const {dispatch}=context;*/
   const [show, setShow] = useState(false);
   const [year, setYear] = useState('');
   const [offers, setOffers] = useState('');
@@ -23,8 +18,6 @@ function NewBatch() {
     const newYear = { year, offers};
     axios.post("http://localhost:9000/api/statistics",newYear ).then((response) => {
       console.log(response.data);
-      //dispatch({type:'CREATEANNOUNCEMENT',payload:response.data});
-
       console.log('vishayam')
       setYear('');
       setOffers('');

@@ -1,13 +1,13 @@
 import { useState, useContext } from "react";
 import "../css/Registration.css";
 import { userStudent } from "../context/userStudentContext";
-import { useForm, useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import SR from "../modals/SR";
 const Registration = () => {
   const location=useLocation();
-    const { student, dispatchstudent } = useContext(userStudent);
+    const { dispatchstudent } = useContext(userStudent);
     const Navigate = useNavigate();
     const { handleSubmit, register } = useForm();
     const[SRmodal,setSRmodal]=useState(false);

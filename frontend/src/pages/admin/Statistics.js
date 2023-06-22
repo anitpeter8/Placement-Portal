@@ -7,7 +7,6 @@ import NewRecruiter from '../../modals/AddRecruiter';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
-  faArrowUpRightFromSquare,
   faPenToSquare
 } from "@fortawesome/free-solid-svg-icons";
 const Statistics = () => {

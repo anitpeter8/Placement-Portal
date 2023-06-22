@@ -1,11 +1,10 @@
-import axios from "axios";
+
 import { useContext, useEffect, useState } from "react";
 import Job from '../../components/StdtJob';
 import '../../css/JobsPage.css';
 import { userStudent } from "../../context/userStudentContext";
 import { useJobContext } from "../../customhooks/UseJobContext";
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
 <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"

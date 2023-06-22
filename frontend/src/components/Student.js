@@ -8,7 +8,6 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
 
-//import moment from "moment";
 const Student = ({ student }) => {
   const [EditStudentModal,setEditStudentModal]=useState(false);
   return (
