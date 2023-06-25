@@ -422,7 +422,7 @@ const Statistics = () => {
 
 import axios from 'axios';
 import React, { useEffect, useState, useMemo } from 'react';
-import { useReactTable } from '@tanstack/react-table'
+import "../../css/StatisticsPage.css";
 
 const Statistics = () => {
 
@@ -440,20 +440,24 @@ const Statistics = () => {
 
 
   return (
-    <>
-      <table>
+    <div className='statastics'>
+    <div className="stathead">
+          <h1 className="statheading">STATISTICS</h1>
+        </div>
+        <div className='stat-table'>
+        <table>
         <thead>
-          <th>Recruiter</th>
-          <th>Year of Recruitment</th>
-          <th>CSE</th>
-          <th>AI</th>
-          <th>MECH</th>
-          <th>CIVIL</th>
-          <th>EEE</th>
-          <th>ECE</th>
+          <th style={{ width: "20em" }}>Recruiter</th>
+          <th style={{ width: "15em" }}>Year of Recruitment</th>
+          <th style={{ width: "10em" }}>CSE</th>
+          <th style={{ width: "10em" }}>AI</th>
+          <th style={{ width: "10em" }}>MECH</th>
+          <th style={{ width: "10em" }}>CIVIL</th>
+          <th style={{ width: "10em" }}> EEE</th>
+          <th style={{ width: "10em" }}>ECE</th>
         </thead>
         <tbody>
-          {stats.map((offer) => 
+          {stats && stats.map((offer) => 
       
           (
 
@@ -473,7 +477,9 @@ const Statistics = () => {
           )}
         </tbody>
       </table>
-    </>
+        </div>
+  
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;400&family=Roboto:wght@100;300;400;500&display=swap');
 
-.statmain {
+/* .statmain {
     font-family: 'Public Sans', sans-serif;
     background-color: #2B1C1F;
     min-height: 100vh;
@@ -134,7 +134,7 @@ th,td{
   font-weight:bold;
   color: #ffffff;
   text-shadow: 0 0 4px #ea4c89;
-}
+} */
 
 /*
 .circle1 {
@@ -206,3 +206,88 @@ text-align: center;
   }
 }
 */
+/* *{
+  background-color: #2B1C1F;
+} */
+
+.statastics{
+  background-color: #2B1C1F;
+  color: #fff;
+  font-family: 'Public Sans', sans-serif;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.stathead{
+    display: flex;
+    justify-content:space-between;
+    margin: 0vw 4vw 0vw 4vw;
+    padding: 4vw 0vw 4vw 0vw;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead th {
+  /* background-color: #f2f2f2; */
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  background-color: #e299a7;
+}
+
+tbody td {
+  padding: 10px;
+  align-items: center;
+}
+
+tr:nth-child(odd){
+  background-color: #d08c9a6a;
+}
+
+tr:nth-child(even) {
+  padding: 50px 10px;
+  background-color: #6d545969;
+}
+
+.stat-table{
+  display: flex;
+  justify-content: center;
+  
+}
+/* Alternate Row Background Color */
+/* tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+} */
+
+/* Cell Alignment */
+/* td {
+  text-align: center;
+} */
+
+/* Table Header Cell Alignment */
+thead th:nth-child(1),
+tbody td:nth-child(1) {
+  text-align: left;
+}
+
+/* tr:nth-child(1){
+  background-color: #e299a7;
+  border-radius:5px;
+}
+
+tr:nth-child(odd){
+  background-color: #e299a86a;
+} */
+
+
+td{
+  padding:10px 0px;
+
+}
+th,td{
+padding:10px 20px;
+}
