@@ -2,6 +2,7 @@ const express=require('express');
 const Statistics = require('../models/statistics');
 const routes=express.Router();
 
+//new offer
 routes.post('/',async(req,res)=>{
     try {
         const stat=await Statistics.create({...req.body})
@@ -11,71 +12,25 @@ routes.post('/',async(req,res)=>{
         res.status(400).json({error:error.message});
     }
 })
-routes.put('/delete/:yearid/:offerid',async(req,res)=>{
-    const yearid=req.params.yearid;
+
+//update existing offer
+routes.put('/update/:offerid',async(req,res)=>{
+    
     const offerid=req.params.offerid;
     console.log(yearid,offerid);
     try{
-      const stat= await Statistics.findByIdAndUpdate({_id:yearid},
-        {
-            $pull:{offers:{_id:offerid}}
-        })
-        //res.json({mssg:"done"});
-        res.json(stat);
-        //console.log(stat);
+      await Statistics.findByIdAndUpdate({_id:offerid},
+       ...req.body)
+        const updatedstat=await Statistics.findById({_id:offerid})
+        res.json(updatedstat);
     }
-    
-
     catch(error)
     {
         res.status(400).json({error:error.message});
     }
 })
 
-routes.put('/edit/:yearid/:offerid',async(req,res)=>{
-    const yearid=req.params.yearid;
-    const offerid=req.params.offerid;
-    console.log(yearid,offerid);
-    try{
-      const stat= await Statistics.findByIdAndUpdate({_id:yearid},
-        {
-            $set:{offers:{_id:offerid,...req.body}}
-        })
-        //res.json({mssg:"done"});
-        res.json(stat);
-        //console.log(stat);
-    }
-    
-
-    catch(error)
-    {
-        res.status(400).json({error:error.message});
-    }
-})
-
-
-
-routes.put('/add/:yearid',async(req,res)=>{
-    const yearid=req.params.yearid;
-    const offerid=req.params.offerid;
-    console.log(yearid);
-    try{
-      const stat= await Statistics.findByIdAndUpdate({_id:yearid},
-        {
-            $push:{offers:req.body}
-        })
-        //res.json({mssg:"done"});
-        res.json(stat);
-        //console.log(stat);
-    }
-    
-
-    catch(error)
-    {
-        res.status(400).json({error:error.message});
-    }
-})
-
+//get all offers
 routes.get('/',async(req,res)=>{
     try{
         const all=await Statistics.find({});
@@ -86,5 +41,16 @@ routes.get('/',async(req,res)=>{
     }
 })
 
+//delete an existing offer
+routes.delete('/delete/:offerid',async(req,res)=>{
+    try {
+        const _id=req.params.offerid;
+        await Statistics.findByIdAndDelete({_id});
+    } catch (error) {
+        
+        res.status(400).json({error:error.message});
+    }
+ 
+})
 
 module.exports=routes;
