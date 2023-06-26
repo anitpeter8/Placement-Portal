@@ -469,6 +469,7 @@ const Statistics = () => {
         <thead>
           <th style={{ width: "20em" }}>Recruiter</th>
           <th style={{ width: "15em" }}>Year of Recruitment</th>
+          <th>Package</th>
           <th style={{ width: "10em" }}>CSE</th>
           <th style={{ width: "10em" }}>AI</th>
           <th style={{ width: "10em" }}>MECH</th>
@@ -494,7 +495,9 @@ const Statistics = () => {
           
             <tr>
               <td>{offer.companyname}</td>
+
               <td>{offer.year}</td>
+              <td>10LPA</td>
               <td>{offer.CSE}</td>
               <td>{offer.AI}</td>
               <td>{offer.MECH}</td>
