@@ -37,7 +37,7 @@ function Myprofile() {
                 <br></br>
 
                 <label for="class">Class:</label>
-                <input type="text" id="class" name="class" required {...register('class')} disabled></input>
+                <input type="text" id="class" name="class" value="2024" disabled></input>
                 <br></br>
 
                 <label for="email">Email id:</label>

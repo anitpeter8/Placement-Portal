@@ -17,10 +17,13 @@ routes.post('/',async(req,res)=>{
 routes.put('/update/:offerid',async(req,res)=>{
     
     const offerid=req.params.offerid;
-    console.log(yearid,offerid);
+    console.log(offerid);
     try{
-      await Statistics.findByIdAndUpdate({_id:offerid},
-       ...req.body)
+      const stat=await Statistics.findByIdAndUpdate({_id:offerid},
+        {
+            ...req.body
+        }
+      )
         const updatedstat=await Statistics.findById({_id:offerid})
         res.json(updatedstat);
     }

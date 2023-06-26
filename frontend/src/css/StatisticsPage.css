@@ -215,7 +215,9 @@ text-align: center;
   height: 100%;
   padding-bottom: 20px;
 }
-
+.stathead{
+  display:flex;
+}
 .new-announcement-btn{
   display: flex;
   /* align-items: flex-end; */
@@ -240,6 +242,12 @@ text-align: center;
   height: 2em;
   cursor: default;
   margin-bottom: 5px;
+}
+
+.data{
+  max-width: 60px;
+  width: 70%;
+
 }
 
 .stathead {
@@ -312,4 +320,10 @@ td {
 th,
 td {
   padding: 10px 20px;
+}
+thead th:first-child{
+  border-radius: 20px 0px 0px 0px;
+}
+thead th:last-child{
+  border-radius: 0px 20px 0px 0px;
 }

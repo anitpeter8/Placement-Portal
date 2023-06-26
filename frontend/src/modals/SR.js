@@ -29,7 +29,7 @@ function SR({onclose,SRmodal}) {
      <div className='announcementedit-modal-container' >
         <div className='announcementedit-modal-content' >
           <div className='announcementedit-modal-title'>
-            <h3>Registeration Success</h3>
+            <h3>Registration Success</h3>
             <hr></hr>
             <p>You have been successfully registered</p>
             <p>Click the below button to redirect to login page</p>

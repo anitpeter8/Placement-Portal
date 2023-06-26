@@ -88,7 +88,7 @@ function NewOffer({ onclose, NewOffermodal }) {
                                         <label>Package(in LPA):</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={LPA} onChange={(e) =>
+                                        <input className='text1' type='text' value={LPA} onChange={(e) =>
                                             setLPA(e.target.value)
                                         } />
                                     </div>

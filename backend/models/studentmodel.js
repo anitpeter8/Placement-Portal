@@ -32,7 +32,7 @@ const studentSchema=new Schema({
         type:String
     },
     dob:{
-        type:Date
+        type:String
     },
     street:{
         type:String

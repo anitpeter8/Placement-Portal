@@ -8,7 +8,7 @@ const tokenauth=(req,res,next)=>{
     }
     const token=authorization.split(' ')[1];
     try {
-        console.log(token)
+       
         const {_id}=jwt.verify(token,'STARFLEETENTERPRISE@11shibadi');
 
     } catch (error) {

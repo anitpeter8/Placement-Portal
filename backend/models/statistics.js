@@ -10,7 +10,7 @@ const statisticsSchema=new Schema(
             CIVIL:Number,
             EEE:Number,
             ECE:Number,
-            LPA:Number,
+            LPA:String,
             total:Number
 
 

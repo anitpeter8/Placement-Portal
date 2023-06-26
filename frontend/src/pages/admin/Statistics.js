@@ -427,13 +427,36 @@ import NewOffer from '../../modals/NewOffer';
 import "../../modals/ViewAppliedStudents.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import Button from 'react-bootstrap/Button';
-import EditOffer from '../../modals/EditOffer';
+// import EditOffer from '../../modals/EditOffer';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const Statistics = () => {
 
+
+
+  const [companyname, setcompanyname] = useState();
+  const [newyear, setnewyear] = useState()
+  const [CSE, setCSE] = useState()
+  const [AI, setAI] = useState()
+  const [MECH, setMECH] = useState()
+  const [CIVIL, setCIVIL] = useState()
+  const [EEE, setEEE] = useState()
+  const [ECE, setECE] = useState()
+  const [LPA, setLPA] = useState()
+
+  
+
+
+
+
+
+
+
+
+  const [editingrow, seteditingrow] = useState()
   const [NewOffermodal, setNewOffermodal] = useState(false);
 
   const [EditOffermodal, setEditOffermodal] = useState(false);
@@ -441,7 +464,7 @@ const Statistics = () => {
   const [prefilldata, setprefilldata] = useState({ companyname: "loading", year: 0, CSE: 0, CIVIL: 0, EEE: 0, ECE: 0, MECH: 0, AI: 0 });
   const [stats, setstats] = useState();
   const [Search, setSearch] = useState('')
-  const [year, setyear] = useState('ALL');
+  const [year, setyear] = useState('Filter by Year');
   console.log(year);
   useEffect(() => {
     axios.get('http://localhost:9000/api/statistics').then((res) => {
@@ -457,8 +480,11 @@ const Statistics = () => {
   return (
     <div className='statastics'>
       <div className="stathead">
+      <div className="stathead1">
         <h1 className="statheading">STATISTICS</h1>
+        </div>
         <div className="new-announcement-btn">
+
 
           <Button variant="primary" className='newOffer'
             style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }}
@@ -466,68 +492,124 @@ const Statistics = () => {
             + New Offer
           </Button>
           <NewOffer onclose={() => setNewOffermodal(false)} NewOffermodal={NewOffermodal} />
-          <EditOffer onclose={() => {
-            setEditOffermodal(false)
+          {/* <EditOffer onclose={() => {
+            // setEditOffermodal(false)
             setprefilldata()
-          }} EditOffermodal={EditOffermodal} prefilldata={prefilldata} />
+          }} EditOffermodal={EditOffermodal} prefilldata={prefilldata} /> */}
 
         </div>
       </div>
-        <div className='stat-tablemain'>
+      <div className='stat-tablemain'>
 
-          <div className='filter-details'>
-            <input placeholder='Search Recruiter' className='input-recruiter' onChange={(e) => {
-              setSearch(e.target.value)
+        <div className='filter-details'>
+          <input placeholder='Search Recruiter' className='input-recruiter' onChange={(e) => {
+            setSearch(e.target.value)
+            console.log(e.target.value)
+          }
+          } />
+          <div>
+            <select className='input-year' onChange={(e) => {
+              setyear(e.target.value)
               console.log(e.target.value)
-            }
-            } />
-            <div>
-              <select className='input-year' onChange={(e) => {
-                setyear(e.target.value)
-                console.log(e.target.value)
-              }}>
-                <option value='Filter by Year' selected >Filter by Year</option>
-                <option value={2023}>2023</option>
-                <option value={2022}>2022</option>
-                <option value={2021}>2021</option>
-                <option value={2020}>2020</option>
-              </select>
-            </div>
+            }}>
+              <option value='Filter by Year' selected >Filter by Year</option>
+              <option value={2023}>2023</option>
+              <option value={2022}>2022</option>
+              <option value={2021}>2021</option>
+              <option value={2020}>2020</option>
+            </select>
           </div>
+        </div>
 
-          <div className='stat-table'>
-            <table className='applied-table'>
-              <thead>
-                <th style={{ width: "20em" }}>Recruiter</th>
-                <th style={{ width: "20em" }}>Year of Recruitment</th>
-                <th style={{ width: "10em" }}>Package</th>
-                <th style={{ width: "10em" }}>CSE</th>
-                <th style={{ width: "10em" }}>AI</th>
-                <th style={{ width: "10em" }}>MECH</th>
-                <th style={{ width: "10em" }}>CIVIL</th>
-                <th style={{ width: "10em" }}> EEE</th>
-                <th style={{ width: "10em" }}>ECE</th>
-                <th style={{ width: "10em" }}>Total Recruits</th>
-                <th style={{ width: "1em" }}>Edit</th>
-                <th style={{ width: "10em" }}></th>
-              </thead>
-              <tbody>
-                {stats && stats.filter((offer) => {
-                  console.log(offer.year)
-                  console.log(year)
-                  return year === 'ALL' ? offer :
-                    offer.year == year
-                }).filter((offer) => {
-                  return Search === '' ? offer :
-                    offer.companyname.toLowerCase().includes(Search);
-                }).map((offer) =>
+        <div className='stat-table'>
+          <table className='applied-table'>
+            <thead>
+              <th style={{ width: "20em" }}>Recruiter</th>
+              <th style={{ width: "20em" }}>Year of Recruitment</th>
+              <th style={{ width: "10em" }}>Package</th>
+              <th style={{ width: "10em" }}>CSE</th>
+              <th style={{ width: "10em" }}>AI</th>
+              <th style={{ width: "10em" }}>MECH</th>
+              <th style={{ width: "10em" }}>CIVIL</th>
+              <th style={{ width: "10em" }}> EEE</th>
+              <th style={{ width: "10em" }}>ECE</th>
+              <th style={{ width: "10em" }}>Total Recruits</th>
+              <th style={{ width: "1em" }}>Edit</th>
+              <th style={{ width: "10em" }}></th>
+            </thead>
+            <tbody>
+              { stats && stats.filter((offer) => {
+                console.log(offer.year)
+                console.log(year)
+                return year === 'Filter by Year' ? offer :
+                  offer.year == year
+              }).filter((offer) => {
+                return Search === '' ? offer :
+                  offer.companyname.toLowerCase().includes(Search);
+              }).map((offer) => {
 
-                (
+
+                return (editingrow === offer._id) ?
+
+
+
+                  <tr>
+                    <td><input className='data' value={companyname} /></td>
+
+                    <td><input className='data' value={newyear}  onChange={(e)=>{setnewyear(e.target.value)}}/></td>
+                    <td><input className='data' value={LPA} onChange={(e)=>{setLPA(e.target.value)}}/></td>
+                    <td><input className='data' value={CSE} onChange={(e)=>{setCSE(e.target.value)}}/></td>
+                    <td><input className='data' value={AI} onChange={(e)=>{setCSE(e.target.value)}}/></td>
+                    <td><input className='data' value={MECH} onChange={(e)=>{setMECH(e.target.value)}}/></td>
+                    <td><input className='data' value={CIVIL} onChange={(e)=>{setCIVIL(e.target.value)}}/></td>
+                    <td><input className='data' value={EEE} onChange={(e)=>{setEEE(e.target.value)}}/></td>
+                    <td><input className='data' value={ECE} onChange={(e)=>{setECE(e.target.value)}}/></td>
+                    <td><input onChange={(e)=>{setnewyear(e.target.value)}} disabled/></td>
+                    <td>
+                      <Button
+                        title="Edit Job"
+                        variant="success"
+
+
+                        onClick={() => {
+                          seteditingrow(0)
+                          console.log(editingrow)
+                          axios.put(`http://localhost:9000/api/statistics/update/${editingrow}`,{newyear,companyname,CSE,AI,CIVIL,MECH,EEE,ECE,total:parseInt(CSE)+parseInt(AI)+parseInt(CIVIL)+parseInt(MECH)+parseInt(EEE)+parseInt(ECE),LPA}).then((res)=>{
+                            console.log(res.data);
+                        }).catch((error)=>{
+                            console.log(error);
+                        })
+                
+                
+                          
+
+                          
+                        }}
+
+                      >
+                        <FontAwesomeIcon icon= {faCheck}  />
+                      </Button>
+                    </td>
+
+                    <td>
+
+                      <Button
+                        title="Delete Job"
+                        variant="danger"
+                        className="dlt-btn"
+
+                      >
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </Button>
+                    </td>
+                  </tr>
+
+                  :
+
 
 
                   <tr>
                     <td>{offer.companyname}</td>
-
                     <td>{offer.year}</td>
                     <td>{offer.LPA}</td>
                     <td>{offer.CSE}</td>
@@ -544,9 +626,18 @@ const Statistics = () => {
 
 
                         onClick={() => {
-                          console.log(offer._id);
-                          setprefilldata(offer);
-                          setEditOffermodal(true);
+                          seteditingrow(offer._id)
+                          setcompanyname(offer.companyname)
+                          setnewyear(offer.year)
+                          setLPA(offer.LPA)
+                      
+                          setAI(offer.AI)
+                          setCIVIL(offer.CIVIL)
+                          setEEE(offer.EEE)
+                          setECE(offer.ECE)
+                          setCSE(offer.CSE)
+                          setMECH(offer.MECH)
+                          console.log(editingrow)
                         }}
 
                       >
@@ -566,16 +657,18 @@ const Statistics = () => {
                       </Button>
                     </td>
                   </tr>
-                )
+              }
 
-                )}
-              </tbody>
-            </table>
-          </div>
+              )
+
+                }
+            </tbody>
+          </table>
         </div>
       </div>
-      )
+    </div>
+  )
 }
 
 
-      export default Statistics;
+export default Statistics;
