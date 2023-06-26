@@ -10,7 +10,9 @@ const statisticsSchema=new Schema(
             CIVIL:Number,
             EEE:Number,
             ECE:Number,
-            LPA:Number
+            LPA:Number,
+            total:Number
+
 
 })
 module.exports=mongoose.model('Statistics',statisticsSchema);
