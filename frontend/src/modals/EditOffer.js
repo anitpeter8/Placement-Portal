@@ -16,15 +16,18 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
 
     const context = useContext(Jobscontext);
     const { dispatch } = context;
-    const [companyname, setcompanyname] = useState();
-    const [year, setyear] = useState()
-    const [CSE, setCSE] = useState()
-    const [AI, setAI] = useState()
-    const [MECH, setMECH] = useState()
-    const [CIVIL, setCIVIL] = useState()
-    const [EEE, setEEE] = useState()
-    const [ECE, setECE] = useState()
+  
+    const [companyname, setcompanyname] = useState(prefilldata.companyname);
+    const [year, setyear] = useState(prefilldata.year)
+    const [CSE, setCSE] = useState(prefilldata.CSE)
+    const [AI, setAI] = useState(prefilldata.AI)
+    const [MECH, setMECH] = useState(prefilldata.MECH)
+    const [CIVIL, setCIVIL] = useState(prefilldata.CIVIL)
+    const [EEE, setEEE] = useState(prefilldata.EEE)
+    const [ECE, setECE] = useState(prefilldata.ECE)
+    const [LPA, setLPA] = useState(prefilldata.LPA)
 
+    
 
 
 
@@ -32,6 +35,11 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
 
         e.preventDefault();
         onclose()
+        axios.put(`http://localhost:9000/api/statistics/update/${prefilldata._id}`,{year,companyname,CSE,AI,CIVIL,MECH,EEE,ECE,total:CSE+AI+CIVIL+MECH+EEE+ECE,LPA}).then((res)=>{
+            console.log(res.data);
+        }).catch((errror)=>{
+            console.log(errror);
+        })
 
 
         // axios.post("http://localhost:9000/api/announcements", announcement,
@@ -63,7 +71,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>Recruiter:</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='text' value={prefilldata.companyname} onChange={(e) =>
+                                        <input className='text1' type='text' value={companyname} onChange={(e) =>
                                             setcompanyname(e.target.value)
                                         } />
                                     </div>
@@ -72,17 +80,25 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>Year of offer :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.year} onChange={(e) =>
+                                        <input className='text1' type='number' value={year} onChange={(e) =>
                                             setyear(e.target.value)
                                         } />
                                     </div>
-
+                                    
+                                    <div className='title-label'>
+                                        <label>Package(in LPA):</label>
+                                    </div>
+                                    <div className='textbox'>
+                                        <input className='text1' type='number' value={LPA} onChange={(e) =>
+                                            setLPA(e.target.value)
+                                        } />
+                                    </div>
 
                                     <div className='title-label'>
                                         <label>CSE :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.CSE} onChange={(e) =>
+                                        <input className='text1' type='number' value={CSE} onChange={(e) =>
                                             setCSE(e.target.value)
                                         } />
                                     </div>
@@ -90,7 +106,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>AI :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.AI} onChange={(e) =>
+                                        <input className='text1' type='number' value={AI} onChange={(e) =>
                                             setAI(e.target.value)
                                         } />
                                     </div>
@@ -98,7 +114,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>MECH :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.MECH} onChange={(e) =>
+                                        <input className='text1' type='number' value={MECH} onChange={(e) =>
                                             setMECH(e.target.value)
                                         } />
                                     </div>
@@ -106,7 +122,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>EEE :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.EEE} onChange={(e) =>
+                                        <input className='text1' type='number' value={EEE} onChange={(e) =>
                                             setEEE(e.target.value)
                                         } />
                                     </div>
@@ -114,7 +130,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>ECE :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.ECE} onChange={(e) =>
+                                        <input className='text1' type='number' value={ECE} onChange={(e) =>
                                             setECE(e.target.value)
                                         } />
                                     </div>
@@ -123,7 +139,7 @@ function EditOffer({ onclose, EditOffermodal,prefilldata }) {
                                         <label>CIVIL :</label>
                                     </div>
                                     <div className='textbox'>
-                                        <input className='text1' type='number' value={prefilldata.CIVIL} onChange={(e) =>
+                                        <input className='text1' type='number' value={CIVIL} onChange={(e) =>
                                             setCIVIL(e.target.value)
                                         } />
                                     </div>

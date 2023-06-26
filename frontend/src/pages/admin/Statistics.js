@@ -434,7 +434,7 @@ const Statistics = () => {
 
   const [EditOffermodal, setEditOffermodal] = useState(false);
 
-  const [prefilldata,setprefilldata]=useState();
+  const [prefilldata,setprefilldata]=useState({companyname:"loading",year:0,CSE:0,CIVIL:0,EEE:0,ECE:0,MECH:0,AI:0});
   const [stats, setstats] = useState();
   const [Search, setSearch] = useState('')
   const [year, setyear] = useState('ALL');
@@ -521,14 +521,14 @@ setprefilldata()
                 <td>{offer.companyname}</td>
 
                 <td>{offer.year}</td>
-                <td>10LPA</td>
+                <td>{offer.LPA}</td>
                 <td>{offer.CSE}</td>
                 <td>{offer.AI}</td>
                 <td>{offer.MECH}</td>
                 <td>{offer.CIVIL}</td>
                 <td>{offer.EEE}</td>
                 <td>{offer.ECE}</td>
-                <td>10</td>
+                <td>{offer.total}</td>
                 <td><button onClick={()=>{
                   console.log(offer._id);
                   setprefilldata(offer);

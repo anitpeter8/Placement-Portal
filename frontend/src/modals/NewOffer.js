@@ -25,6 +25,8 @@ function NewOffer({ onclose, NewOffermodal }) {
      const [EEE, setEEE] = useState()
      const [ECE, setECE] = useState()
 
+     const [LPA, setLPA] = useState()
+
     
 
 
@@ -32,10 +34,15 @@ function NewOffer({ onclose, NewOffermodal }) {
 
         e.preventDefault();
         onclose()
+        axios.post("http://localhost:9000/api/statistics",{year,companyname,CSE,AI,CIVIL,MECH,EEE,ECE,total:parseInt(CSE)+parseInt(AI)+parseInt(CIVIL)+parseInt(MECH)+parseInt(EEE)+parseInt(ECE),LPA}).then((res)=>{
+            console.log(res.data);
+        }).catch((errror)=>{
+            console.log(errror);
+        })
 
       
         // axios.post("http://localhost:9000/api/announcements", announcement,
-        //     { headers: { 'Authorization': `Bearer ${user.token}` } }).then((response) => {
+        //     { headers: {LPA 'Authorization': `Bearer ${user.token}` } }).then((response) => {
         //         console.log(response.data);
         //         dispatch({ type: 'CREATEANNOUNCEMENT', payload: response.data });
 
@@ -74,6 +81,15 @@ function NewOffer({ onclose, NewOffermodal }) {
                                     <div className='textbox'>
                                         <input className='text1' type='number' value={year} onChange={(e) =>
                                             setyear(e.target.value)
+                                        } />
+                                    </div>
+
+                                    <div className='title-label'>
+                                        <label>Package(in LPA):</label>
+                                    </div>
+                                    <div className='textbox'>
+                                        <input className='text1' type='number' value={LPA} onChange={(e) =>
+                                            setLPA(e.target.value)
                                         } />
                                     </div>
 
