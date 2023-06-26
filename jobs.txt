@@ -1,0 +1,3 @@
+This position requires strong Experience of .NET and Angular technologies, along with proficiency in database design, API integration, and web development tools
+A Full Stack Developer - .NET & Angular is responsible for both front-end and back-end development, creating and maintaining software applications that meet the needs of the business.
+Familiar with Front development technologies - HTML,CSS,JavaScript. Experience in any of the frameworks- React,Vue or Angular
