@@ -206,37 +206,74 @@ text-align: center;
   }
 }
 */
-/* *{
-  background-color: #2B1C1F;
-} */
 
-.statastics{
-  background-color: #2B1C1F;
+.statastics {
+  background-color: #2b1c1f;
   color: #fff;
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   min-height: 100vh;
   height: 100%;
+  padding-bottom: 20px;
 }
 
-.stathead{
-    display: flex;
-    justify-content:space-between;
-    margin: 0vw 4vw 0vw 4vw;
-    padding: 4vw 0vw 4vw 0vw;
+.new-announcement-btn{
+  display: flex;
+  /* align-items: flex-end; */
+  justify-content: flex-end;
 }
 
-table {
-  width: 80%;
-  border-collapse: collapse;
+.statheading{
+  font-size: 4vw;
+}
+
+.stat-tablemain {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input-recruiter{
+  width: 25%;
+  height: 2em;
+}
+
+.input-year{
+  height: 2em;
+  cursor: default;
+  margin-bottom: 5px;
+}
+
+.stathead {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0vw 4vw 0vw 4vw;
+  padding: 2vw 0vw 3vw 0vw;
+}
+
+.filter-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 20px;
 }
 
+.applied-table {
+  background-color: brown;
+  border-radius: 20px;
+}
+
+table {
+  /* width: 80%; */
+  border-collapse: collapse;
+  border-radius: 20px;
+  /* margin-bottom: 20px; */
+}
+
 thead th {
-  /* background-color: #f2f2f2; */
   font-weight: bold;
   padding: 10px;
   text-align: left;
-  background-color: #e299a7;
+  background-color: #5429326a;
 }
 
 tbody td {
@@ -244,50 +281,35 @@ tbody td {
   align-items: center;
 }
 
-tr:nth-child(odd){
+tr:nth-child(odd) {
   background-color: #d08c9a6a;
 }
 
 tr:nth-child(even) {
-  padding: 50px 10px;
   background-color: #6d545969;
 }
 
-.stat-table{
+.stat-table {
   display: flex;
   justify-content: center;
-  
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
 }
-/* Alternate Row Background Color */
-/* tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-} */
 
-/* Cell Alignment */
-/* td {
+.rec {
   text-align: center;
-} */
+}
 
-/* Table Header Cell Alignment */
 thead th:nth-child(1),
 tbody td:nth-child(1) {
   text-align: left;
 }
 
-/* tr:nth-child(1){
-  background-color: #e299a7;
-  border-radius:5px;
+td {
+  padding: 10px 0px;
 }
-
-tr:nth-child(odd){
-  background-color: #e299a86a;
-} */
-
-
-td{
-  padding:10px 0px;
-
-}
-th,td{
-padding:10px 20px;
+th,
+td {
+  padding: 10px 20px;
 }
