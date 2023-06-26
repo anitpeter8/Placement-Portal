@@ -421,11 +421,20 @@ const Statistics = () => {
 
 
 import axios from 'axios';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../css/StatisticsPage.css";
+import NewOffer from '../../modals/NewOffer';
+
+import Button from 'react-bootstrap/Button';
+import EditOffer from '../../modals/EditOffer';
 
 const Statistics = () => {
 
+  const [NewOffermodal, setNewOffermodal] = useState(false);
+
+  const [EditOffermodal, setEditOffermodal] = useState(false);
+
+  const [prefilldata,setprefilldata]=useState();
   const [stats, setstats] = useState();
   const [Search, setSearch] = useState('')
   const [year, setyear] = useState('ALL');
@@ -443,77 +452,96 @@ const Statistics = () => {
 
   return (
     <div className='statastics'>
-    <div className="stathead">
-          <h1 className="statheading">STATISTICS</h1>
-          <button> +New offer</button>
+      <div className="stathead">
+        <h1 className="statheading">STATISTICS</h1>
+
+      </div>
+      <div className="new-announcement-btn">
+          <Button variant="primary"
+            style={{ backgroundColor: '#ffa8a2', height: '45px', color: '#660a0a' }}
+            onClick={() => setNewOffermodal(true)}>
+            + New Offer
+          </Button>
+          <NewOffer onclose={() => setNewOffermodal(false)} NewOffermodal={NewOffermodal} />
+          <EditOffer onclose={() =>{
+setEditOffermodal(false)
+setprefilldata()
+          } } EditOffermodal={EditOffermodal} prefilldata={prefilldata} />
+
+
         </div>
-        <div>
-        <input placeholder='search' onChange={(e)=>{
+      <div>
+        <input placeholder='search' onChange={(e) => {
           setSearch(e.target.value)
           console.log(e.target.value)
         }
-        }/>
-        <select onChange={(e)=>{
+        } />
+        <select onChange={(e) => {
           setyear(e.target.value)
-          console.log(e.target.value)}}>
+          console.log(e.target.value)
+        }}>
           <option value='ALL' selected >ALL</option>
           <option value={2023}>2023</option>
           <option value={2022}>2022</option>
           <option value={2021}>2021</option>
           <option value={2020}>2020</option>
         </select>
-        </div>
-       
-        <div className='stat-table'>
+      </div>
+
+      <div className='stat-table'>
         <table>
-        <thead>
-          <th style={{ width: "20em" }}>Recruiter</th>
-          <th style={{ width: "15em" }}>Year of Recruitment</th>
-          <th>Package</th>
-          <th style={{ width: "10em" }}>CSE</th>
-          <th style={{ width: "10em" }}>AI</th>
-          <th style={{ width: "10em" }}>MECH</th>
-          <th style={{ width: "10em" }}>CIVIL</th>
-          <th style={{ width: "10em" }}> EEE</th>
-          <th style={{ width: "10em" }}>ECE</th>
-          <th>Total Recruits</th>
-          <th>Edit</th>
-        </thead>
-        <tbody>
-          {stats && stats.filter((offer)=>{
-            console.log(offer.year)
-            console.log(year)
-            return year==='ALL'?offer:
-            offer.year==year
-          }).filter((offer)=>{
-           return  Search===''?offer:
-            offer.companyname.toLowerCase().includes(Search);
-          }).map((offer) => 
-      
-          (
+          <thead>
+            <th style={{ width: "20em" }}>Recruiter</th>
+            <th style={{ width: "15em" }}>Year of Recruitment</th>
+            <th>Package</th>
+            <th style={{ width: "10em" }}>CSE</th>
+            <th style={{ width: "10em" }}>AI</th>
+            <th style={{ width: "10em" }}>MECH</th>
+            <th style={{ width: "10em" }}>CIVIL</th>
+            <th style={{ width: "10em" }}> EEE</th>
+            <th style={{ width: "10em" }}>ECE</th>
+            <th>Total Recruits</th>
+            <th>Edit</th>
+          </thead>
+          <tbody>
+            {stats && stats.filter((offer) => {
+              console.log(offer.year)
+              console.log(year)
+              return year === 'ALL' ? offer :
+                offer.year == year
+            }).filter((offer) => {
+              return Search === '' ? offer :
+                offer.companyname.toLowerCase().includes(Search);
+            }).map((offer) =>
 
-          
-            <tr>
-              <td>{offer.companyname}</td>
+            (
 
-              <td>{offer.year}</td>
-              <td>10LPA</td>
-              <td>{offer.CSE}</td>
-              <td>{offer.AI}</td>
-              <td>{offer.MECH}</td>
-              <td>{offer.CIVIL}</td>
-              <td>{offer.EEE}</td>
-              <td>{offer.ECE}</td>
-              <td>10</td>
-              <td><button>Edit</button></td>
-            </tr>
-          )
 
-          )}
-        </tbody>
-      </table>
-        </div>
-  
+              <tr>
+                <td>{offer.companyname}</td>
+
+                <td>{offer.year}</td>
+                <td>10LPA</td>
+                <td>{offer.CSE}</td>
+                <td>{offer.AI}</td>
+                <td>{offer.MECH}</td>
+                <td>{offer.CIVIL}</td>
+                <td>{offer.EEE}</td>
+                <td>{offer.ECE}</td>
+                <td>10</td>
+                <td><button onClick={()=>{
+                  console.log(offer._id);
+                  setprefilldata(offer);
+                  setEditOffermodal(true);
+                }}>Edit</button></td>
+              </tr>
+            )
+
+            )}
+          </tbody>
+        </table>
+      </div>
+
     </div>
   )
 }
