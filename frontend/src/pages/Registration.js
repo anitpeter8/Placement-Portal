@@ -54,6 +54,15 @@ const Registration = () => {
                   {...register("semester")}
                 ></input>
                 <br></br>
+                <label for="batch">Batch :</label>
+                <input
+                  type="text"
+                  name="batch"
+                  class="batch"
+                  placeholder=" "
+                  {...register("batch")}
+                ></input>
+                <br></br>
                 <label for="email">Email ID :</label>
                 <input
                 value={location.state.emailid}

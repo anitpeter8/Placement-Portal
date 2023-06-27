@@ -8,6 +8,8 @@ nav{
   height: 4vw;
   display:flex;
   justify-content:space-between;
+  padding-top:30px;
+  padding-bottom: 40px;
 }
 
 nav .logout{

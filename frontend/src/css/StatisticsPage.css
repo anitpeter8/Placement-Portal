@@ -252,8 +252,9 @@ text-align: center;
 
 .stathead {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: 0vw 4vw 0vw 4vw;
   padding: 2vw 0vw 3vw 0vw;
 }
@@ -261,6 +262,7 @@ text-align: center;
 .filter-details {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-bottom: 20px;
 }

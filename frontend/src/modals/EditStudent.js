@@ -50,7 +50,7 @@ function EditStudent({ student,EditStudentModal,onClose }) {
         <div className='jobedit-modal-content' >
           <button className='modal-close-btn' onClick={onClose} ><p>X</p></button>
           <div className='jobedit-modal-title'>
-            <h3>Edit Job</h3>
+            <h3>Edit Student</h3>
             <hr></hr>
           </div>
           <div className='jobedit-modal-body'>
@@ -99,14 +99,14 @@ function EditStudent({ student,EditStudentModal,onClose }) {
               </div>
               <div className="class">
                 <div className="class-label">
-                  <label for="class">Class :</label>
+                  <label for="class">Batch :</label>
                 </div>
                 <div className="text-class">
                   <input
                     type="text"
                     id="class"
                     className="textst"
-                    required {...register("class")}
+                    required {...register("batch")}
                   />
                 </div>
               </div>

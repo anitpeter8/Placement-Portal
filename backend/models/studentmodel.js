@@ -13,7 +13,7 @@ const studentSchema=new Schema({
         role:String,
         database_id:String}],
 
-    class:{
+    batch:{
         type:String
     },
     semester:{

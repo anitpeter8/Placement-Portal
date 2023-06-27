@@ -50,9 +50,9 @@ const Students = () => {
               }}
             >
               <option>ALL</option>
-              <option>2020-2024</option>
-              <option>2021-2025</option>
-              <option>2022-2026</option>
+              <option>2024</option>
+              <option>2023</option>
+              <option>2022</option>
             </select>
           </div>
           <div className="sbranch">
@@ -97,7 +97,7 @@ const Students = () => {
                     if (classsearch === "ALL") {
                       return true;
                     }
-                    return s.class === classsearch;
+                    return s.batch === classsearch;
                   })
                   .filter((s) => {
                     console.log("hello");

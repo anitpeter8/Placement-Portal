@@ -36,8 +36,8 @@ function Myprofile() {
                 <input type="text" id="sem" name="semester" required {...register('semester')} disabled></input>
                 <br></br>
 
-                <label for="class">Class:</label>
-                <input type="text" id="class" name="class" value="2024" disabled></input>
+                <label for="batch">Batch:</label>
+                <input type="text" id="batch" name="batch" required {...register('batch')}  disabled></input>
                 <br></br>
 
                 <label for="email">Email id:</label>
