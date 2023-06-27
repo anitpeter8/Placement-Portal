@@ -22,7 +22,7 @@ const ViewAppliedStudents = ({ViewAppliedStudentsmodal,setViewAppliedStudentsmod
                         <tr className='brownish'>
                         <th >Name</th>
                         <th>Department</th>
-                        <th>Batch</th>
+                        {/* <th>Batch</th> */}
                         </tr>
                         {job.applied_students.length>0 &&
                         job.applied_students.map((student)=>{
@@ -30,7 +30,7 @@ const ViewAppliedStudents = ({ViewAppliedStudentsmodal,setViewAppliedStudentsmod
                                 <tr>
                                 <td>{student.name}</td>
                                 <td>{student.branch}</td>
-                                <td>{student.year}</td>
+                                {/* <td>{student.batch}</td> */}
                                </tr>
                             )
                         })}
