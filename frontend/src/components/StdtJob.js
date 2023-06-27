@@ -12,83 +12,94 @@ import axios from "axios";
 import { useState } from "react";
 import { UserAuth } from '../context/authcontext';
 
-const Job = ({ job,student }) => {
-  const[toggle,setToggle]=useState()
+const Job = ({ job, student }) => {
+  const [toggle, setToggle] = useState()
   console.log(job.applied_students);
   console.log(student._id);
-  useEffect(()=>{
-    job.applied_students.map((stud)=>{
+  useEffect(() => {
+    job.applied_students.map((stud) => {
       console.log(stud.database_id);
-    if(stud.database_id===student._id)
-    {setToggle(true)
-    console.log("true")}
-  })}
+      if (stud.database_id === student._id) {
+        setToggle(true)
+        console.log("true")
+      }
+    })
+  }
 
-    ,[setToggle,toggle])
+    , [setToggle, toggle])
   const authcontext = useContext(UserAuth);
   if (!authcontext) {
     console.log("cannot ascess outside the provider");
-  } 
+  }
   const { user } = authcontext;
 
-  
-    const [checked, setChecked] = useState(false);
-    const handlechange = () => {
-      setChecked(!checked) 
-      if(!checked)
-      {
 
-      
-      axios.patch('http://localhost:9000/students/addjob/' + student._id,{heading:job.heading,
-      role:job.role,
-      database_id:job._id},
-      { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
-      console.log(response.data);
-      console.log('job added')
+  const [checked, setChecked] = useState(false);
+  const handlechange = () => {
+    setChecked(!checked)
+    if (!checked) {
 
-    }).catch((error) => {
-      console.log(error)
-      console.log("hi")
-    })
-    axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,
-    {year:student.class,
-    name:student.fullname,branch:student.branch,database_id:student._id},
-    { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response) => {
-    console.log(response.data);
-    console.log('student added')
 
-  }).catch((error) => {
-    console.log(error)
-    console.log("hi")
-  })
-}
+      axios.patch('http://localhost:9000/students/addjob/' + student._id, {
+        heading: job.heading,
+        role: job.role,
+        database_id: job._id
+      },
+        { headers: { 'Authorization': `Bearer ${user.token}` } }).then((response) => {
+          console.log(response.data);
+          console.log('job added')
 
-else{
-  //copy
-  
- 
-//paste
-  axios.put(`http://localhost:9000/students/deletejob/${student._id}/${job._id}`,{mssg:'hello'},
-  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>
-  {
-    console.log(response.data);
-    console.log('job removed');
-  }).catch((error)=>{
-    console.log(error.message);
-  })
+        }).catch((error) => {
+          console.log(error)
+          console.log("hi")
+        })
+      axios.patch('http://localhost:9000/api/jobs/addstudent/' + job._id,
+        {
+          year: student.class,
+          name: student.fullname, branch: student.branch, database_id: student._id
+        },
+        { headers: { 'Authorization': `Bearer ${user.token}` } }).then((response) => {
+          console.log(response.data);
+          console.log('student added')
 
-  axios.patch(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}/`,{id:job._id},
-  { headers: { 'Authorization': `Bearer ${user.token}` }}).then((response)=>{
-    console.log('student removed');
+        }).catch((error) => {
+          console.log(error)
+          console.log("hi")
+        })
+    }
+
+    else {
+      //copy
+
+
+      //paste
+      axios.put(`http://localhost:9000/students/deletejob/${student._id}/${job._id}`, { mssg: 'hello' },
+        { headers: { 'Authorization': `Bearer ${user.token}` } }).then((response) => {
+          console.log(response.data);
+          console.log('job removed');
+        }).catch((error) => {
+          console.log(error.message);
+        })
+
+      axios.patch(`http://localhost:9000/api/jobs/deletestudent/${job._id}/${student._id}/`, { id: job._id },
+        { headers: { 'Authorization': `Bearer ${user.token}` } }).then((response) => {
+          console.log('student removed');
+        }
+        ).catch((error) => {
+          console.log(error);
+        })
+
+
+
+    }
   }
-  ).catch((error)=>{
-   console.log(error);
- })
-
-
-  
-  }
-}
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+  const onClickUrl = (url) => {
+    return () => openInNewTab(url);
+  };
 
   return (
     <div className="single-card">
@@ -106,9 +117,7 @@ else{
                 <Button
                   variant="primary"
                   className="apply-btn"
-                  onClick={() => {
-                    window.location.href = job.link;
-                  }}
+                  onClick={onClickUrl(job.applylink)}
                 >
                   <div className="apply-here">
                     <div>Apply Here</div>
@@ -129,9 +138,9 @@ else{
               <h5>{job.role}</h5>
               <h6>Have you applied?</h6>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={handlechange} defaultChecked={toggle}/>
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={handlechange} defaultChecked={toggle} />
               </div>
-      
+
             </Card.Title>
           </div>
         </Card.Header>
