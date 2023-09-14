@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { Jobscontext } from "../context/Jobscontext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/authcontext";
 
 import {
@@ -74,6 +74,13 @@ const Job = ({ job }) => {
                   onClick={onClickUrl(job.applylink)}
                 >
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                </Button>
+                <Button
+                  title="Download"
+                  variant="success"
+                  className="dwnld-btn"
+                >
+                  <FontAwesomeIcon icon={faDownload} />
                 </Button>
 
                 <Button

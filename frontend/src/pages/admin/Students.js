@@ -1,15 +1,18 @@
 
 import Student from "../../components/Student";
 import { StudentContext } from "../../context/studentcontext";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload} from "@fortawesome/free-solid-svg-icons";
 import "../../css/Studentpage.css";
 import React, { useState ,useContext} from "react";
+import { Button } from "react-bootstrap";
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
   integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
   crossorigin="anonymous"
 />;
+
 
 const Students = () => {
 
@@ -73,49 +76,57 @@ const Students = () => {
               <option>ME</option>
             </select>
           </div>
-    
-          <div className="ficon">
-           
+
+          {/* <div className="ficon"></div> */}
+          <div>
+            <Button className="dwnld-button"
+              title="Download"
+              variant="success"
+              height
+            >
+              <FontAwesomeIcon icon={faDownload} />
+            </Button>
           </div>
         </div>
       </div>
 
       <div className="stcontent">
         <div className="branch-name">
-          {students!=null  && (
+          {students != null && (
             <>
               <hr style={{ color: "white", height: "5px" }} />
               <div className="row row-cols-2">
-                { students && students
-                  .filter((s) => {
-                    if (branchsearch === "ALL") {
-                      return true;
-                    }
-                    return s.branch === branchsearch;
-                  })
-                  .filter((s) => {
-                    if (classsearch === "ALL") {
-                      return true;
-                    }
-                    return s.batch === classsearch;
-                  })
-                  .filter((s) => {
-                    console.log("hello");
-                    if (namesearch === "") {
-                      return true;
-                    }
-                 
-                    return s.fullname
-                      .toLowerCase()
-                      .includes(namesearch.toLowerCase());
-                  })
-                  .map((student) => (
-                    <div className="col">
-                      <div className="dept-card">
-                        <Student student={student} />
+                {students &&
+                  students
+                    .filter((s) => {
+                      if (branchsearch === "ALL") {
+                        return true;
+                      }
+                      return s.branch === branchsearch;
+                    })
+                    .filter((s) => {
+                      if (classsearch === "ALL") {
+                        return true;
+                      }
+                      return s.batch === classsearch;
+                    })
+                    .filter((s) => {
+                      console.log("hello");
+                      if (namesearch === "") {
+                        return true;
+                      }
+
+                      return s.fullname
+                        .toLowerCase()
+                        .includes(namesearch.toLowerCase());
+                    })
+                    .map((student) => (
+                      <div className="col">
+                        <div className="dept-card">
+                          <Student student={student} />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
               </div>
             </>
           )}
